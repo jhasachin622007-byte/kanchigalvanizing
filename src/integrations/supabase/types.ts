@@ -77,6 +77,63 @@ export type Database = {
         }
         Relationships: []
       }
+      beam_materials: {
+        Row: {
+          beam_no: string
+          coating_spec: string | null
+          created_at: string
+          decided_at: string | null
+          decided_by: string | null
+          decided_by_name: string | null
+          defect_remark: string | null
+          defect_type: string | null
+          id: string
+          offered_at: string
+          part_no: string | null
+          qc_status: string
+          quantity: number | null
+          route_card_no: string | null
+          transaction_id: string
+          updated_at: string
+        }
+        Insert: {
+          beam_no: string
+          coating_spec?: string | null
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          defect_remark?: string | null
+          defect_type?: string | null
+          id?: string
+          offered_at?: string
+          part_no?: string | null
+          qc_status?: string
+          quantity?: number | null
+          route_card_no?: string | null
+          transaction_id: string
+          updated_at?: string
+        }
+        Update: {
+          beam_no?: string
+          coating_spec?: string | null
+          created_at?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          decided_by_name?: string | null
+          defect_remark?: string | null
+          defect_type?: string | null
+          id?: string
+          offered_at?: string
+          part_no?: string | null
+          qc_status?: string
+          quantity?: number | null
+          route_card_no?: string | null
+          transaction_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       beams: {
         Row: {
           beam_no: string
@@ -101,6 +158,36 @@ export type Database = {
           transaction_id?: string
           updated_at?: string
           updated_by?: string | null
+        }
+        Relationships: []
+      }
+      part_prefix_micron: {
+        Row: {
+          coating_required: number
+          created_at: string
+          locked: boolean
+          prefix: string
+          updated_at: string
+          updated_by: string | null
+          updated_by_name: string | null
+        }
+        Insert: {
+          coating_required: number
+          created_at?: string
+          locked?: boolean
+          prefix: string
+          updated_at?: string
+          updated_by?: string | null
+          updated_by_name?: string | null
+        }
+        Update: {
+          coating_required?: number
+          created_at?: string
+          locked?: boolean
+          prefix?: string
+          updated_at?: string
+          updated_by?: string | null
+          updated_by_name?: string | null
         }
         Relationships: []
       }
