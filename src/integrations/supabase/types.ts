@@ -138,7 +138,9 @@ export type Database = {
         Row: {
           beam_no: string
           data: Json
+          material_type: string | null
           status: string
+          surface_condition: string | null
           transaction_id: string
           updated_at: string
           updated_by: string | null
@@ -146,7 +148,9 @@ export type Database = {
         Insert: {
           beam_no: string
           data: Json
+          material_type?: string | null
           status: string
+          surface_condition?: string | null
           transaction_id: string
           updated_at?: string
           updated_by?: string | null
@@ -154,37 +158,48 @@ export type Database = {
         Update: {
           beam_no?: string
           data?: Json
+          material_type?: string | null
           status?: string
+          surface_condition?: string | null
           transaction_id?: string
           updated_at?: string
           updated_by?: string | null
         }
         Relationships: []
       }
-      part_prefix_micron: {
+      micron_rules: {
         Row: {
+          active: boolean
           coating_required: number
           created_at: string
-          locked: boolean
+          id: string
           prefix: string
+          thickness_max: number | null
+          thickness_min: number
           updated_at: string
           updated_by: string | null
           updated_by_name: string | null
         }
         Insert: {
+          active?: boolean
           coating_required: number
           created_at?: string
-          locked?: boolean
+          id?: string
           prefix: string
+          thickness_max?: number | null
+          thickness_min: number
           updated_at?: string
           updated_by?: string | null
           updated_by_name?: string | null
         }
         Update: {
+          active?: boolean
           coating_required?: number
           created_at?: string
-          locked?: boolean
+          id?: string
           prefix?: string
+          thickness_max?: number | null
+          thickness_min?: number
           updated_at?: string
           updated_by?: string | null
           updated_by_name?: string | null
