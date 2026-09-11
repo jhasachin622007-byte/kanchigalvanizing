@@ -96,33 +96,33 @@ function ResetPasswordPage() {
   }
 
   const inputStyle: React.CSSProperties = {
-    width: "100%", padding: "10px 12px", background: "#0B1422", border: "1px solid #1A2840",
-    borderRadius: 6, color: "#DDE8F8", fontSize: 13, outline: "none", fontFamily: "inherit",
+    width: "100%", padding: "10px 12px", background: "#0B1422", border: "1px solid #33434F",
+    borderRadius: 6, color: "#C9D6DF", fontSize: 13, outline: "none", fontFamily: "inherit",
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#04080F", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "system-ui,sans-serif", padding: 16 }}>
+    <div style={{ minHeight: "100vh", background: "#0F1720", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Figtree,system-ui,sans-serif", padding: 16 }}>
       <div style={{ width: 420, maxWidth: "100%" }}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
-          <div style={{ width: 64, height: 64, borderRadius: 16, background: "linear-gradient(135deg,#E8A020,#B57A0F)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: 30, boxShadow: "0 0 32px rgba(232,160,32,.5)" }}>⚙</div>
-          <h1 style={{ fontSize: 18, fontWeight: 800, color: "#DDE8F8", letterSpacing: ".1em", margin: 0 }}>RESET PASSWORD</h1>
+          <div style={{ width: 64, height: 64, borderRadius: 16, background: "linear-gradient(135deg,#3D7EA6,#2E6285)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: 30, boxShadow: "0 0 32px rgba(61,126,166,.5)" }}>⚙</div>
+          <h1 style={{ fontSize: 18, fontWeight: 800, color: "#C9D6DF", letterSpacing: ".1em", margin: 0 }}>RESET PASSWORD</h1>
         </div>
-        <form onSubmit={submit} style={{ background: "#0E1623", border: "1px solid #1A2840", borderRadius: 12, padding: "28px" }}>
+        <form onSubmit={submit} style={{ background: "#1E2A36", border: "1px solid #33434F", borderRadius: 12, padding: "28px" }}>
           {!ready ? (
-            <div style={{ color: "#5A7599", fontSize: 13, textAlign: "center" }}>Validating reset link…</div>
+            <div style={{ color: "#8DA0AD", fontSize: 13, textAlign: "center" }}>Validating reset link…</div>
           ) : (
             <>
               <div style={{ marginBottom: 14 }}>
-                <label style={{ fontSize: 10, color: "#5A7599", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", display: "block", marginBottom: 6 }}>New password</label>
+                <label style={{ fontSize: 10, color: "#8DA0AD", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", display: "block", marginBottom: 6 }}>New password</label>
                 <input type="password" required minLength={6} value={password} onChange={(e)=>setPassword(e.target.value)} style={inputStyle} autoComplete="new-password" />
               </div>
               <div style={{ marginBottom: 6 }}>
-                <label style={{ fontSize: 10, color: "#5A7599", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", display: "block", marginBottom: 6 }}>Confirm password</label>
+                <label style={{ fontSize: 10, color: "#8DA0AD", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", display: "block", marginBottom: 6 }}>Confirm password</label>
                 <input type="password" required minLength={6} value={confirm} onChange={(e)=>setConfirm(e.target.value)} style={inputStyle} autoComplete="new-password" />
               </div>
               {err && <div style={{ color: "#F87171", fontSize: 12, marginTop: 10, padding: "8px 12px", background: "#220808", borderRadius: 6 }}>⚠ {err}</div>}
               {info && <div style={{ color: "#4ADE80", fontSize: 12, marginTop: 10, padding: "8px 12px", background: "#0A2218", borderRadius: 6 }}>{info}</div>}
-              <button type="submit" disabled={busy} style={{ width: "100%", marginTop: 14, padding: "11px 0", fontSize: 14, letterSpacing: ".04em", background: "linear-gradient(135deg,#E8A020,#B57A0F)", color: "#04080F", border: "none", borderRadius: 6, fontWeight: 700, cursor: busy ? "wait" : "pointer", fontFamily: "inherit" }}>
+              <button type="submit" disabled={busy} style={{ width: "100%", marginTop: 14, padding: "11px 0", fontSize: 14, letterSpacing: ".04em", background: "linear-gradient(135deg,#3D7EA6,#2E6285)", color: "#0F1720", border: "none", borderRadius: 6, fontWeight: 700, cursor: busy ? "wait" : "pointer", fontFamily: "inherit" }}>
                 {busy ? "…" : "UPDATE PASSWORD →"}
               </button>
             </>

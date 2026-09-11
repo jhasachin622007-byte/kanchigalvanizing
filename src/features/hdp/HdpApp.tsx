@@ -441,15 +441,15 @@ export function buildBenchmarkCfg(_dippingConfig, fieldConfig) {
 }
 
 export function benchmarkStatusColor(status) {
-  if (!status) return "#5A7599";
-  if (status === "Match Not Available") return "#E8A020";
+  if (!status) return "#8DA0AD";
+  if (status === "Match Not Available") return "#3D7EA6";
   if (status === "Equivalent Coating" || status === "Excellent") return "#4ADE80";
-  if (status.startsWith("Higher Coating")) return "#E8A020";
+  if (status.startsWith("Higher Coating")) return "#3D7EA6";
   if (status.startsWith("Lower Coating"))  return "#4ADE80";
   if (status === "Very Close to Best Coating Result") return "#A78BFA";
   if (status === "Close") return "#FBBF24";
   if (status === "Needs Review") return "#F87171";
-  return "#5A7599";
+  return "#8DA0AD";
 }
 
 
@@ -564,8 +564,8 @@ const INIT_AUDIT = [];
 // ══════════════════════════════════════════════════════════════
 const THEME_PRESETS = {
   "industrial":  { dark:true,  bg:"#111827", surf:"#1F2937", card:"#1F2937", border:"#374151", text:"#E5E7EB", muted:"#9CA3AF", dim:"#6B7280", amber:"#F97316", amberD:"#C2410C" },
-  "dark-gold":   { dark:true,  bg:"#070C14", surf:"#0E1623", card:"#131D2E", border:"#1A2840", text:"#DDE8F8", muted:"#5A7599", dim:"#2E4A6E", amber:"#E8A020", amberD:"#B57A0F" },
-  "light":       { dark:false, bg:"#EFF2F7", surf:"#FFFFFF", card:"#FAFBFC", border:"#D8E2F0", text:"#0F1E38", muted:"#6B7EA8", dim:"#9AAACF", amber:"#E8A020", amberD:"#B57A0F" },
+  "dark-gold":   { dark:true,  bg:"#0F1720", surf:"#1E2A36", card:"#24313E", border:"#33434F", text:"#C9D6DF", muted:"#8DA0AD", dim:"#5C7482", amber:"#3D7EA6", amberD:"#2E6285" },
+  "light":       { dark:false, bg:"#EFF2F7", surf:"#FFFFFF", card:"#FAFBFC", border:"#D8E2F0", text:"#0F1E38", muted:"#6B7EA8", dim:"#9AAACF", amber:"#3D7EA6", amberD:"#2E6285" },
   "ocean-blue":  { dark:true,  bg:"#061018", surf:"#0B1A2A", card:"#102538", border:"#1B3A56", text:"#DCEBFB", muted:"#6691B5", dim:"#2D4E70", amber:"#22D3EE", amberD:"#0891B2" },
   "slate":       { dark:true,  bg:"#0C0F14", surf:"#161A22", card:"#1C212C", border:"#2A303D", text:"#E2E8F0", muted:"#8B95A8", dim:"#4A5468", amber:"#94A3B8", amberD:"#64748B" },
 };
@@ -596,33 +596,33 @@ function DInput({style:s={},dark,...p}){
   return <input onFocus={()=>sf(true)} onBlur={()=>sf(false)} style={{
     width:"100%",padding:"8px 11px",borderRadius:6,fontSize:13,fontFamily:"inherit",
     background:dark?"#090F1A":"#F4F7FC",
-    border:`1px solid ${f?"#E8A020":dark?"#1A2840":"#D8E2F0"}`,
-    color:dark?"#DDE8F8":"#0F1E38",outline:"none",boxSizing:"border-box",
+    border:`1px solid ${f?"#3D7EA6":dark?"#33434F":"#D8E2F0"}`,
+    color:dark?"#C9D6DF":"#0F1E38",outline:"none",boxSizing:"border-box",
     transition:"border-color .15s",...s}}  {...p}/>;
 }
 function DSel({children,style:s={},dark,...p}){
   return <select style={{
     width:"100%",padding:"8px 11px",borderRadius:6,fontSize:13,cursor:"pointer",
     fontFamily:"inherit",background:dark?"#090F1A":"#F4F7FC",
-    border:`1px solid ${dark?"#1A2840":"#D8E2F0"}`,
-    color:dark?"#DDE8F8":"#0F1E38",outline:"none",boxSizing:"border-box",...s}} {...p}>{children}</select>;
+    border:`1px solid ${dark?"#33434F":"#D8E2F0"}`,
+    color:dark?"#C9D6DF":"#0F1E38",outline:"none",boxSizing:"border-box",...s}} {...p}>{children}</select>;
 }
 function DTa({style:s={},dark,...p}){
   return <textarea style={{
     width:"100%",padding:"8px 11px",borderRadius:6,fontSize:13,fontFamily:"inherit",
     background:dark?"#090F1A":"#F4F7FC",
-    border:`1px solid ${dark?"#1A2840":"#D8E2F0"}`,
-    color:dark?"#DDE8F8":"#0F1E38",outline:"none",boxSizing:"border-box",
+    border:`1px solid ${dark?"#33434F":"#D8E2F0"}`,
+    color:dark?"#C9D6DF":"#0F1E38",outline:"none",boxSizing:"border-box",
     resize:"vertical",minHeight:56,...s}} {...p}/>;
 }
 function Btn({variant="amber",size="md",style:s={},children,...p}){
   const [hov,sh]=useState(false);
   const V={
-    amber:{bg:"#E8A020",bh:"#B57A0F",c:"#000",fw:700},
+    amber:{bg:"#3D7EA6",bh:"#2E6285",c:"#000",fw:700},
     blue:{bg:"#1D6FE8",bh:"#155BBC",c:"#fff",fw:600},
     green:{bg:"#16A34A",bh:"#116637",c:"#fff",fw:600},
     red:{bg:"#DC2626",bh:"#AA1D1D",c:"#fff",fw:600},
-    ghost:{bg:"transparent",bh:"#1A2840",c:"#5A7599",fw:500,border:"1px solid #1A2840"},
+    ghost:{bg:"transparent",bh:"#33434F",c:"#8DA0AD",fw:500,border:"1px solid #33434F"},
     purple:{bg:"#7C3AED",bh:"#6028C5",c:"#fff",fw:600},
     cyan:{bg:"#0891B2",bh:"#067090",c:"#fff",fw:600},
   };
@@ -634,8 +634,8 @@ function Btn({variant="amber",size="md",style:s={},children,...p}){
 }
 function Field({label,required,children,style:s={},T}){
   return <div style={{display:"flex",flexDirection:"column",...s}}>
-    <label style={{fontSize:10,color:T?.muted||"#5A7599",fontWeight:700,marginBottom:5,textTransform:"uppercase",letterSpacing:".06em"}}>
-      {label}{required&&<span style={{color:"#E8A020",marginLeft:3}}>*</span>}
+    <label style={{fontSize:10,color:T?.muted||"#8DA0AD",fontWeight:700,marginBottom:5,textTransform:"uppercase",letterSpacing:".06em"}}>
+      {label}{required&&<span style={{color:"#3D7EA6",marginLeft:3}}>*</span>}
     </label>
     {children}
   </div>;
@@ -645,9 +645,9 @@ function StatusBadge({status}){
   return <span style={{display:"inline-block",padding:"3px 9px",borderRadius:4,fontSize:10,fontWeight:700,letterSpacing:".05em",background:s.bg,color:s.color}}>{s.label}</span>;
 }
 function QCBadge({remark}){
-  if(!remark) return <span style={{color:"#2E4A6E"}}>—</span>;
+  if(!remark) return <span style={{color:"#5C7482"}}>—</span>;
   const m={"OK":["#0A2218","#4ADE80"],"High Coating":["#2A1E00","#FBBF24"],"Below Minimum":["#2A0A0A","#F87171"]};
-  const [bg,color]=m[remark]||["#1A2840","#DDE8F8"];
+  const [bg,color]=m[remark]||["#33434F","#C9D6DF"];
   return <span style={{display:"inline-block",padding:"3px 9px",borderRadius:4,fontSize:10,fontWeight:700,background:bg,color}}>{remark}</span>;
 }
 function Alert({ok,msg,onClose}){
@@ -663,15 +663,15 @@ function Card({children,style:s={},T}){
   return <div style={{background:T?.card,border:`1px solid ${T?.border}`,borderRadius:10,...s}}>{children}</div>;
 }
 function SecHead({title,sub,right,T}){
-  return <div style={{padding:"13px 18px",borderBottom:`1px solid ${T?.border||"#1A2840"}`,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+  return <div style={{padding:"13px 18px",borderBottom:`1px solid ${T?.border||"#33434F"}`,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
     <div>
-      <div style={{fontSize:13,fontWeight:700,color:T?.text||"#DDE8F8"}}>{title}</div>
-      {sub&&<div style={{fontSize:11,color:T?.muted||"#5A7599",marginTop:2}}>{sub}</div>}
+      <div style={{fontSize:13,fontWeight:700,color:T?.text||"#C9D6DF"}}>{title}</div>
+      {sub&&<div style={{fontSize:11,color:T?.muted||"#8DA0AD",marginTop:2}}>{sub}</div>}
     </div>
     {right}
   </div>;
 }
-function StatCard({label,value,sub,accent="#E8A020",T}){
+function StatCard({label,value,sub,accent="#3D7EA6",T}){
   return <div style={{background:T?.card,border:`1px solid ${T?.border}`,borderLeft:`3px solid ${accent}`,borderRadius:8,padding:"14px 16px"}}>
     <div style={{fontSize:10,color:T?.muted,fontWeight:700,letterSpacing:".08em",textTransform:"uppercase",marginBottom:8}}>{label}</div>
     <div style={{fontSize:24,fontWeight:800,color:T?.text,fontFamily:"monospace",lineHeight:1}}>{value}</div>
@@ -699,9 +699,9 @@ function Table({headers,rows,empty="No records",T}){
     </table>
   </div>;
 }
-const bn=(v)=><strong style={{fontFamily:"monospace",color:"#E8A020",letterSpacing:".04em"}}>{v}</strong>;
-const mn=(v,c="#DDE8F8")=><span style={{fontFamily:"monospace",color:c}}>{v??'—'}</span>;
-const TIP={contentStyle:{background:"#0E1623",border:"1px solid #1A2840",color:"#DDE8F8",fontSize:12,borderRadius:6},labelStyle:{color:"#E8A020"}};
+const bn=(v)=><strong style={{fontFamily:"monospace",color:"#3D7EA6",letterSpacing:".04em"}}>{v}</strong>;
+const mn=(v,c="#C9D6DF")=><span style={{fontFamily:"monospace",color:c}}>{v??'—'}</span>;
+const TIP={contentStyle:{background:"#1E2A36",border:"1px solid #33434F",color:"#C9D6DF",fontSize:12,borderRadius:6},labelStyle:{color:"#3D7EA6"}};
 
 // ══════════════════════════════════════════════════════════════
 // LOGIN
@@ -721,27 +721,27 @@ function LoginScreen({users,onLogin}){
     if(n>=5){sQL(true);sqc(0);}
   }
 
-  const RI={admin:{icon:"⚙",label:"Admin",c:"#E8A020"},supervisor:{icon:"👷",label:"Supervisor",c:"#22D3EE"},shift_supervisor:{icon:"🧭",label:"Shift Supv",c:"#34D399"},manager:{icon:"📈",label:"Manager",c:"#F472B6"},loading_supervisor:{icon:"📦",label:"Loading",c:"#5BA3FF"},dipping_supervisor:{icon:"🛢",label:"Dipping",c:"#FB923C"},qc_inspector:{icon:"🔬",label:"Coating on Job",c:"#A78BFA"}};
+  const RI={admin:{icon:"⚙",label:"Admin",c:"#3D7EA6"},supervisor:{icon:"👷",label:"Supervisor",c:"#22D3EE"},shift_supervisor:{icon:"🧭",label:"Shift Supv",c:"#34D399"},manager:{icon:"📈",label:"Manager",c:"#F472B6"},loading_supervisor:{icon:"📦",label:"Loading",c:"#5BA3FF"},dipping_supervisor:{icon:"🛢",label:"Dipping",c:"#FB923C"},qc_inspector:{icon:"🔬",label:"Coating on Job",c:"#A78BFA"}};
 
-  return <div style={{minHeight:"100vh",background:"#04080F",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"system-ui,sans-serif"}}>
+  return <div style={{minHeight:"100vh",background:"#0F1720",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"Figtree,system-ui,sans-serif"}}>
     <div style={{width:420}}>
       <div style={{textAlign:"center",marginBottom:28}}>
-        <div style={{width:64,height:64,borderRadius:16,background:"linear-gradient(135deg,#E8A020,#B57A0F)",
+        <div style={{width:64,height:64,borderRadius:16,background:"linear-gradient(135deg,#3D7EA6,#2E6285)",
           display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 14px",fontSize:30,
-          boxShadow:"0 0 32px rgba(232,160,32,.5)"}}>⚙</div>
-        <div style={{fontSize:20,fontWeight:800,color:"#DDE8F8",letterSpacing:".1em"}}>HDP GALVANIZING</div>
-        <div onClick={handleVersionClick} style={{fontSize:10,color:"#2E4A6E",marginTop:4,letterSpacing:".15em",cursor:"default",userSelect:"none"}}>
+          boxShadow:"0 0 32px rgba(61,126,166,.5)"}}>⚙</div>
+        <div style={{fontSize:20,fontWeight:800,color:"#C9D6DF",letterSpacing:".1em"}}>HDP GALVANIZING</div>
+        <div onClick={handleVersionClick} style={{fontSize:10,color:"#5C7482",marginTop:4,letterSpacing:".15em",cursor:"default",userSelect:"none"}}>
           PRODUCTION AUTOMATION SYSTEM  v3.0
         </div>
       </div>
 
-      <div style={{background:"#0E1623",border:"1px solid #1A2840",borderRadius:12,padding:"28px 28px 22px"}}>
+      <div style={{background:"#1E2A36",border:"1px solid #33434F",borderRadius:12,padding:"28px 28px 22px"}}>
         <div style={{marginBottom:14}}>
-          <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:6}}>USERNAME</label>
+          <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:6}}>USERNAME</label>
           <DInput dark value={u} onChange={e=>{su(e.target.value);se("");}} placeholder="Enter your username" autoComplete="username"/>
         </div>
         <div style={{marginBottom:6}}>
-          <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:6}}>PASSWORD</label>
+          <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:6}}>PASSWORD</label>
           <DInput dark type="password" value={p} onChange={e=>{sp(e.target.value);se("");}} placeholder="Enter your password"
             autoComplete="current-password" onKeyDown={e=>e.key==="Enter"&&go()}/>
         </div>
@@ -750,12 +750,12 @@ function LoginScreen({users,onLogin}){
       </div>
 
       {/* Quick login removed — no client-side credentials in bundle */}
-      {showQL&&<div style={{marginTop:14,background:"#0E1623",border:"1px solid #2A2600",borderRadius:10,padding:16}}>
+      {showQL&&<div style={{marginTop:14,background:"#1E2A36",border:"1px solid #2A2600",borderRadius:10,padding:16}}>
         <div style={{fontSize:9,color:"#4A4000",fontWeight:700,textTransform:"uppercase",letterSpacing:".1em",marginBottom:10,display:"flex",justifyContent:"space-between"}}>
           <span>⚙ Dev Quick Access</span>
-          <span onClick={()=>sQL(false)} style={{cursor:"pointer",color:"#5A7599"}}>✕</span>
+          <span onClick={()=>sQL(false)} style={{cursor:"pointer",color:"#8DA0AD"}}>✕</span>
         </div>
-        <div style={{fontSize:11,color:"#5A7599"}}>Use the sign-in form above with your assigned credentials.</div>
+        <div style={{fontSize:11,color:"#8DA0AD"}}>Use the sign-in form above with your assigned credentials.</div>
       </div>}
     </div>
   </div>;
@@ -815,13 +815,13 @@ function BenchmarkPanel({ beam, T, compact = false }) {
   if (!bm) return null;
   const color = benchmarkStatusColor(bm.status);
   const fieldStyle = {
-    background: T?.bg || "#07101C",
-    border: `1px solid ${T?.border || "#1A2840"}`,
+    background: T?.bg || "#16202B",
+    border: `1px solid ${T?.border || "#33434F"}`,
     borderRadius: 6,
     padding: "8px 10px",
   };
   const lbl = { fontSize: 9, color: T?.dim || "#3A4F70", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase" };
-  const val = { fontSize: 13, color: T?.text || "#DDE8F8", fontFamily: "monospace", fontWeight: 700, marginTop: 3 };
+  const val = { fontSize: 13, color: T?.text || "#C9D6DF", fontFamily: "monospace", fontWeight: 700, marginTop: 3 };
   return (
     <div style={{
       background: "linear-gradient(135deg,#0A1320,#0E1A2A)",
@@ -843,9 +843,9 @@ function BenchmarkPanel({ beam, T, compact = false }) {
         }}>{bm.status}</span>
       </div>
       {bm.status === "Match Not Available" ? (
-        <div style={{ fontSize: 12, color: "#E8A020", padding: "10px 12px", background: "#1A1100", border: "1px solid #E8A02040", borderRadius: 6, fontWeight: 700 }}>
+        <div style={{ fontSize: 12, color: "#3D7EA6", padding: "10px 12px", background: "#1A1100", border: "1px solid #3D7EA640", borderRadius: 6, fontWeight: 700 }}>
           ⚠ Match Not Available — No historical beam found meeting all enabled matching criteria.
-          <div style={{ fontSize: 10, color: T?.dim || "#5A7599", fontWeight: 500, marginTop: 4 }}>
+          <div style={{ fontSize: 10, color: T?.dim || "#8DA0AD", fontWeight: 500, marginTop: 4 }}>
             Adjust admin tolerances or wait for more historical PASS beams that satisfy every enabled criterion.
           </div>
         </div>
@@ -861,33 +861,33 @@ function BenchmarkPanel({ beam, T, compact = false }) {
             const d = Number(bm.difference ?? 0);
             const isHigher = d > 0.05;
             const isLower = d < -0.05;
-            const c = isHigher ? "#E8A020" : isLower ? "#4ADE80" : (T?.dim || "#5A7599");
+            const c = isHigher ? "#3D7EA6" : isLower ? "#4ADE80" : (T?.dim || "#8DA0AD");
             const label = isHigher ? `+${d.toFixed(2)} μm Higher` : isLower ? `${d.toFixed(2)} μm Lower` : "Equivalent";
             return <div style={{ marginTop: 3, display: "inline-block", padding: "3px 8px", borderRadius: 12, background: c + "20", border: `1px solid ${c}60`, color: c, fontSize: 11, fontWeight: 800, fontFamily: "monospace" }}>{label}</div>;
           })()}</div>
           <div style={fieldStyle}><div style={lbl}>Match Status</div><div style={{ ...val, fontSize: 11, color }}>{bm.status}</div></div>
-          <div style={{ ...fieldStyle, gridColumn: "span 4" }}><div style={lbl}>Criteria Used</div><div style={{ ...val, fontSize: 10, color: T?.dim || "#5A7599", whiteSpace: "normal", lineHeight: 1.5 }}>{formatCriteriaUsed(bm.criteria_used) || "—"}</div></div>
+          <div style={{ ...fieldStyle, gridColumn: "span 4" }}><div style={lbl}>Criteria Used</div><div style={{ ...val, fontSize: 10, color: T?.dim || "#8DA0AD", whiteSpace: "normal", lineHeight: 1.5 }}>{formatCriteriaUsed(bm.criteria_used) || "—"}</div></div>
           <div style={{ ...fieldStyle, gridColumn: "span 4" }}>
             <div style={lbl}>Coating on Job — 30-Point Withdrawal Averages (μm)</div>
             {bm.ref_sub_avgs ? (
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 6, marginTop: 6 }}>
                 {[["FW Outside Average", bm.ref_sub_avgs.fwOut], ["FW Inside Average", bm.ref_sub_avgs.fwIn], ["MW Outside Average", bm.ref_sub_avgs.mwOut], ["MW Inside Average", bm.ref_sub_avgs.mwIn], ["LW Outside Average", bm.ref_sub_avgs.lwOut], ["LW Inside Average", bm.ref_sub_avgs.lwIn], ["Total Average (30 ÷ 30)", bm.ref_avg]].map(([l, v]) => (
-                  <div key={l} style={{ padding: "4px 6px", background: T?.bg || "#07101C", border: `1px solid ${T?.border || "#1A2840"}`, borderRadius: 4, textAlign: "center" }}>
+                  <div key={l} style={{ padding: "4px 6px", background: T?.bg || "#16202B", border: `1px solid ${T?.border || "#33434F"}`, borderRadius: 4, textAlign: "center" }}>
                     <div style={{ fontSize: 8, color: T?.dim || "#4A5A70", fontWeight: 700 }}>{l}</div>
-                    <div style={{ fontSize: 11, color: T?.text || "#DDE8F8", fontWeight: 800, fontFamily: "monospace" }}>{v != null ? Number(v).toFixed(2) : "—"}</div>
+                    <div style={{ fontSize: 11, color: T?.text || "#C9D6DF", fontWeight: 800, fontFamily: "monospace" }}>{v != null ? Number(v).toFixed(2) : "—"}</div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div style={{ fontSize: 10, color: T?.dim || "#5A7599", marginTop: 5 }}>Legacy 7-point record — withdrawal-wise (FW/MW/LW · Outside/Inside) averages are not available for this beam.</div>
+              <div style={{ fontSize: 10, color: T?.dim || "#8DA0AD", marginTop: 5 }}>Legacy 7-point record — withdrawal-wise (FW/MW/LW · Outside/Inside) averages are not available for this beam.</div>
             )}
           </div>
           <div style={fieldStyle}><div style={lbl}>Compared At</div><div style={{ ...val, fontSize: 10 }}>{fmtDateTimeTz(bm.compared_at)}</div></div>
         </div>
 
       ) : (
-        <div style={{ fontSize: 11, color: T?.muted || "#5A7599", padding: "8px 4px" }}>
-          ℹ No PASS reference beam exists yet at <strong style={{ color: T?.amber || "#E8A020" }}>{bm.ref_coating_required} μm</strong> spec. This beam (Avg <strong>{bm.current_avg} μm</strong>) will set the baseline for future comparisons.
+        <div style={{ fontSize: 11, color: T?.muted || "#8DA0AD", padding: "8px 4px" }}>
+          ℹ No PASS reference beam exists yet at <strong style={{ color: T?.amber || "#3D7EA6" }}>{bm.ref_coating_required} μm</strong> spec. This beam (Avg <strong>{bm.current_avg} μm</strong>) will set the baseline for future comparisons.
         </div>
       )}
     </div>
@@ -1205,7 +1205,7 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
     return QR.toDataURL(text, {
       width: size,
       margin: 2,
-      color: { dark: "#E8A020", light: "#0E1623" },
+      color: { dark: "#3D7EA6", light: "#1E2A36" },
     });
   }
   function QRImage({ text, size = 200, style, alt }: { text: string; size?: number; style?: any; alt?: string }) {
@@ -1215,7 +1215,7 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
       generateQRDataUrl(text, size).then(d => { if (!cancelled) setSrc(d); }).catch(() => {});
       return () => { cancelled = true; };
     }, [text, size]);
-    if (!src) return <div style={{ ...style, background: "#07101C" }} aria-label={alt} />;
+    if (!src) return <div style={{ ...style, background: "#16202B" }} aria-label={alt} />;
     return <img src={src} alt={alt} style={style} />;
   }
 
@@ -1387,46 +1387,46 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
     {/* ── HEADER BANNER ────────────────────────────────────────── */}
     <div style={{background:"linear-gradient(135deg,#0E1A2B,#1A2E4A)",border:"1px solid #1E3A60",borderRadius:10,padding:"16px 22px",marginBottom:14,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:12}}>
       <div style={{display:"flex",alignItems:"center",gap:14}}>
-        <div style={{width:48,height:48,borderRadius:10,background:"linear-gradient(135deg,#E8A020,#B57A0F)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,boxShadow:"0 0 16px rgba(232,160,32,.4)"}}>📦</div>
+        <div style={{width:48,height:48,borderRadius:10,background:"linear-gradient(135deg,#3D7EA6,#2E6285)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,boxShadow:"0 0 16px rgba(61,126,166,.4)"}}>📦</div>
         <div>
-          <div style={{fontSize:15,fontWeight:800,color:"#DDE8F8",letterSpacing:".06em"}}>LOADING STATION</div>
-          <div style={{fontSize:11,color:"#5A7599",marginTop:2}}>HDP Galvanizing — Transmission Line Tower Components</div>
+          <div style={{fontSize:15,fontWeight:800,color:"#C9D6DF",letterSpacing:".06em"}}>LOADING STATION</div>
+          <div style={{fontSize:11,color:"#8DA0AD",marginTop:2}}>HDP Galvanizing — Transmission Line Tower Components</div>
         </div>
       </div>
       <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center"}}>
         {[["LOADED",loaded,"#5BA3FF"],["DIPPING",inProg,"#FB923C"],["COJ PEND",qcPend,"#FDE047"],["DONE",done,"#4ADE80"]].map(([l,v,col])=>(
           <div key={l} style={{background:"rgba(0,0,0,.3)",border:`1px solid ${col}30`,borderRadius:8,padding:"7px 12px",textAlign:"center",minWidth:64}}>
             <div style={{fontSize:18,fontWeight:900,color:col,fontFamily:"monospace",lineHeight:1}}>{v}</div>
-            <div style={{fontSize:9,color:"#5A7599",marginTop:2,fontWeight:700}}>{l}</div>
+            <div style={{fontSize:9,color:"#8DA0AD",marginTop:2,fontWeight:700}}>{l}</div>
           </div>
         ))}
-        <div style={{background:"rgba(232,160,32,.1)",border:"1px solid #E8A02040",borderRadius:8,padding:"7px 14px",textAlign:"center"}}>
-          <div style={{fontSize:18,fontWeight:900,color:"#E8A020",fontFamily:"monospace",lineHeight:1}}>{totalMT}</div>
-          <div style={{fontSize:9,color:"#5A7599",marginTop:2,fontWeight:700}}>TOTAL MT</div>
+        <div style={{background:"rgba(61,126,166,.1)",border:"1px solid #3D7EA640",borderRadius:8,padding:"7px 14px",textAlign:"center"}}>
+          <div style={{fontSize:18,fontWeight:900,color:"#3D7EA6",fontFamily:"monospace",lineHeight:1}}>{totalMT}</div>
+          <div style={{fontSize:9,color:"#8DA0AD",marginTop:2,fontWeight:700}}>TOTAL MT</div>
         </div>
         {/* Work Centre QR Button */}
-        <button onClick={()=>setSWCQR(p=>!p)} style={{padding:"8px 14px",borderRadius:8,border:"1px solid #1A3A5E",background:showWCQR?"#1A3A5E":"transparent",color:"#5BA3FF",cursor:"pointer",fontSize:12,fontWeight:700,fontFamily:"inherit"}}>
+        <button onClick={()=>setSWCQR(p=>!p)} style={{padding:"8px 14px",borderRadius:8,border:"1px solid #3D5A6B",background:showWCQR?"#3D5A6B":"transparent",color:"#5BA3FF",cursor:"pointer",fontSize:12,fontWeight:700,fontFamily:"inherit"}}>
           📷 Work Centre QR
         </button>
       </div>
     </div>
 
     {/* ── WORK CENTRE QR PANEL ─────────────────────────────────── */}
-    {showWCQR&&<div style={{background:"#0E1623",border:"1px solid #1A3A5E",borderRadius:10,padding:18,marginBottom:14}}>
-      <div style={{fontSize:13,fontWeight:700,color:"#DDE8F8",marginBottom:4}}>📷 Work Centre QR Codes</div>
-      <div style={{fontSize:11,color:"#5A7599",marginBottom:14}}>Scan any QR to instantly filter and view all beams for that work centre. Print and post at each station.</div>
+    {showWCQR&&<div style={{background:"#1E2A36",border:"1px solid #3D5A6B",borderRadius:10,padding:18,marginBottom:14}}>
+      <div style={{fontSize:13,fontWeight:700,color:"#C9D6DF",marginBottom:4}}>📷 Work Centre QR Codes</div>
+      <div style={{fontSize:11,color:"#8DA0AD",marginBottom:14}}>Scan any QR to instantly filter and view all beams for that work centre. Print and post at each station.</div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12}}>
         {WORK_CENTRES.map(wc=>(
-          <div key={wc} style={{background:"#07101C",border:"1px solid #1A2840",borderRadius:8,padding:14,textAlign:"center"}}>
+          <div key={wc} style={{background:"#16202B",border:"1px solid #33434F",borderRadius:8,padding:14,textAlign:"center"}}>
             <div style={{fontSize:12,fontWeight:700,color:"#5BA3FF",marginBottom:8}}>{wc}</div>
             <QRImage
               text={`HDP-PLANT:WORKCENTRE:${wc}`}
               size={120}
               alt={`QR for ${wc}`}
-              style={{width:100,height:100,borderRadius:6,border:"2px solid #1A3A5E",display:"block",margin:"0 auto 8px"}}/>
+              style={{width:100,height:100,borderRadius:6,border:"2px solid #3D5A6B",display:"block",margin:"0 auto 8px"}}/>
             <div style={{fontSize:10,color:"#3A4F70",marginBottom:6}}>{wcCounts[wc]||0} beams</div>
             <button onClick={()=>{ss(wc);setSWCQR(false);}} style={{
-              padding:"4px 12px",borderRadius:5,border:"1px solid #1A3A5E",background:"#0E1623",
+              padding:"4px 12px",borderRadius:5,border:"1px solid #3D5A6B",background:"#1E2A36",
               color:"#5BA3FF",cursor:"pointer",fontSize:10,fontFamily:"inherit",fontWeight:600}}>
               Filter Beams →
             </button>
@@ -1437,17 +1437,17 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
 
     {/* ── REGISTRATION FORM ────────────────────────────────────── */}
     <div style={{display:readOnly?"none":"block"}}>
-    <div style={{background:"#0E1623",border:`2px solid ${edit?"#E8A020":"#1A2840"}`,borderRadius:12,marginBottom:14,overflow:"hidden",boxShadow:edit?"0 0 24px rgba(232,160,32,.12)":"none"}}>
+    <div style={{background:"#1E2A36",border:`2px solid ${edit?"#3D7EA6":"#33434F"}`,borderRadius:12,marginBottom:14,overflow:"hidden",boxShadow:edit?"0 0 24px rgba(61,126,166,.12)":"none"}}>
       {/* Form header */}
-      <div style={{background:edit?"linear-gradient(90deg,#2A1E00,#1A1400)":"linear-gradient(90deg,#0A1A2E,#0E1623)",borderBottom:"1px solid #1A2840",padding:"13px 20px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+      <div style={{background:edit?"linear-gradient(90deg,#2A1E00,#1A1400)":"linear-gradient(90deg,#0A1A2E,#1E2A36)",borderBottom:"1px solid #33434F",padding:"13px 20px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
         <div style={{display:"flex",alignItems:"center",gap:10}}>
-          <div style={{width:8,height:8,borderRadius:"50%",background:edit?"#E8A020":"#4ADE80",boxShadow:`0 0 8px ${edit?"#E8A020":"#4ADE80"}`}}/>
-          <span style={{fontSize:13,fontWeight:700,color:"#DDE8F8"}}>{edit?`EDITING — BEAM ${edit.beam_no}`:"NEW BEAM REGISTRATION"}</span>
+          <div style={{width:8,height:8,borderRadius:"50%",background:edit?"#3D7EA6":"#4ADE80",boxShadow:`0 0 8px ${edit?"#3D7EA6":"#4ADE80"}`}}/>
+          <span style={{fontSize:13,fontWeight:700,color:"#C9D6DF"}}>{edit?`EDITING — BEAM ${edit.beam_no}`:"NEW BEAM REGISTRATION"}</span>
           {isDoubleBatch&&<span style={{fontSize:10,color:"#FB923C",background:"#2A1600",padding:"2px 8px",borderRadius:4,fontWeight:700,border:"1px solid #4A2A00"}}>⚡ DOUBLE BATCH MODE</span>}
         </div>
         <div style={{display:"flex",alignItems:"center",gap:10}}>
           <div style={{fontFamily:"monospace",fontSize:11,color:"#FDE047",background:"#2A2600",padding:"3px 10px",borderRadius:5,fontWeight:700}}>{autoShift(nowISO())}</div>
-          <button onClick={()=>setShowForm(p=>!p)} style={{background:"transparent",border:"1px solid #1A2840",borderRadius:6,padding:"4px 10px",color:"#5A7599",cursor:"pointer",fontSize:11}}>{showForm?"▲ Collapse":"▼ Expand"}</button>
+          <button onClick={()=>setShowForm(p=>!p)} style={{background:"transparent",border:"1px solid #33434F",borderRadius:6,padding:"4px 10px",color:"#8DA0AD",cursor:"pointer",fontSize:11}}>{showForm?"▲ Collapse":"▼ Expand"}</button>
         </div>
       </div>
 
@@ -1456,19 +1456,19 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:14,marginBottom:14}}>
           {/* Beam No */}
           <div>
-            <label style={{fontSize:10,color:"#E8A020",fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",display:"flex",alignItems:"center",gap:6,marginBottom:8}}>
-              <span style={{background:"#E8A020",color:"#000",borderRadius:3,padding:"1px 6px",fontSize:9,fontWeight:900}}>REQUIRED</span>
+            <label style={{fontSize:10,color:"#3D7EA6",fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",display:"flex",alignItems:"center",gap:6,marginBottom:8}}>
+              <span style={{background:"#3D7EA6",color:"#000",borderRadius:3,padding:"1px 6px",fontSize:9,fontWeight:900}}>REQUIRED</span>
               Beam Number
             </label>
             <DInput dark value={f.beam_no}
               onChange={e=>sf(p=>({...p,beam_no:e.target.value.toUpperCase()}))}
               placeholder="B-1025"
               disabled={!!edit}
-              style={{fontSize:20,fontWeight:800,fontFamily:"monospace",textAlign:"center",letterSpacing:".08em",padding:"13px 16px",background:edit?"#04080F":"#07101C",border:`2px solid ${edit?"#2A2600":f.beam_no?"#E8A020":"#1A3A5E"}`,color:edit?"#3A4F70":"#E8A020",borderRadius:8}}/>
+              style={{fontSize:20,fontWeight:800,fontFamily:"monospace",textAlign:"center",letterSpacing:".08em",padding:"13px 16px",background:edit?"#0F1720":"#16202B",border:`2px solid ${edit?"#2A2600":f.beam_no?"#3D7EA6":"#3D5A6B"}`,color:edit?"#3A4F70":"#3D7EA6",borderRadius:8}}/>
           </div>
           {/* Date */}
           <div>
-            <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Date</label>
+            <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Date</label>
             <DInput dark type="date" value={f.date} onChange={e=>sf(p=>({...p,date:e.target.value}))} style={{fontSize:14,padding:"13px 14px",fontFamily:"monospace",borderRadius:8}}/>
             <div style={{marginTop:6,padding:"6px 10px",background:"#2A2600",border:"1px solid #4A4000",borderRadius:5,display:"flex",alignItems:"center",gap:6}}>
               <span style={{fontSize:12}}>⏰</span>
@@ -1477,8 +1477,8 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
           </div>
           {/* Work Centre — editable by Admin only */}
           <div>
-            <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>
-              Work Centre {user?.role!=="admin" && <span style={{color:"#E8A020",fontWeight:600,letterSpacing:".05em"}}>🔒 Admin only</span>}
+            <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>
+              Work Centre {user?.role!=="admin" && <span style={{color:"#3D7EA6",fontWeight:600,letterSpacing:".05em"}}>🔒 Admin only</span>}
             </label>
             <DSel dark value={f.work_centre} disabled={user?.role!=="admin"} onChange={e=>sf(p=>({...p,work_centre:e.target.value}))} style={{opacity:user?.role!=="admin"?0.6:1,cursor:user?.role!=="admin"?"not-allowed":"pointer"}}>
               {WORK_CENTRES.map(wc=><option key={wc} value={wc}>{wc}</option>)}
@@ -1491,8 +1491,8 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
 
         {/* TYPE OF LOAD — button grid */}
         <div style={{marginBottom:14}}>
-          <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>
-            Type of Load <span style={{color:"#E8A020"}}>*</span>
+          <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>
+            Type of Load <span style={{color:"#3D7EA6"}}>*</span>
           </label>
           <div style={{display:"flex",flexDirection:"column",gap:8}}>
             {LOAD_TYPES_GROUPED.map(grp=>(
@@ -1502,9 +1502,9 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
                   {grp.types.map(t=>(
                     <button key={t} onClick={()=>sf(p=>({...p,load_type:t,part_rows:[EMPTY_STD_ROW],dbl_part_rows:[{...EMPTY_PART_ROW}]}))} style={{
                       padding:"7px 14px",borderRadius:7,fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"inherit",
-                      background:f.load_type===t?"#E8A020":"#0D1823",color:f.load_type===t?"#000":"#6B82A8",
-                      border:`1px solid ${f.load_type===t?"#E8A020":"#1A2840"}`,
-                      boxShadow:f.load_type===t?"0 0 10px rgba(232,160,32,.3)":"none",
+                      background:f.load_type===t?"#3D7EA6":"#16202B",color:f.load_type===t?"#000":"#6B82A8",
+                      border:`1px solid ${f.load_type===t?"#3D7EA6":"#33434F"}`,
+                      boxShadow:f.load_type===t?"0 0 10px rgba(61,126,166,.3)":"none",
                       letterSpacing:".02em"}}>
                       {t==="Double Batch"?"⚡ "+t:t==="Double Dipp"?"⚡ "+t:t}
                     </button>
@@ -1517,15 +1517,15 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
 
         {/* MATERIAL TYPE — MS / HT */}
         <div style={{marginBottom:14}}>
-          <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>
-            Material Type <span style={{color:"#E8A020"}}>*</span>
+          <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>
+            Material Type <span style={{color:"#3D7EA6"}}>*</span>
           </label>
           <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
             {[{k:"MS",lbl:"MS — Mild Steel"},{k:"HT",lbl:"HT — High Tensile Steel"}].map(mt=>(
               <button key={mt.k} type="button" onClick={()=>sf(p=>({...p,material_type:mt.k}))} style={{
                 padding:"9px 18px",borderRadius:7,fontSize:12,fontWeight:800,cursor:"pointer",fontFamily:"inherit",
-                background:f.material_type===mt.k?"#22D3EE":"#0D1823",color:f.material_type===mt.k?"#000":"#6B82A8",
-                border:`1px solid ${f.material_type===mt.k?"#22D3EE":"#1A2840"}`,
+                background:f.material_type===mt.k?"#22D3EE":"#16202B",color:f.material_type===mt.k?"#000":"#6B82A8",
+                border:`1px solid ${f.material_type===mt.k?"#22D3EE":"#33434F"}`,
                 boxShadow:f.material_type===mt.k?"0 0 10px rgba(34,211,238,.3)":"none",letterSpacing:".03em"}}>
                 {mt.lbl}
               </button>
@@ -1537,42 +1537,42 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
         {/* ── STANDARD PART ENTRY (not double batch) ─────────── */}
         {!isDoubleBatch&&<>
           {/* Part No rows */}
-          <div style={{background:"#07101C",border:"2px solid #1A3A5E",borderRadius:10,padding:16,marginBottom:14}}>
+          <div style={{background:"#16202B",border:"2px solid #3D5A6B",borderRadius:10,padding:16,marginBottom:14}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
               <span style={{background:"#1A3A6E",borderRadius:5,padding:"3px 10px",fontSize:10,color:"#5BA3FF",fontWeight:700}}>PART NO</span>
-              <span style={{fontSize:12,color:"#DDE8F8",fontWeight:600}}>Part Number(s)</span>
+              <span style={{fontSize:12,color:"#C9D6DF",fontWeight:600}}>Part Number(s)</span>
               <span style={{fontSize:10,color:"#3A4F70",marginLeft:4}}>Multiple parts allowed — set Qty per part</span>
-              <span style={{marginLeft:"auto",fontSize:10,color:"#E8A020",fontWeight:700}}>{f.part_rows.filter(r=>r.part?.trim()).length} parts · {f.part_rows.reduce((s,r)=>s+(r.part?.trim()?(parseInt(r.qty)||1):0),0)} qty</span>
+              <span style={{marginLeft:"auto",fontSize:10,color:"#3D7EA6",fontWeight:700}}>{f.part_rows.filter(r=>r.part?.trim()).length} parts · {f.part_rows.reduce((s,r)=>s+(r.part?.trim()?(parseInt(r.qty)||1):0),0)} qty</span>
             </div>
             <div style={{display:"grid",gap:8}}>
               {f.part_rows.map((row,i)=>(
                 <div key={i} style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}}>
-                  <div style={{width:26,height:26,borderRadius:"50%",background:"#1A2840",display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:800,color:"#5BA3FF",flexShrink:0}}>{i+1}</div>
+                  <div style={{width:26,height:26,borderRadius:"50%",background:"#33434F",display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:800,color:"#5BA3FF",flexShrink:0}}>{i+1}</div>
                   <DInput dark value={row.part||""}
                     onChange={e=>{const v=e.target.value.toUpperCase(); updateStdRow(i,"part",v); maybeAutoMicron(v);}}
                     placeholder={`Part No #${i+1} — e.g. P-${1001+i}`}
-                    style={{flex:"1 1 180px",minWidth:140,fontSize:14,fontWeight:600,fontFamily:"monospace",letterSpacing:".04em",border:`1px solid ${row.part?"#E8A020":"#1A2840"}`}}/>
+                    style={{flex:"1 1 180px",minWidth:140,fontSize:14,fontWeight:600,fontFamily:"monospace",letterSpacing:".04em",border:`1px solid ${row.part?"#3D7EA6":"#33434F"}`}}/>
                   {QTY_ENABLED && <div style={{position:"relative",flexShrink:0}}>
                     <DInput dark type="number" min="1" step="1" value={row.qty||""}
                       onChange={e=>updateStdRow(i,"qty",e.target.value)}
                       placeholder="Qty"
-                      style={{width:90,fontSize:13,fontWeight:700,fontFamily:"monospace",textAlign:"center",paddingRight:30,border:`1px solid ${row.qty&&parseInt(row.qty)>0?"#22D3EE":"#1A2840"}`}}/>
+                      style={{width:90,fontSize:13,fontWeight:700,fontFamily:"monospace",textAlign:"center",paddingRight:30,border:`1px solid ${row.qty&&parseInt(row.qty)>0?"#22D3EE":"#33434F"}`}}/>
                     <span style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",fontSize:9,color:"#22D3EE",fontWeight:700}}>QTY</span>
                   </div>}
                   {RC_ENABLED && <div style={{position:"relative",flexShrink:0}}>
                     <DInput dark value={row.route_card||""}
                       onChange={e=>updateStdRow(i,"route_card",e.target.value.toUpperCase())}
                       placeholder="RC"
-                      style={{width:160,fontSize:12,fontWeight:700,fontFamily:"monospace",paddingRight:32,border:`1px solid ${row.route_card?"#E8A020":"#1A2840"}`}}/>
-                    <span style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",fontSize:9,color:"#E8A020",fontWeight:700}}>RC</span>
+                      style={{width:160,fontSize:12,fontWeight:700,fontFamily:"monospace",paddingRight:32,border:`1px solid ${row.route_card?"#3D7EA6":"#33434F"}`}}/>
+                    <span style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",fontSize:9,color:"#3D7EA6",fontWeight:700}}>RC</span>
                   </div>}
                   {f.part_rows.length>1&&<button onClick={()=>removeStdRow(i)} aria-label={`Remove part row ${i+1}`} title="Remove part row" style={{width:28,height:28,border:"1px solid #441010",borderRadius:6,background:"#220808",color:"#F87171",cursor:"pointer",fontSize:16,flexShrink:0}}><span aria-hidden="true">✕</span></button>}
                 </div>
               ))}
             </div>
-            <button onClick={addStdRow} style={{marginTop:10,padding:"7px 14px",background:"transparent",border:"1px dashed #1A3A5E",borderRadius:6,color:"#5BA3FF",cursor:"pointer",fontSize:12,width:"100%",fontFamily:"inherit"}}>+ Add Another Part No</button>
+            <button onClick={addStdRow} style={{marginTop:10,padding:"7px 14px",background:"transparent",border:"1px dashed #3D5A6B",borderRadius:6,color:"#5BA3FF",cursor:"pointer",fontSize:12,width:"100%",fontFamily:"inherit"}}>+ Add Another Part No</button>
             {f.part_rows.some(r=>r.part?.trim())&&(
-              <div style={{marginTop:10,padding:"7px 12px",background:"#0A1520",border:"1px solid #1A3A5E",borderRadius:6,fontSize:11,color:"#5BA3FF",fontFamily:"monospace"}}>
+              <div style={{marginTop:10,padding:"7px 12px",background:"#0A1520",border:"1px solid #3D5A6B",borderRadius:6,fontSize:11,color:"#5BA3FF",fontFamily:"monospace"}}>
                 Combined: {composeParts(f.part_rows)}
               </div>
             )}
@@ -1581,19 +1581,19 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
           {/* Thickness + Weight + Length for standard. Length hidden when load type = Plate. */}
           <div style={{display:"grid",gridTemplateColumns:isLengthless(f.load_type)?"1fr 1fr":"1fr 1fr 1fr",gap:14,marginBottom:14}}>
             <div>
-              <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>{THICK_LABEL} <span style={{color:"#E8A020"}}>*</span></label>
+              <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>{THICK_LABEL} <span style={{color:"#3D7EA6"}}>*</span></label>
               <DInput dark inputMode="decimal" value={f.section} onChange={e=>sf(p=>({...p,section:sanitizeThicknessInput(e.target.value)}))} placeholder={`e.g. 6, 8, 12.5 (max ${maxThicknessOf(fc)} mm)`}/>
               <div style={{fontSize:9,color:"#3A4F70",marginTop:4}}>Numbers only (mm) — maximum {maxThicknessOf(fc)} mm.</div>
             </div>
             <div>
-              <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Total Weight (MT) <span style={{color:"#E8A020"}}>*</span></label>
+              <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Total Weight (MT) <span style={{color:"#3D7EA6"}}>*</span></label>
               <div style={{position:"relative"}}>
                 <DInput dark type="number" step="0.001" min="0" value={f.total_weight} onChange={e=>sf(p=>({...p,total_weight:e.target.value}))} placeholder="0.000" style={{fontFamily:"monospace",fontWeight:700,paddingRight:36}}/>
                 <span style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",fontSize:10,color:"#3A4F70",fontWeight:700}}>MT</span>
               </div>
             </div>
             {!isLengthless(f.load_type) && <div>
-              <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Length (mm) <span style={{color:"#E8A020"}}>*</span></label>
+              <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Length (mm) <span style={{color:"#3D7EA6"}}>*</span></label>
               <div style={{position:"relative"}}>
                 <DInput dark type="number" step="1" min="0" value={f.length_mm} onChange={e=>sf(p=>({...p,length_mm:e.target.value}))} placeholder="6000" style={{fontFamily:"monospace",fontWeight:700,paddingRight:38}}/>
                 <span style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",fontSize:10,color:"#3A4F70",fontWeight:700}}>mm</span>
@@ -1647,8 +1647,8 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
                 <div style={{position:"relative"}}>
                   <DInput dark type="number" step="0.001" min="0" value={row.weight||""} onChange={e=>updateDblRow(i,"weight",e.target.value)}
                     placeholder="0.000"
-                    style={{fontFamily:"monospace",fontSize:13,paddingRight:28,border:`1px solid ${row.weight?"#E8A020":"#1A3A10"}`}}/>
-                  <span style={{position:"absolute",right:7,top:"50%",transform:"translateY(-50%)",fontSize:9,color:"#E8A020",fontWeight:700}}>MT</span>
+                    style={{fontFamily:"monospace",fontSize:13,paddingRight:28,border:`1px solid ${row.weight?"#3D7EA6":"#1A3A10"}`}}/>
+                  <span style={{position:"absolute",right:7,top:"50%",transform:"translateY(-50%)",fontSize:9,color:"#3D7EA6",fontWeight:700}}>MT</span>
                 </div>
                 {/* Thickness */}
                 <DInput dark inputMode="decimal" value={row.section||""} onChange={e=>updateDblRow(i,"section",sanitizeThicknessInput(e.target.value))}
@@ -1669,7 +1669,7 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
           {/* Auto-computed totals preview */}
           {f.dbl_part_rows.some(r=>r.part?.trim())&&<div style={{marginTop:12,padding:"10px 14px",background:"#070F04",border:"1px solid #1A3A10",borderRadius:7,display:"flex",gap:20,flexWrap:"wrap"}}>
             <div><span style={{fontSize:9,color:"#3A4F70",display:"block",marginBottom:3}}>PARTS</span><span style={{fontFamily:"monospace",fontSize:13,color:"#4ADE80",fontWeight:700}}>{f.dbl_part_rows.filter(r=>r.part?.trim()).map(r=>r.part).join(", ")}</span></div>
-            <div><span style={{fontSize:9,color:"#3A4F70",display:"block",marginBottom:3}}>TOTAL WEIGHT</span><span style={{fontFamily:"monospace",fontSize:13,color:"#E8A020",fontWeight:700}}>{dblTotalWeight} MT</span></div>
+            <div><span style={{fontSize:9,color:"#3A4F70",display:"block",marginBottom:3}}>TOTAL WEIGHT</span><span style={{fontFamily:"monospace",fontSize:13,color:"#3D7EA6",fontWeight:700}}>{dblTotalWeight} MT</span></div>
             <div><span style={{fontSize:9,color:"#3A4F70",display:"block",marginBottom:3}}>LENGTHS</span><span style={{fontFamily:"monospace",fontSize:12,color:"#22D3EE",fontWeight:700}}>{f.dbl_part_rows.filter(r=>r.length_mm).map(r=>r.length_mm+"mm").join(", ")||"—"}</span></div>
             <div><span style={{fontSize:9,color:"#3A4F70",display:"block",marginBottom:3}}>THICKNESS</span><span style={{fontFamily:"monospace",fontSize:12,color:"#A78BFA",fontWeight:700}}>{f.dbl_part_rows.filter(r=>r.section).map(r=>r.section).join(" | ")||"—"}</span></div>
           </div>}
@@ -1677,17 +1677,17 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
 
         {/* Coating — toggle buttons */}
         <div style={{marginBottom:16}}>
-          <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Coating Requirement <span style={{color:"#E8A020"}}>*</span></label>
+          <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".07em",textTransform:"uppercase",display:"block",marginBottom:8}}>Coating Requirement <span style={{color:"#3D7EA6"}}>*</span></label>
           <div style={{display:"flex",gap:10}}>
             {COAT_OPTS.map(opt=>(
               <button key={opt.val} onClick={()=>sf(p=>({...p,coating_required:opt.val,_coatingTouched:true}))} style={{
                 flex:1,padding:"12px 14px",borderRadius:8,cursor:"pointer",fontFamily:"inherit",
                 display:"flex",alignItems:"center",justifyContent:"space-between",
-                background:parseInt(f.coating_required)===opt.val?"#2A1E00":"#07101C",
-                border:`2px solid ${parseInt(f.coating_required)===opt.val?"#E8A020":"#1A2840"}`,
-                boxShadow:parseInt(f.coating_required)===opt.val?"0 0 12px rgba(232,160,32,.25)":"none"}}>
-                <span style={{fontSize:14,fontWeight:800,fontFamily:"monospace",color:parseInt(f.coating_required)===opt.val?"#E8A020":"#5A7599"}}>{opt.label}</span>
-                <span style={{fontSize:9,color:parseInt(f.coating_required)===opt.val?"#CA8A04":"#2E4A6E",fontWeight:700}}>{opt.sub}</span>
+                background:parseInt(f.coating_required)===opt.val?"#2A1E00":"#16202B",
+                border:`2px solid ${parseInt(f.coating_required)===opt.val?"#3D7EA6":"#33434F"}`,
+                boxShadow:parseInt(f.coating_required)===opt.val?"0 0 12px rgba(61,126,166,.25)":"none"}}>
+                <span style={{fontSize:14,fontWeight:800,fontFamily:"monospace",color:parseInt(f.coating_required)===opt.val?"#3D7EA6":"#8DA0AD"}}>{opt.label}</span>
+                <span style={{fontSize:9,color:parseInt(f.coating_required)===opt.val?"#CA8A04":"#5C7482",fontWeight:700}}>{opt.sub}</span>
               </button>
             ))}
           </div>
@@ -1701,20 +1701,20 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
           QUEUED — {beamsPending} pending change{beamsPending===1?"":"s"} will sync when connection is stable
         </div>}
         <div style={{display:"flex",gap:10}}>
-          <button onClick={save} style={{flex:1,padding:"14px 0",fontSize:15,fontWeight:800,background:"linear-gradient(135deg,#E8A020,#B57A0F)",color:"#000",border:"none",borderRadius:8,cursor:"pointer",letterSpacing:".06em",fontFamily:"inherit",boxShadow:"0 4px 16px rgba(232,160,32,.3)"}}>
+          <button onClick={save} style={{flex:1,padding:"14px 0",fontSize:15,fontWeight:800,background:"linear-gradient(135deg,#3D7EA6,#2E6285)",color:"#000",border:"none",borderRadius:8,cursor:"pointer",letterSpacing:".06em",fontFamily:"inherit",boxShadow:"0 4px 16px rgba(61,126,166,.3)"}}>
             {edit?"✓  SAVE CHANGES":"⊕  REGISTER BEAM"}
           </button>
-          {edit&&<button onClick={()=>{se(null);sf(emptyF);clearLoadDraft();sm(null);}} style={{padding:"14px 24px",fontSize:14,fontWeight:700,background:"transparent",color:"#5A7599",border:"1px solid #1A2840",borderRadius:8,cursor:"pointer",fontFamily:"inherit"}}>✕ Cancel</button>}
+          {edit&&<button onClick={()=>{se(null);sf(emptyF);clearLoadDraft();sm(null);}} style={{padding:"14px 24px",fontSize:14,fontWeight:700,background:"transparent",color:"#8DA0AD",border:"1px solid #33434F",borderRadius:8,cursor:"pointer",fontFamily:"inherit"}}>✕ Cancel</button>}
         </div>
       </div>}
     </div>
     </div>{/* end readOnly wrapper */}
 
     {/* ── BEAM RECORDS TABLE ─────────────────────────────────── */}
-    <div style={{background:"#0E1623",border:"1px solid #1A2840",borderRadius:12,overflow:"hidden"}}>
-      <div style={{background:"#070C14",borderBottom:"1px solid #1A2840",padding:"12px 18px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap"}}>
+    <div style={{background:"#1E2A36",border:"1px solid #33434F",borderRadius:12,overflow:"hidden"}}>
+      <div style={{background:"#0F1720",borderBottom:"1px solid #33434F",padding:"12px 18px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap"}}>
         <div>
-          <div style={{fontSize:13,fontWeight:700,color:"#DDE8F8"}}>Loaded Beams Register</div>
+          <div style={{fontSize:13,fontWeight:700,color:"#C9D6DF"}}>Loaded Beams Register</div>
           <div style={{fontSize:10,color:"#3A4F70",marginTop:2}}>Showing latest {Math.min(20,filtered.length)} of {filtered.length} beams — data auto-available in Dipping module</div>
         </div>
         <div style={{position:"relative"}}>
@@ -1725,33 +1725,33 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
       <div style={{overflowX:"auto"}}>
         <table style={{width:"100%",borderCollapse:"collapse"}}>
           <thead>
-            <tr style={{background:"#070C14"}}>
+            <tr style={{background:"#0F1720"}}>
               {["Beam No","Date","Shift","Work Centre","Route Card","Part No(s)","Qty","Thickness","Type","Weight (MT)","Length (mm)","Coating","Status","By","QR","Action"].map(h=>(
-                <th key={h} style={{padding:"9px 11px",textAlign:"left",color:"#3A4F70",fontWeight:700,fontSize:10,letterSpacing:".06em",textTransform:"uppercase",borderBottom:"1px solid #1A2840",whiteSpace:"nowrap"}}>{h}</th>
+                <th key={h} style={{padding:"9px 11px",textAlign:"left",color:"#3A4F70",fontWeight:700,fontSize:10,letterSpacing:".06em",textTransform:"uppercase",borderBottom:"1px solid #33434F",whiteSpace:"nowrap"}}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {filtered.length===0&&<tr><td colSpan={16} style={{padding:36,textAlign:"center",color:"#2E4A6E",fontSize:12}}>No beams registered yet — use the form above to register the first beam</td></tr>}
+            {filtered.length===0&&<tr><td colSpan={16} style={{padding:36,textAlign:"center",color:"#5C7482",fontSize:12}}>No beams registered yet — use the form above to register the first beam</td></tr>}
             {filtered.slice(0,20).map((b,i)=>{
               const st=ST[b.status]||ST.LOADED;
-              return <tr key={txn(b)} style={{borderBottom:"1px solid #0E1623",transition:"background .1s"}}
+              return <tr key={txn(b)} style={{borderBottom:"1px solid #1E2A36",transition:"background .1s"}}
                 onMouseEnter={e=>e.currentTarget.style.background="#111C2E"}
                 onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-                <td style={{padding:"10px 11px"}}><span style={{fontFamily:"monospace",fontSize:13,fontWeight:800,color:"#E8A020",letterSpacing:".05em"}}>{b.beam_no}</span></td>
-                <td style={{padding:"10px 11px",fontSize:11,color:"#5A7599",whiteSpace:"nowrap"}}>{b.date}</td>
+                <td style={{padding:"10px 11px"}}><span style={{fontFamily:"monospace",fontSize:13,fontWeight:800,color:"#3D7EA6",letterSpacing:".05em"}}>{b.beam_no}</span></td>
+                <td style={{padding:"10px 11px",fontSize:11,color:"#8DA0AD",whiteSpace:"nowrap"}}>{b.date}</td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}><span style={{fontSize:10,fontWeight:700,color:"#FDE047",background:"#2A2600",padding:"2px 6px",borderRadius:4}}>{b.shift?.split(" ")[0]}</span></td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}><span style={{fontSize:10,fontWeight:700,color:"#5BA3FF",background:"#0E1E3A",padding:"2px 7px",borderRadius:4}}>{b.work_centre||"—"}</span></td>
-                <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}><span style={{fontSize:10,fontFamily:"monospace",fontWeight:700,color:b.route_card?"#E8A020":"#3A4F70"}}>{b.route_card||"—"}</span></td>
+                <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}><span style={{fontSize:10,fontFamily:"monospace",fontWeight:700,color:b.route_card?"#3D7EA6":"#3A4F70"}}>{b.route_card||"—"}</span></td>
                 <td style={{padding:"10px 11px",maxWidth:140}}><span style={{fontSize:10,color:"#5BA3FF",fontFamily:"monospace",wordBreak:"break-all"}}>{b.part_nos||"—"}</span></td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap",textAlign:"center"}}><span style={{fontSize:11,fontFamily:"monospace",fontWeight:700,color:"#22D3EE"}}>{b.total_qty||"—"}</span></td>
-                <td style={{padding:"10px 11px"}}><span style={{fontSize:10,color:"#5A7599"}}>{b.section||"—"}</span></td>
+                <td style={{padding:"10px 11px"}}><span style={{fontSize:10,color:"#8DA0AD"}}>{b.section||"—"}</span></td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}>
-                  <span style={{fontSize:10,fontWeight:700,color:["Double Batch","Double Dipp"].includes(b.load_type)?"#FB923C":"#DDE8F8",background:"#1A2840",padding:"2px 7px",borderRadius:4}}>{b.load_type}</span>
+                  <span style={{fontSize:10,fontWeight:700,color:["Double Batch","Double Dipp"].includes(b.load_type)?"#FB923C":"#C9D6DF",background:"#33434F",padding:"2px 7px",borderRadius:4}}>{b.load_type}</span>
                 </td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:12,fontWeight:700,color:"#22D3EE"}}>{b.total_weight?.toFixed(2)}</span></td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}>
-                  <span style={{fontFamily:"monospace",fontSize:12,color:"#DDE8F8"}}>
+                  <span style={{fontFamily:"monospace",fontSize:12,color:"#C9D6DF"}}>
                     {b.load_type==="Double Batch"&&b.dbl_parts_detail
                       ? b.dbl_parts_detail.map(r=>r.length_mm+"mm").join(", ")
                       : (b.length_mm?b.length_mm+"mm":"—")}
@@ -1759,14 +1759,14 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
                 </td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,fontWeight:700,color:b.coating_required===130?"#A78BFA":b.coating_required===87?"#5BA3FF":"#4ADE80"}}>{b.coating_required}μm</span></td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}><span style={{display:"inline-block",padding:"3px 8px",borderRadius:4,fontSize:10,fontWeight:700,background:st.bg,color:st.color}}>{st.label}</span></td>
-                <td style={{padding:"10px 11px",fontSize:11,color:"#5A7599",whiteSpace:"nowrap"}}>{b.loaded_by_name}</td>
+                <td style={{padding:"10px 11px",fontSize:11,color:"#8DA0AD",whiteSpace:"nowrap"}}>{b.loaded_by_name}</td>
                 <td style={{padding:"10px 11px"}}>
-                  <button onClick={()=>setQrBeam(b)} style={{padding:"4px 8px",borderRadius:5,border:"1px solid #1A3A5E",background:"transparent",color:"#5BA3FF",cursor:"pointer",fontSize:10,fontFamily:"inherit",fontWeight:600}}>📷 QR</button>
+                  <button onClick={()=>setQrBeam(b)} style={{padding:"4px 8px",borderRadius:5,border:"1px solid #3D5A6B",background:"transparent",color:"#5BA3FF",cursor:"pointer",fontSize:10,fontFamily:"inherit",fontWeight:600}}>📷 QR</button>
                 </td>
                 <td style={{padding:"10px 11px",whiteSpace:"nowrap"}}>
                   {b.status==="LOADED"&&!readOnly
-                    ?<button onClick={()=>startEdit(b)} style={{padding:"5px 11px",borderRadius:5,border:"1px solid #1A2840",background:"#131D2E",color:"#5A7599",cursor:"pointer",fontSize:11,fontFamily:"inherit",fontWeight:600}}>✏ Edit</button>
-                    :<span style={{fontSize:10,color:"#2E4A6E",fontStyle:"italic"}}>{b.status!=="LOADED"?"In Progress":"—"}</span>}
+                    ?<button onClick={()=>startEdit(b)} style={{padding:"5px 11px",borderRadius:5,border:"1px solid #33434F",background:"#24313E",color:"#8DA0AD",cursor:"pointer",fontSize:11,fontFamily:"inherit",fontWeight:600}}>✏ Edit</button>
+                    :<span style={{fontSize:10,color:"#5C7482",fontStyle:"italic"}}>{b.status!=="LOADED"?"In Progress":"—"}</span>}
                 </td>
               </tr>;
             })}
@@ -1777,18 +1777,18 @@ function LoadingTab({beams,setBeams,addAudit,user,readOnly=false,T,fieldConfig={
 
     {/* ── BEAM QR MODAL ─────────────────────────────────────── */}
     {qrBeam&&<div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.8)",display:"flex",alignItems:"center",justifyContent:"center",zIndex:2000}} onClick={()=>setQrBeam(null)}>
-      <div style={{background:"#0E1623",border:"2px solid #E8A020",borderRadius:14,padding:28,minWidth:340,textAlign:"center"}} onClick={e=>e.stopPropagation()}>
-        <div style={{fontSize:14,fontWeight:800,color:"#E8A020",marginBottom:2,fontFamily:"monospace",letterSpacing:".08em"}}>{qrBeam.beam_no}</div>
-        <div style={{fontSize:11,color:"#5A7599",marginBottom:4}}>{qrBeam.load_type} | {qrBeam.work_centre}</div>
+      <div style={{background:"#1E2A36",border:"2px solid #3D7EA6",borderRadius:14,padding:28,minWidth:340,textAlign:"center"}} onClick={e=>e.stopPropagation()}>
+        <div style={{fontSize:14,fontWeight:800,color:"#3D7EA6",marginBottom:2,fontFamily:"monospace",letterSpacing:".08em"}}>{qrBeam.beam_no}</div>
+        <div style={{fontSize:11,color:"#8DA0AD",marginBottom:4}}>{qrBeam.load_type} | {qrBeam.work_centre}</div>
         <div style={{fontSize:10,color:"#3A4F70",marginBottom:16}}>{qrBeam.part_nos} | {qrBeam.coating_required}μm | {qrBeam.total_weight}MT</div>
         <QRImage
           text={`HDP:BEAM:${qrBeam.beam_no}:WC:${qrBeam.work_centre||""}:TYPE:${qrBeam.load_type}:COAT:${qrBeam.coating_required}`}
           size={200}
           alt={`QR ${qrBeam.beam_no}`}
-          style={{width:200,height:200,borderRadius:10,border:"2px solid #1A3A5E",margin:"0 auto 16px",display:"block"}}/>
+          style={{width:200,height:200,borderRadius:10,border:"2px solid #3D5A6B",margin:"0 auto 16px",display:"block"}}/>
         <div style={{display:"flex",gap:10,justifyContent:"center"}}>
-          <button onClick={async()=>{const url=await generateQRDataUrl(`HDP:BEAM:${qrBeam.beam_no}:WC:${qrBeam.work_centre||""}:TYPE:${qrBeam.load_type}:COAT:${qrBeam.coating_required}`,400);const w=window.open();if(w){w.document.write(`<img src="${url}" style="width:100%"/>`);}}} style={{padding:"8px 18px",borderRadius:7,border:"1px solid #E8A020",background:"transparent",color:"#E8A020",cursor:"pointer",fontSize:12,fontFamily:"inherit",fontWeight:700}}>🖨 Open Full Size</button>
-          <button onClick={()=>setQrBeam(null)} style={{padding:"8px 18px",borderRadius:7,border:"1px solid #1A2840",background:"transparent",color:"#5A7599",cursor:"pointer",fontSize:12,fontFamily:"inherit"}}>Close</button>
+          <button onClick={async()=>{const url=await generateQRDataUrl(`HDP:BEAM:${qrBeam.beam_no}:WC:${qrBeam.work_centre||""}:TYPE:${qrBeam.load_type}:COAT:${qrBeam.coating_required}`,400);const w=window.open();if(w){w.document.write(`<img src="${url}" style="width:100%"/>`);}}} style={{padding:"8px 18px",borderRadius:7,border:"1px solid #3D7EA6",background:"transparent",color:"#3D7EA6",cursor:"pointer",fontSize:12,fontFamily:"inherit",fontWeight:700}}>🖨 Open Full Size</button>
+          <button onClick={()=>setQrBeam(null)} style={{padding:"8px 18px",borderRadius:7,border:"1px solid #33434F",background:"transparent",color:"#8DA0AD",cursor:"pointer",fontSize:12,fontFamily:"inherit"}}>Close</button>
         </div>
       </div>
     </div>}
@@ -2331,20 +2331,20 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
     const captured=!!value;
     const locked = dependsOn!==undefined && !dependsOn && !captured;
     const ticking=!captured&&!locked&&liveTicker!=null;
-    return <div style={{background:captured?"#0A1E0E":(locked?"#0A0F1A":(ticking?"#0C1A22":"#07101C")),
-      border:`2px solid ${captured?col:(locked?"#1A2840":(ticking?col+"80":"#1A2840"))}`,borderRadius:12,
+    return <div style={{background:captured?"#0A1E0E":(locked?"#0A0F1A":(ticking?"#0C1A22":"#16202B")),
+      border:`2px solid ${captured?col:(locked?"#33434F":(ticking?col+"80":"#33434F"))}`,borderRadius:12,
       overflow:"hidden",transition:"all .25s",opacity:locked?0.55:1,
       boxShadow:captured?`0 0 18px ${col}25`:(ticking?`0 0 14px ${col}30`:"none")}}>
       {/* Step header */}
-      <div style={{padding:"10px 14px",borderBottom:`1px solid ${captured?col+"40":"#1A2840"}`,
+      <div style={{padding:"10px 14px",borderBottom:`1px solid ${captured?col+"40":"#33434F"}`,
         display:"flex",alignItems:"center",gap:8,
         background:captured?"rgba(0,0,0,.2)":"transparent"}}>
         <div style={{width:26,height:26,borderRadius:"50%",flexShrink:0,fontWeight:900,fontSize:12,
           display:"flex",alignItems:"center",justifyContent:"center",
-          background:captured?col:(ticking?col+"40":"#1A2840"),color:captured?"#000":(ticking?col:"#3A4F70")}}>{locked?"🔒":step}</div>
+          background:captured?col:(ticking?col+"40":"#33434F"),color:captured?"#000":(ticking?col:"#3A4F70")}}>{locked?"🔒":step}</div>
         <div>
-          <div style={{fontSize:11,fontWeight:700,color:captured?col:"#5A7599",textTransform:"uppercase",letterSpacing:".05em"}}>{label}</div>
-          <div style={{fontSize:9,color:"#2E4A6E",marginTop:1}}>{hint}</div>
+          <div style={{fontSize:11,fontWeight:700,color:captured?col:"#8DA0AD",textTransform:"uppercase",letterSpacing:".05em"}}>{label}</div>
+          <div style={{fontSize:9,color:"#5C7482",marginTop:1}}>{hint}</div>
         </div>
       </div>
       {/* Time display */}
@@ -2367,7 +2367,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           <span style={{fontFamily:"monospace",fontSize:12,color:"#22D3EE",fontWeight:700}}>{fmtDur(phaseDur)}</span>
         </div>}
         {/* Elapsed from start */}
-        {elapsedFromStart!=null&&tsImmStart&&<div style={{fontSize:9,color:"#2E4A6E",marginBottom:8}}>
+        {elapsedFromStart!=null&&tsImmStart&&<div style={{fontSize:9,color:"#5C7482",marginBottom:8}}>
           ⏱ {fmtDur(elapsedFromStart)} from immersion start
         </div>}
         {/* Capture button */}
@@ -2378,14 +2378,14 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
             style={{
             flex:1,padding:"9px 0",borderRadius:7,border:"none",
             cursor:locked?"not-allowed":"pointer",fontFamily:"inherit",fontSize:12,fontWeight:800,letterSpacing:".04em",
-            background:locked?"#1A2840":(captured?`${col}20`:`linear-gradient(135deg,${col},${col}AA)`),
+            background:locked?"#33434F":(captured?`${col}20`:`linear-gradient(135deg,${col},${col}AA)`),
             color:locked?"#3A4F70":(captured?col:"#000"),
             boxShadow:captured||locked?"none":`0 3px 10px ${col}40`}}>
             {locked?"🔒 LOCKED":(captured?"⟳  Re-Capture Now":"⏱  CAPTURE NOW")}
           </button>
           {captured && <button onClick={()=>{ if(confirm(`Clear captured time for "${label}"?`)) setter(null); }}
             title="Reset this step (clear accidental capture)"
-            style={{width:38,borderRadius:7,border:`1px solid ${T?.border||"#1A2840"}`,background:"transparent",color:"#FB7185",cursor:"pointer",fontSize:14,fontWeight:800}}>✕</button>}
+            style={{width:38,borderRadius:7,border:`1px solid ${T?.border||"#33434F"}`,background:"transparent",color:"#FB7185",cursor:"pointer",fontSize:14,fontWeight:800}}>✕</button>}
         </div>
         {/* Manual time entry */}
         <div style={{marginTop:8,display:"flex",alignItems:"center",gap:6}}>
@@ -2409,7 +2409,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
               }
               setter(new Date(v).toISOString());
             }}
-            style={{flex:1,background:"#07101C",border:`1px solid ${locked?"#1A2840":col+"40"}`,color:locked?"#3A4F70":col,
+            style={{flex:1,background:"#16202B",border:`1px solid ${locked?"#33434F":col+"40"}`,color:locked?"#3A4F70":col,
               padding:"4px 6px",borderRadius:5,fontSize:10,fontFamily:"monospace",cursor:locked?"not-allowed":"text"}}
           />
         </div>
@@ -2423,13 +2423,13 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
           <div style={{width:38,height:38,borderRadius:9,background:"linear-gradient(135deg,#FB923C,#C2410C)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:18}}>⚠</div>
           <div>
-            <div style={{fontSize:14,fontWeight:800,color:"#DDE8F8",letterSpacing:".05em"}}>COATING REQUIREMENT</div>
-            <div style={{fontSize:11,color:"#5A7599"}}>Beam {beam.beam_no} — auto-detected from admin configuration</div>
+            <div style={{fontSize:14,fontWeight:800,color:"#C9D6DF",letterSpacing:".05em"}}>COATING REQUIREMENT</div>
+            <div style={{fontSize:11,color:"#8DA0AD"}}>Beam {beam.beam_no} — auto-detected from admin configuration</div>
           </div>
         </div>
         <div style={{display:"grid",gap:8}}>
           <div style={{background:"#0A101A",border:"1px solid #17293D",borderRadius:8,padding:"10px 12px"}}>
-            <div style={{fontSize:10,color:"#5A7599",fontWeight:700}}>PART NUMBER{coatingReqInfo.parts.length>1?"S":""} / PREFIX</div>
+            <div style={{fontSize:10,color:"#8DA0AD",fontWeight:700}}>PART NUMBER{coatingReqInfo.parts.length>1?"S":""} / PREFIX</div>
             <div style={{fontFamily:"monospace",fontSize:13,fontWeight:800,color:"#5BA3FF",marginTop:3}}>
               {coatingReqInfo.parts.length?coatingReqInfo.parts.join(", "):"—"}
               {coatingReqInfo.prefix && <span style={{color:"#FBBF24",marginLeft:8}}>· prefix {coatingReqInfo.prefix}</span>}
@@ -2438,11 +2438,11 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
             <div style={{background:"#0A101A",border:"1px solid #17293D",borderRadius:8,padding:"10px 12px"}}>
-              <div style={{fontSize:10,color:"#5A7599",fontWeight:700}}>REQUIRED AVERAGE COATING</div>
+              <div style={{fontSize:10,color:"#8DA0AD",fontWeight:700}}>REQUIRED AVERAGE COATING</div>
               <div style={{fontSize:20,fontWeight:900,color:"#4ADE80",marginTop:3}}>{coatingReqInfo.required!=null?`${coatingReqInfo.required} μm`:"—"}</div>
             </div>
             <div style={{background:"#0A101A",border:"1px solid #17293D",borderRadius:8,padding:"10px 12px"}}>
-              <div style={{fontSize:10,color:"#5A7599",fontWeight:700}}>LOCAL COATING REQUIREMENT</div>
+              <div style={{fontSize:10,color:"#8DA0AD",fontWeight:700}}>LOCAL COATING REQUIREMENT</div>
               <div style={{fontSize:20,fontWeight:900,color:coatingReqInfo.local!=null?"#FBBF24":"#3A4F70",marginTop:3}}>{coatingReqInfo.local!=null?`${coatingReqInfo.local} μm`:"—"}</div>
             </div>
           </div>
@@ -2464,8 +2464,8 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,
           boxShadow:"0 0 20px rgba(251,146,60,.4)"}}>🛢</div>
         <div>
-          <div style={{fontSize:15,fontWeight:800,color:"#DDE8F8",letterSpacing:".06em"}}>DIPPING STATION</div>
-          <div style={{fontSize:11,color:"#5A7599",marginTop:2}}>Zinc Bath — 4-Stage Timestamp Recording</div>
+          <div style={{fontSize:15,fontWeight:800,color:"#C9D6DF",letterSpacing:".06em"}}>DIPPING STATION</div>
+          <div style={{fontSize:11,color:"#8DA0AD",marginTop:2}}>Zinc Bath — 4-Stage Timestamp Recording</div>
           <div style={{fontSize:10,color:"#3A4F70",marginTop:2}}>
             Immersion Start → Immersion End → Reaction End → Withdrawal End
           </div>
@@ -2482,17 +2482,17 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           <div key={l} style={{textAlign:"center",background:"rgba(0,0,0,.3)",border:`1px solid ${col}30`,
             borderRadius:8,padding:"8px 12px",minWidth:64}}>
             <div style={{fontSize:18,fontWeight:900,color:col,fontFamily:"monospace",lineHeight:1}}>{v}</div>
-            <div style={{fontSize:9,color:"#5A7599",marginTop:2,fontWeight:700}}>{l}</div>
+            <div style={{fontSize:9,color:"#8DA0AD",marginTop:2,fontWeight:700}}>{l}</div>
           </div>
         ))}
       </div>
     </div>
 
     {/* Process guide strip */}
-    <div style={{background:"#07101C",border:"1px solid #1A2840",borderRadius:8,
+    <div style={{background:"#16202B",border:"1px solid #33434F",borderRadius:8,
       padding:"10px 16px",marginBottom:16,display:"flex",alignItems:"center",gap:0,overflowX:"auto"}}>
       {[
-        ["1","IMMERSION START","Beam enters zinc bath","#E8A020",!!tsImmStart],
+        ["1","IMMERSION START","Beam enters zinc bath","#3D7EA6",!!tsImmStart],
         ["2","IMMERSION END","Beam fully submerged","#5BA3FF",!!tsImmEnd],
         ["3","REACTION END","Zinc reaction complete","#22D3EE",!!tsReactEnd],
         ["4","WITHDRAWAL END","Beam lifted out of bath","#4ADE80",!!tsWithEnd],
@@ -2502,29 +2502,29 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
             <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:4}}>
               <div style={{width:22,height:22,borderRadius:"50%",fontWeight:900,fontSize:11,
                 display:"flex",alignItems:"center",justifyContent:"center",
-                background:done?col:"#1A2840",color:done?"#000":"#3A4F70"}}>
+                background:done?col:"#33434F",color:done?"#000":"#3A4F70"}}>
                 {done?"✓":n}
               </div>
               <span style={{fontSize:10,fontWeight:700,color:done?col:"#3A4F70",letterSpacing:".04em"}}>{lbl}</span>
             </div>
-            <div style={{fontSize:9,color:"#2E4A6E"}}>{hint}</div>
+            <div style={{fontSize:9,color:"#5C7482"}}>{hint}</div>
           </div>
           {i<3&&<div style={{width:30,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
-            <span style={{color:done?"#4ADE80":"#1A2840",fontSize:20,fontWeight:900}}>›</span>
+            <span style={{color:done?"#4ADE80":"#33434F",fontSize:20,fontWeight:900}}>›</span>
           </div>}
         </div>
       ))}
     </div>
 
     {/* Main form card */}
-    <div style={{display:readOnly?"none":"block"}}><div style={{background:"#0E1623",border:`2px solid ${beam?"#FB923C30":"#1A2840"}`,
+    <div style={{display:readOnly?"none":"block"}}><div style={{background:"#1E2A36",border:`2px solid ${beam?"#FB923C30":"#33434F"}`,
       borderRadius:12,marginBottom:18,overflow:"hidden"}}>
-      <div style={{background:"linear-gradient(90deg,#0A1220,#0E1623)",borderBottom:"1px solid #1A2840",
+      <div style={{background:"linear-gradient(90deg,#0A1220,#1E2A36)",borderBottom:"1px solid #33434F",
         padding:"14px 20px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
         <div style={{display:"flex",alignItems:"center",gap:10}}>
-          <div style={{width:8,height:8,borderRadius:"50%",background:beam?"#FB923C":"#1A2840",
+          <div style={{width:8,height:8,borderRadius:"50%",background:beam?"#FB923C":"#33434F",
             boxShadow:beam?"0 0 8px #FB923C":"none"}}/>
-          <span style={{fontSize:13,fontWeight:700,color:"#DDE8F8"}}>DIPPING PROCESS RECORDER</span>
+          <span style={{fontSize:13,fontWeight:700,color:"#C9D6DF"}}>DIPPING PROCESS RECORDER</span>
           {isSpecial&&<span style={{fontSize:10,color:"#FB923C",background:"#2A1600",
             padding:"2px 8px",borderRadius:4,fontWeight:700,border:"1px solid #4A2A00"}}>
             ⚡ {beam.load_type.toUpperCase()} — DUAL ENTRY MODE
@@ -2536,8 +2536,8 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
         {/* Beam selector */}
         <div style={{marginBottom:16}}>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:8,gap:8,flexWrap:"wrap"}}>
-            <label style={{fontSize:11,color:"#5A7599",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase"}}>
-              Select Beam for Dipping <span style={{color:"#E8A020"}}>*</span>
+            <label style={{fontSize:11,color:"#8DA0AD",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase"}}>
+              Select Beam for Dipping <span style={{color:"#3D7EA6"}}>*</span>
               <span style={{fontSize:9,fontWeight:400,color:"#3A4F70",marginLeft:8}}>({available.length} awaiting dip)</span>
             </label>
             {!readOnly && <button type="button" onClick={()=>setShowRegister(true)} style={{
@@ -2588,14 +2588,14 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
         {/* Auto-fetched info */}
         {beam&&<div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8,
           padding:14,background:"#060E18",border:"1px solid #0E2A40",borderRadius:10,marginBottom:18}}>
-          {[["Beam No",beam.beam_no,"#E8A020"],["Load Type",beam.load_type,"#FB923C"],
-            ["Part No(s)",beam.part_nos,"#5BA3FF"],["Thickness",beam.section||"—","#5A7599"],
+          {[["Beam No",beam.beam_no,"#3D7EA6"],["Load Type",beam.load_type,"#FB923C"],
+            ["Part No(s)",beam.part_nos,"#5BA3FF"],["Thickness",beam.section||"—","#8DA0AD"],
             ["Weight",beam.total_weight+" MT","#22D3EE"],["Length",beam.length_mm?beam.length_mm+" mm":"—","#FDE047"],
             ["Coating",beam.coating_required+" μm","#A78BFA"],
-            ["Date Loaded",fmtDate(beam.loaded_at),"#5A7599"],["Shift",beam.shift?.split(" ")[0]||"—","#FDE047"]
+            ["Date Loaded",fmtDate(beam.loaded_at),"#8DA0AD"],["Shift",beam.shift?.split(" ")[0]||"—","#FDE047"]
           ].map(([k,v,col])=>(
-            <div key={k} style={{padding:"8px 10px",background:"#0A1520",borderRadius:6,border:"1px solid #1A2840"}}>
-              <div style={{fontSize:9,color:"#2E4A6E",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em",marginBottom:4}}>{k}</div>
+            <div key={k} style={{padding:"8px 10px",background:"#0A1520",borderRadius:6,border:"1px solid #33434F"}}>
+              <div style={{fontSize:9,color:"#5C7482",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em",marginBottom:4}}>{k}</div>
               <div style={{fontSize:12,color:col,fontWeight:700,fontFamily:"monospace",wordBreak:"break-all"}}>{v||"—"}</div>
             </div>
           ))}
@@ -2603,8 +2603,8 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
 
         {/* ── TIME ENTRY MODE SWITCH (when admin allows Both) ─────── */}
         {beam && timeMode === "both" && (
-          <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 14px",background:"#07101C",border:"1px solid #1A2840",borderRadius:8,marginBottom:14}}>
-            <span style={{fontSize:11,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase"}}>Time Entry:</span>
+          <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 14px",background:"#16202B",border:"1px solid #33434F",borderRadius:8,marginBottom:14}}>
+            <span style={{fontSize:11,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase"}}>Time Entry:</span>
             {[
               {k:false,lbl:"⏱ Live Timer",col:"#4ADE80"},
               {k:true, lbl:"✍ Manual MM:SS",col:"#FB923C"},
@@ -2666,7 +2666,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           return (
             <div style={{padding:"14px 16px",background:"linear-gradient(90deg,#1A0E00,#0A1422)",border:`1px solid ${border}80`,borderRadius:10,marginBottom:14}}>
               <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8,flexWrap:"wrap"}}>
-                <span style={{fontSize:10,fontWeight:900,color:"#DDE8F8",letterSpacing:".1em"}}>🧠 AI INSIGHTS</span>
+                <span style={{fontSize:10,fontWeight:900,color:"#C9D6DF",letterSpacing:".1em"}}>🧠 AI INSIGHTS</span>
                 <span style={{fontSize:10,fontWeight:900,color:"#000",background:badgeBg,padding:"2px 7px",borderRadius:3,letterSpacing:".06em"}}>{label}</span>
                 <span style={{fontSize:10,color:"#8AA3C0",fontFamily:"monospace"}}>Model: {blocks.map((b:any)=>b.modelLabel||"MLR").join(" + ")}</span>
                 {ref && (
@@ -2684,7 +2684,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                     ["Historical Total Time",`${fmtMMSS(refSec||0)} (${Math.round(refSec||0)}s)`,"#5BA3FF"],
                     ["Historical Avg Coating",`${Number(refBeam.avg_reading||0).toFixed(2)} µm`,"#A78BFA"],
                   ].map(([k,v,col])=>(
-                    <div key={k as string} style={{padding:"5px 7px",background:"#0A1520",borderRadius:4,border:"1px solid #1A2840"}}>
+                    <div key={k as string} style={{padding:"5px 7px",background:"#0A1520",borderRadius:4,border:"1px solid #33434F"}}>
                       <div style={{fontSize:8,color:"#8A6A3A",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:2}}>{k}</div>
                       <div style={{fontSize:11,color:col as string,fontWeight:800,fontFamily:"monospace"}}>{v as any}</div>
                     </div>
@@ -2695,7 +2695,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                 const conf = b.hasModel ? b.confidencePct : 0;
                 const low = !b.hasModel || conf < 45;
                 return (
-                  <div key={b.modelType||"mlr"} style={{marginBottom:10,padding:"8px 10px",background:"#0A1520",border:`1px solid ${low?"#F8717155":"#1A2840"}`,borderRadius:8}}>
+                  <div key={b.modelType||"mlr"} style={{marginBottom:10,padding:"8px 10px",background:"#0A1520",border:`1px solid ${low?"#F8717155":"#33434F"}`,borderRadius:8}}>
                     <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap",marginBottom:6}}>
                       <span style={{fontSize:10,fontWeight:900,color:"#FDE68A",letterSpacing:".06em"}}>{b.modelLabel||"MLR"}</span>
                       {b.hasModel && <span style={{fontSize:10,color:"#8AA3C0",fontFamily:"monospace"}}>Confidence {conf}% · R² {Number(b.r2).toFixed(2)} · n={b.n}</span>}
@@ -2725,7 +2725,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                           ["Adjustment",`${b.deltaSec>=0?"+":""}${b.deltaSec}s`,b.deltaSec>=0?"#FB923C":"#22D3EE"],
                           ["Confidence",`${conf}%`,low?"#F87171":"#4ADE80"],
                         ].map(([k,v,col])=>(
-                          <div key={k as string} style={{padding:"5px 7px",background:"#07101C",borderRadius:4,border:"1px solid #1A2840"}}>
+                          <div key={k as string} style={{padding:"5px 7px",background:"#16202B",borderRadius:4,border:"1px solid #33434F"}}>
                             <div style={{fontSize:8,color:"#8A6A3A",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:2}}>{k}</div>
                             <div style={{fontSize:11,color:col as string,fontWeight:800,fontFamily:"monospace"}}>{v as any}</div>
                           </div>
@@ -2804,13 +2804,13 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                       </span>
                       <button type="button" onClick={()=>applyRecommendation(r)} disabled={!manualMode && !tsImmStart}
                         title={(!manualMode && !tsImmStart)?"Capture Immersion Start first":"Apply these timings"}
-                        style={{padding:"4px 9px",borderRadius:4,border:`1px solid ${(manualMode||tsImmStart)?"#4ADE80":"#2E4A6E"}`,background:(manualMode||tsImmStart)?"#0A2A14":"#0A1520",color:(manualMode||tsImmStart)?"#4ADE80":"#2E4A6E",cursor:(manualMode||tsImmStart)?"pointer":"not-allowed",fontSize:10,fontWeight:800,fontFamily:"inherit"}}>
+                        style={{padding:"4px 9px",borderRadius:4,border:`1px solid ${(manualMode||tsImmStart)?"#4ADE80":"#5C7482"}`,background:(manualMode||tsImmStart)?"#0A2A14":"#0A1520",color:(manualMode||tsImmStart)?"#4ADE80":"#5C7482",cursor:(manualMode||tsImmStart)?"pointer":"not-allowed",fontSize:10,fontWeight:800,fontFamily:"inherit"}}>
                         ⚡ APPLY
                       </button>
                     </div>
                     <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:6}}>
                       {[
-                        ["Ref Beam",r.beam_no,"#E8A020"],
+                        ["Ref Beam",r.beam_no,"#3D7EA6"],
                         ["Ref Date",dateLabel,"#8AA3C0"],
                         ["Avg μm",(r.avg_reading??"—")+"","#A78BFA"],
                         ["Immersion",fmtDur(r.immersion_duration),"#5BA3FF"],
@@ -2820,15 +2820,15 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                         ["Material Type",r.material_type??"—","#FDE68A"],
                         ["Surface",r.surface_condition??"—","#F0ABFC"],
                       ].map(([k,v,col])=>(
-                        <div key={k as string} style={{padding:"5px 7px",background:"#0A1520",borderRadius:4,border:"1px solid #1A2840"}}>
-                          <div style={{fontSize:8,color:"#2E4A6E",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:2}}>{k}</div>
+                        <div key={k as string} style={{padding:"5px 7px",background:"#0A1520",borderRadius:4,border:"1px solid #33434F"}}>
+                          <div style={{fontSize:8,color:"#5C7482",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:2}}>{k}</div>
                           <div style={{fontSize:11,color:col as string,fontWeight:800,fontFamily:"monospace"}}>{v as any}</div>
                         </div>
                       ))}
                     </div>
                     {isV2Ref && v2Subs && (
-                      <div style={{marginTop:8,padding:"6px 8px",background:"#0A1520",borderRadius:4,border:"1px solid #1A2840"}}>
-                        <div style={{fontSize:8,color:"#2E4A6E",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:4}}>Coating on Job — 30-Point Withdrawal Averages (μm)</div>
+                      <div style={{marginTop:8,padding:"6px 8px",background:"#0A1520",borderRadius:4,border:"1px solid #33434F"}}>
+                        <div style={{fontSize:8,color:"#5C7482",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:4}}>Coating on Job — 30-Point Withdrawal Averages (μm)</div>
                         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:4}}>
                           {[["FW Outside Average",v2Subs.fwOut],["FW Inside Average",v2Subs.fwIn],["MW Outside Average",v2Subs.mwOut],["MW Inside Average",v2Subs.mwIn],["LW Outside Average",v2Subs.lwOut],["LW Inside Average",v2Subs.lwIn]].map(([lbl,val])=>{
                             const n = val as number|null;
@@ -2847,20 +2847,20 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                             <div style={{fontSize:7,color:"#4ADE80",fontWeight:700}}>TOTAL AVG</div>
                             <div style={{fontSize:10,color:"#4ADE80",fontWeight:800,fontFamily:"monospace"}}>{Number(r.avg_reading).toFixed(2)}</div>
                           </div>
-                          <div style={{padding:"3px 4px",background:"#060E18",borderRadius:3,border:"1px solid #1A2840",textAlign:"center"}}>
-                            <div style={{fontSize:7,color:"#5A7599",fontWeight:700}}>MIN</div>
+                          <div style={{padding:"3px 4px",background:"#060E18",borderRadius:3,border:"1px solid #33434F",textAlign:"center"}}>
+                            <div style={{fontSize:7,color:"#8DA0AD",fontWeight:700}}>MIN</div>
                             <div style={{fontSize:10,color:"#8AA3C0",fontWeight:800,fontFamily:"monospace"}}>{v2Mm?.min!=null?v2Mm.min.toFixed(2):"—"}</div>
                           </div>
-                          <div style={{padding:"3px 4px",background:"#060E18",borderRadius:3,border:"1px solid #1A2840",textAlign:"center"}}>
-                            <div style={{fontSize:7,color:"#5A7599",fontWeight:700}}>MAX</div>
+                          <div style={{padding:"3px 4px",background:"#060E18",borderRadius:3,border:"1px solid #33434F",textAlign:"center"}}>
+                            <div style={{fontSize:7,color:"#8DA0AD",fontWeight:700}}>MAX</div>
                             <div style={{fontSize:10,color:"#8AA3C0",fontWeight:800,fontFamily:"monospace"}}>{v2Mm?.max!=null?v2Mm.max.toFixed(2):"—"}</div>
                           </div>
                         </div>
                       </div>
                     )}
                     {!isV2Ref && readings.length > 0 && (
-                      <div style={{marginTop:8,padding:"6px 8px",background:"#0A1520",borderRadius:4,border:"1px solid #1A2840"}}>
-                        <div style={{fontSize:8,color:"#2E4A6E",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:4}}>Seven-Point Elcometer Readings (μm)</div>
+                      <div style={{marginTop:8,padding:"6px 8px",background:"#0A1520",borderRadius:4,border:"1px solid #33434F"}}>
+                        <div style={{fontSize:8,color:"#5C7482",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:4}}>Seven-Point Elcometer Readings (μm)</div>
                         <div style={{display:"grid",gridTemplateColumns:"repeat(8,1fr)",gap:4}}>
                           {readings.map((val,i)=>{
                             const n = Number(val);
@@ -2897,9 +2897,9 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                     const dateShort = dt && Number.isFinite(+dt) ? dt.toLocaleDateString("en-IN",{day:"2-digit",month:"short"}) : "—";
                     return (
                       <button type="button" key={"t3_"+txn(r)+"_"+idx} onClick={()=>setSelectedTopIdx(idx)}
-                        style={{padding:"8px 10px",background:active?"#0A2014":"#0A1520",borderRadius:4,border:`2px solid ${active?"#4ADE80":"#1A2840"}`,fontFamily:"monospace",fontSize:10,textAlign:"left",cursor:"pointer",color:"inherit"}}>
+                        style={{padding:"8px 10px",background:active?"#0A2014":"#0A1520",borderRadius:4,border:`2px solid ${active?"#4ADE80":"#33434F"}`,fontFamily:"monospace",fontSize:10,textAlign:"left",cursor:"pointer",color:"inherit"}}>
                         <div style={{color:active?"#4ADE80":"#6B7E9E",fontWeight:800,marginBottom:2}}>{["1ST","2ND","3RD"][idx] || `#${idx+1}`} VIEW {active?"★ selected":"· click to view"}</div>
-                        <div style={{color:"#E8A020",fontWeight:700}}>{r.beam_no}</div>
+                        <div style={{color:"#3D7EA6",fontWeight:700}}>{r.beam_no}</div>
                         <div style={{color:"#8AA3C0",fontSize:9}}>{dateShort}</div>
                         <div style={{color:"#A78BFA"}}>{r.avg_reading} μm · Δ {r._diff?.toFixed(2)}</div>
                       </button>
@@ -2941,11 +2941,11 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                       const isStart = row.key==="immersion-start";
                       const bg = isTotal?"#0A1A2A":isStart?"#08161F":"#060E18";
                       const cells = [
-                        <span style={{fontWeight:(isTotal||isStart)?800:600,color:isTotal?"#E8A020":isStart?"#FDE68A":"#DDE8F8"}}>{row.label}</span>,
+                        <span style={{fontWeight:(isTotal||isStart)?800:600,color:isTotal?"#3D7EA6":isStart?"#FDE68A":"#C9D6DF"}}>{row.label}</span>,
                         <span style={{color:"#A78BFA"}}>{row.stageCurrent!=null?fmtDur(row.stageCurrent):"—"}</span>,
-                        <span style={{color:"#5A7599"}}>{row.stageReference!=null?fmtDur(row.stageReference):"—"}</span>,
+                        <span style={{color:"#8DA0AD"}}>{row.stageReference!=null?fmtDur(row.stageReference):"—"}</span>,
                         <span style={{color:"#22D3EE"}}>{row.current!=null?fmtDur(row.current):"—"}</span>,
-                        <span style={{color:"#5A7599"}}>{row.reference!=null?fmtDur(row.reference):"—"}</span>,
+                        <span style={{color:"#8DA0AD"}}>{row.reference!=null?fmtDur(row.reference):"—"}</span>,
                         <span style={{color:colorFor(row.status),fontWeight:800}}>{isStart?"—":fmtSignedDur(row.variance)}</span>,
                         <span style={{color:colorFor(row.status),fontWeight:isTotal?800:600}}>{isStart?"Baseline":row.status}</span>,
                       ];
@@ -2974,7 +2974,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
         {beam&&!manualMode&&<>
           <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:16}}>
             <TsBox label="Immersion Start" step="1" hint="Beam enters zinc bath"
-              value={tsImmStart} setter={setIS_p} col="#E8A020"
+              value={tsImmStart} setter={setIS_p} col="#3D7EA6"
               phaseDur={null} elapsedFromStart={null}
               liveTicker={null}/>
 
@@ -2999,7 +2999,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
 
           {/* Big live total stopwatch */}
           {liveTotal!=null&&<div style={{display:"flex",alignItems:"center",gap:14,padding:"12px 18px",
-            background:"linear-gradient(90deg,#1A0E00,#0E1623)",border:"1px solid #FB923C50",borderRadius:10,marginBottom:12,flexWrap:"wrap"}}>
+            background:"linear-gradient(90deg,#1A0E00,#1E2A36)",border:"1px solid #FB923C50",borderRadius:10,marginBottom:12,flexWrap:"wrap"}}>
             <span style={{width:9,height:9,borderRadius:"50%",background:"#FB923C",boxShadow:"0 0 10px #FB923C",animation:"pulse 1.2s infinite"}}/>
             <span style={{fontSize:11,fontWeight:800,color:"#FB923C",letterSpacing:".08em"}}>LIVE DIP STOPWATCH</span>
             <DippingSyncBadge/>
@@ -3016,16 +3016,16 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginBottom:12}}>
             {[
-              {lbl:"Immersion Duration", val:manImm, set:setManImm, v:vImm,   col:"#E8A020", ph:"00:20"},
+              {lbl:"Immersion Duration", val:manImm, set:setManImm, v:vImm,   col:"#3D7EA6", ph:"00:20"},
               {lbl:"Reaction Duration",  val:manReact,set:setManReact,v:vReact, col:"#22D3EE", ph:"01:23"},
               {lbl:"Withdrawal Duration",val:manWith, set:setManWith, v:vWith,  col:"#4ADE80", ph:"02:34"},
             ].map((f,i)=>{
               const touched = f.val!=="";
               const invalid = touched && !!f.v.error;
               const ok      = !f.v.error && f.v.seconds!=null;
-              return <div key={f.lbl} style={{background:"#0A1422",border:`1px solid ${invalid?"#7A1B1B":(ok?f.col+"60":"#1A2840")}`,borderRadius:10,padding:"12px 14px"}}>
+              return <div key={f.lbl} style={{background:"#0A1422",border:`1px solid ${invalid?"#7A1B1B":(ok?f.col+"60":"#33434F")}`,borderRadius:10,padding:"12px 14px"}}>
                 <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
-                  <div style={{width:22,height:22,borderRadius:"50%",background:ok?f.col:"#1A2840",color:ok?"#000":"#3A4F70",display:"flex",alignItems:"center",justifyContent:"center",fontWeight:900,fontSize:11}}>{i+1}</div>
+                  <div style={{width:22,height:22,borderRadius:"50%",background:ok?f.col:"#33434F",color:ok?"#000":"#3A4F70",display:"flex",alignItems:"center",justifyContent:"center",fontWeight:900,fontSize:11}}>{i+1}</div>
                   <label style={{fontSize:11,fontWeight:700,color:f.col,letterSpacing:".04em"}}>{f.lbl}</label>
                 </div>
                 <DInput dark value={f.val}
@@ -3043,7 +3043,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
             })}
           </div>
           {manTotalSec!=null&&<div style={{display:"flex",alignItems:"center",gap:14,padding:"12px 18px",
-            background:"linear-gradient(90deg,#1A0E00,#0E1623)",border:`1px solid ${manTotalError?"#7A1B1B":"#FB923C50"}`,borderRadius:10,marginBottom:8}}>
+            background:"linear-gradient(90deg,#1A0E00,#1E2A36)",border:`1px solid ${manTotalError?"#7A1B1B":"#FB923C50"}`,borderRadius:10,marginBottom:8}}>
             <span style={{fontSize:16}}>⏱</span>
             <span style={{fontSize:11,fontWeight:800,color:manTotalError?"#F87171":"#FB923C",letterSpacing:".08em"}}>TOTAL DIPPING TIME (auto-calculated)</span>
             <strong style={{marginLeft:"auto",fontFamily:"monospace",fontSize:28,color:manTotalError?"#F87171":"#FB923C",fontWeight:900,letterSpacing:".02em"}}>{fmtDur(manTotalSec)}</strong>
@@ -3056,11 +3056,11 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
 
 
           {/* Material Surface Condition — required before dipping */}
-          <div style={{padding:"12px 16px",background:"#0A1422",border:`1px solid ${surfaceCond?"#1A2840":"#3A2A00"}`,borderRadius:10,marginBottom:12}}>
+          <div style={{padding:"12px 16px",background:"#0A1422",border:`1px solid ${surfaceCond?"#33434F":"#3A2A00"}`,borderRadius:10,marginBottom:12}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
               <span style={{fontSize:16}}>🧱</span>
               <div style={{flex:1}}>
-                <div style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase"}}>Material Surface Condition <span style={{color:"#E8A020"}}>*</span></div>
+                <div style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase"}}>Material Surface Condition <span style={{color:"#3D7EA6"}}>*</span></div>
                 <div style={{fontSize:9,color:"#3A4F70"}}>Recorded against beam & coating-result history — used by AI recommendation when enabled.</div>
               </div>
               {beam?.material_type && <span style={{fontSize:10,fontWeight:800,color:"#22D3EE",background:"#082430",border:"1px solid #22D3EE60",padding:"2px 8px",borderRadius:4,letterSpacing:".05em"}}>{beam.material_type}</span>}
@@ -3068,23 +3068,23 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
             <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
               {[
                 {k:"Normal",lbl:"Normal Surface",col:"#4ADE80"},
-                {k:"Rusted",lbl:"Rusted Surface",col:"#E8A020"},
+                {k:"Rusted",lbl:"Rusted Surface",col:"#3D7EA6"},
                 {k:"HeavyRusted",lbl:"Heavy Rusted Surface",col:"#F87171"},
               ].map(o=>{
                 const on = surfaceCond===o.k;
                 return <button key={o.k} type="button" onClick={()=>setSurfaceCond(o.k)} style={{
                   padding:"8px 16px",borderRadius:7,fontSize:12,fontWeight:800,cursor:"pointer",fontFamily:"inherit",
-                  background:on?o.col:"#0D1823",color:on?"#000":o.col,
+                  background:on?o.col:"#16202B",color:on?"#000":o.col,
                   border:`1px solid ${o.col}`,letterSpacing:".03em"}}>{o.lbl}</button>;
               })}
             </div>
           </div>
 
           {/* Bath Temperature entry */}
-          <div style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:"#0A1422",border:"1px solid #1A2840",borderRadius:10,marginBottom:12}}>
+          <div style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:"#0A1422",border:"1px solid #33434F",borderRadius:10,marginBottom:12}}>
             <span style={{fontSize:18}}>🌡</span>
             <div style={{flex:1}}>
-              <label htmlFor="bath_temp" style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Zinc Bath Temperature</label>
+              <label htmlFor="bath_temp" style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Zinc Bath Temperature</label>
               <div style={{fontSize:9,color:"#3A4F70"}}>Typical range 440 – 460°C. Used by smart-coating recommendation.</div>
             </div>
             <DInput id="bath_temp" name="bath_temp" type="number" step="0.1" min="0" max="600" dark value={bathTemp} onChange={e=>setBathTemp(e.target.value)} placeholder="°C" style={{width:120,textAlign:"center",fontFamily:"monospace",fontWeight:700}} aria-label="Zinc bath temperature in Celsius"/>
@@ -3093,10 +3093,10 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
 
           {/* Dipping Operator — required when admin has configured operator names */}
           {activeOperators.length>0 && (
-            <div style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:"#0A1422",border:`1px solid ${operatorName?"#1A2840":"#3A2A00"}`,borderRadius:10,marginBottom:12}}>
+            <div style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:"#0A1422",border:`1px solid ${operatorName?"#33434F":"#3A2A00"}`,borderRadius:10,marginBottom:12}}>
               <span style={{fontSize:18}}>👷</span>
               <div style={{flex:1}}>
-                <label htmlFor="dip_operator" style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Dipping Operator (on floor)</label>
+                <label htmlFor="dip_operator" style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Dipping Operator (on floor)</label>
                 <div style={{fontSize:9,color:"#3A4F70"}}>Operator who actually performed the dip — used for operator-wise production reports.</div>
               </div>
               <DSel dark value={operatorName} onChange={e=>setOperatorName(e.target.value)} style={{width:220}}>
@@ -3106,10 +3106,10 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
             </div>
           )}
           {activeShiftSups.length>0 && (
-            <div style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:"#0A1422",border:`1px solid ${shiftSupName?"#1A2840":"#3A2A00"}`,borderRadius:10,marginBottom:12}}>
+            <div style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:"#0A1422",border:`1px solid ${shiftSupName?"#33434F":"#3A2A00"}`,borderRadius:10,marginBottom:12}}>
               <span style={{fontSize:18}}>🧑‍🏭</span>
               <div style={{flex:1}}>
-                <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Shift Supervisor</label>
+                <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Shift Supervisor</label>
                 <div style={{fontSize:9,color:"#3A4F70"}}>Supervisor on shift — feeds the Shift-Supervisor-wise Dipping &amp; Coating report.</div>
               </div>
               <DSel dark value={shiftSupName} onChange={e=>setShiftSupName(e.target.value)} style={{width:220}}>
@@ -3129,7 +3129,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           {totalDur!=null&&<div style={{display:"flex",flexWrap:"wrap",gap:8,padding:"13px 18px",
             background:"#060C14",border:"1px solid #0E2030",borderRadius:10,marginBottom:16,alignItems:"center"}}>
             <div style={{fontSize:10,color:"#3A4F70",fontWeight:700,marginRight:8}}>PHASE DURATIONS:</div>
-            {[[immDur,"Immersion","#E8A020"],[reactDur,"Reaction","#22D3EE"],[withdDur,"Withdrawal","#4ADE80"]].map(([d,lbl,col])=>
+            {[[immDur,"Immersion","#3D7EA6"],[reactDur,"Reaction","#22D3EE"],[withdDur,"Withdrawal","#4ADE80"]].map(([d,lbl,col])=>
               d!=null?<div key={lbl} style={{display:"flex",alignItems:"center",gap:6,
                 padding:"5px 12px",background:"rgba(0,0,0,.3)",borderRadius:6}}>
                 <span style={{fontSize:9,color:"#3A4F70",fontWeight:700}}>{lbl}:</span>
@@ -3154,18 +3154,18 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           {(beam.dipping_history||[]).length>0&&<div style={{background:"#060E04",border:"1px dashed #1A3A10",borderRadius:8,padding:12,marginBottom:12}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8,flexWrap:"wrap"}}>
               <span style={{fontSize:10,fontWeight:800,color:"#FB923C",letterSpacing:".06em",background:"#2A1600",border:"1px solid #4A2A00",padding:"3px 8px",borderRadius:4}}>SPLIT-BATCH IN PROGRESS</span>
-              <span style={{fontSize:11,color:"#5A7599"}}>Beam: <strong style={{color:"#E8A020",fontFamily:"monospace"}}>{beam.beam_no}</strong></span>
-              <span style={{fontSize:11,color:"#5A7599"}}>Dipped: <strong style={{color:"#4ADE80",fontFamily:"monospace"}}>{beamAlreadyDipped.length}</strong>/{partList(beam).length}</span>
-              <span style={{fontSize:11,color:"#5A7599"}}>Remaining: <strong style={{color:"#FDE047",fontFamily:"monospace"}}>{beamRemaining.length}</strong></span>
+              <span style={{fontSize:11,color:"#8DA0AD"}}>Beam: <strong style={{color:"#3D7EA6",fontFamily:"monospace"}}>{beam.beam_no}</strong></span>
+              <span style={{fontSize:11,color:"#8DA0AD"}}>Dipped: <strong style={{color:"#4ADE80",fontFamily:"monospace"}}>{beamAlreadyDipped.length}</strong>/{partList(beam).length}</span>
+              <span style={{fontSize:11,color:"#8DA0AD"}}>Remaining: <strong style={{color:"#FDE047",fontFamily:"monospace"}}>{beamRemaining.length}</strong></span>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:4,maxHeight:120,overflowY:"auto"}}>
               {(beam.dipping_history||[]).map((h,i)=>(
                 <div key={i} style={{fontSize:10,fontFamily:"monospace",color:"#3A4F70",padding:"3px 6px",background:"#040A02",borderRadius:3,display:"flex",gap:8,flexWrap:"wrap"}}>
-                  <span style={{color:"#5A7599"}}>#{i+1}</span>
+                  <span style={{color:"#8DA0AD"}}>#{i+1}</span>
                   <span style={{color:"#4ADE80"}}>{(h.parts||[]).join(", ")||"all"}</span>
                   <span style={{color:"#22D3EE"}}>{fmtDur(calcSecs(h.immersion_start,h.withdrawal_end))}</span>
                   {h.bath_temperature!=null&&<span style={{color:"#FB923C"}}>{h.bath_temperature}°C</span>}
-                  <span style={{color:"#5A7599",marginLeft:"auto"}}>{fmt12(h.dipped_at)} — {h.dipped_by_name}</span>
+                  <span style={{color:"#8DA0AD",marginLeft:"auto"}}>{fmt12(h.dipped_at)} — {h.dipped_by_name}</span>
                 </div>
               ))}
             </div>
@@ -3175,7 +3175,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
           <div style={{background:"#060E04",border:"1px solid #1A2A10",borderRadius:8,padding:14,marginBottom:12}}>
             <div style={{fontSize:11,color:"#4ADE80",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em",marginBottom:10}}>
               ① {beam.beam_no} — Select Parts Dipped in This Batch
-              {beamAlreadyDipped.length>0&&<span style={{marginLeft:8,fontSize:10,color:"#5A7599",fontWeight:400,textTransform:"none"}}>(already dipped: {beamAlreadyDipped.join(", ")})</span>}
+              {beamAlreadyDipped.length>0&&<span style={{marginLeft:8,fontSize:10,color:"#8DA0AD",fontWeight:400,textTransform:"none"}}>(already dipped: {beamAlreadyDipped.join(", ")})</span>}
             </div>
             {beamRemaining.length>0
               ?<div style={{display:"flex",flexWrap:"wrap",gap:8}}>
@@ -3186,7 +3186,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                     border:`2px solid ${s2?"#4ADE80":"#1A3A10"}`,boxShadow:s2?"0 0 10px rgba(74,222,128,.3)":"none"}}>{s2?"✓ ":""}{pt}</button>;})}
               </div>
               :partList(beam).length===0
-                ?<div style={{fontSize:11,color:"#2E4A6E",fontStyle:"italic"}}>No individual parts listed — all parts dipped together</div>
+                ?<div style={{fontSize:11,color:"#5C7482",fontStyle:"italic"}}>No individual parts listed — all parts dipped together</div>
                 :<div style={{fontSize:11,color:"#4ADE80",fontStyle:"italic"}}>✓ All parts already dipped — saving this entry will move beam to QC.</div>}
             {dbl.selectedParts.length>0&&<div style={{marginTop:8,fontSize:11,color:"#4ADE80",fontFamily:"monospace",padding:"6px 10px",background:"#0D2A10",borderRadius:5}}>This batch: {dbl.selectedParts.join(", ")}</div>}
           </div>
@@ -3199,7 +3199,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
               onChange={e=>setDbl(p=>({...p,nextBeamNo:e.target.value.toUpperCase(),nextSelectedParts:[]}))}
               placeholder="Type beam number — e.g. B-1026 (must be registered in Loading)"
               style={{fontSize:14,fontWeight:700,fontFamily:"monospace",marginBottom:8,
-                border:`2px solid ${dbl.nextBeamNo?(nextBeamObj?"#5BA3FF":"#F87171"):"#1A2840"}`}}/>
+                border:`2px solid ${dbl.nextBeamNo?(nextBeamObj?"#5BA3FF":"#F87171"):"#33434F"}`}}/>
             {dbl.nextBeamNo&&!nextBeamObj&&<div style={{fontSize:11,color:"#F87171",marginBottom:8,padding:"6px 10px",background:"#200808",borderRadius:5}}>⚠ Beam not found in Loading register</div>}
             {nextBeamObj&&<>
               <div style={{fontSize:11,color:"#4ADE80",marginBottom:10,padding:"6px 10px",background:"#0A1A06",borderRadius:5,fontFamily:"monospace"}}>
@@ -3207,14 +3207,14 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
               </div>
               {nextBeamParts.length>0&&<div>
                 <div style={{fontSize:10,color:"#5BA3FF",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em",marginBottom:8}}>Select Parts from {nextBeamObj.beam_no}:
-                  {nextBeamAlreadyDipped.length>0&&<span style={{marginLeft:8,fontSize:10,color:"#5A7599",fontWeight:400,textTransform:"none"}}>(already dipped: {nextBeamAlreadyDipped.join(", ")})</span>}
+                  {nextBeamAlreadyDipped.length>0&&<span style={{marginLeft:8,fontSize:10,color:"#8DA0AD",fontWeight:400,textTransform:"none"}}>(already dipped: {nextBeamAlreadyDipped.join(", ")})</span>}
                 </div>
                 <div style={{display:"flex",flexWrap:"wrap",gap:8}}>
                   {nextBeamParts.map(pt=>{const s2=dbl.nextSelectedParts.includes(pt);
                     return <button key={pt} onClick={()=>setDbl(p=>({...p,nextSelectedParts:s2?p.nextSelectedParts.filter(x=>x!==pt):[...p.nextSelectedParts,pt]}))} style={{
                       padding:"9px 18px",borderRadius:7,cursor:"pointer",fontFamily:"monospace",fontSize:13,fontWeight:800,
                       background:s2?"#1D6FE8":"#060E18",color:s2?"#fff":"#5BA3FF",
-                      border:`2px solid ${s2?"#5BA3FF":"#1A2840"}`}}>{s2?"✓ ":""}{pt}</button>;})}
+                      border:`2px solid ${s2?"#5BA3FF":"#33434F"}`}}>{s2?"✓ ":""}{pt}</button>;})}
                 </div>
               </div>}
             </>}
@@ -3241,7 +3241,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
               {blocked ? "⚠  TAP TO SEE ERRORS" : "💾  SAVE DIPPING RECORD"}
             </button>
             <button onClick={resetForm} style={{padding:"14px 24px",fontSize:13,fontWeight:600,
-              background:"transparent",color:"#5A7599",border:"1px solid #1A2840",
+              background:"transparent",color:"#8DA0AD",border:"1px solid #33434F",
               borderRadius:8,cursor:"pointer",fontFamily:"inherit"}}>✕ Reset</button>
           </div>;
         })()}
@@ -3250,46 +3250,46 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
 
     </div>{/* end dipping readOnly wrapper */}
     {/* Records table */}
-    <div style={{background:"#0E1623",border:"1px solid #1A2840",borderRadius:12,overflow:"hidden"}}>
-      <div style={{background:"#070C14",borderBottom:"1px solid #1A2840",padding:"12px 18px"}}>
-        <div style={{fontSize:13,fontWeight:700,color:"#DDE8F8"}}>Dipping Records</div>
+    <div style={{background:"#1E2A36",border:"1px solid #33434F",borderRadius:12,overflow:"hidden"}}>
+      <div style={{background:"#0F1720",borderBottom:"1px solid #33434F",padding:"12px 18px"}}>
+        <div style={{fontSize:13,fontWeight:700,color:"#C9D6DF"}}>Dipping Records</div>
         <div style={{fontSize:10,color:"#3A4F70",marginTop:2}}>Showing latest {Math.min(20,dippedBeams.length)} of {dippedBeams.length} records — auto-transferred to QC module</div>
       </div>
       <div style={{overflowX:"auto"}}>
         <table style={{width:"100%",borderCollapse:"collapse"}}>
-          <thead><tr style={{background:"#070C14"}}>
+          <thead><tr style={{background:"#0F1720"}}>
             {["Beam No","Type","Material","Surface","Part No(s)","Dipped Parts","Weight","μm","Imm Start","Imm Duration","React Duration","Withd Duration","Cycle Time","Status","Operator","By",...(canEditPast?["Edit"]:[])].map(h=>(
               <th key={h} style={{padding:"9px 12px",textAlign:"left",color:"#3A4F70",fontWeight:700,
                 fontSize:10,letterSpacing:".06em",textTransform:"uppercase",
-                borderBottom:"1px solid #1A2840",whiteSpace:"nowrap"}}>{h}</th>
+                borderBottom:"1px solid #33434F",whiteSpace:"nowrap"}}>{h}</th>
             ))}
           </tr></thead>
           <tbody>
-            {dippedBeams.length===0&&<tr><td colSpan={canEditPast?17:16} style={{padding:32,textAlign:"center",color:"#2E4A6E",fontSize:12}}>No dipping records yet</td></tr>}
+            {dippedBeams.length===0&&<tr><td colSpan={canEditPast?17:16} style={{padding:32,textAlign:"center",color:"#5C7482",fontSize:12}}>No dipping records yet</td></tr>}
             {dippedBeams.slice(0,20).map(b=>{
               const sts=ST[b.status]||ST.DIPPING;
-              return <tr key={txn(b)} style={{borderBottom:"1px solid #0E1623",transition:"background .1s"}}
+              return <tr key={txn(b)} style={{borderBottom:"1px solid #1E2A36",transition:"background .1s"}}
                 onMouseEnter={e=>e.currentTarget.style.background="#111C2E"}
                 onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-                <td style={{padding:"10px 12px"}}><span style={{fontFamily:"monospace",fontSize:13,fontWeight:800,color:"#E8A020"}}>{b.beam_no}</span></td>
-                <td style={{padding:"10px 12px"}}><span style={{fontSize:10,fontWeight:700,color:["Double Batch","Double Dipp"].includes(b.load_type)?"#FB923C":"#DDE8F8",background:"#1A2840",padding:"2px 7px",borderRadius:4}}>{b.load_type}</span></td>
+                <td style={{padding:"10px 12px"}}><span style={{fontFamily:"monospace",fontSize:13,fontWeight:800,color:"#3D7EA6"}}>{b.beam_no}</span></td>
+                <td style={{padding:"10px 12px"}}><span style={{fontSize:10,fontWeight:700,color:["Double Batch","Double Dipp"].includes(b.load_type)?"#FB923C":"#C9D6DF",background:"#33434F",padding:"2px 7px",borderRadius:4}}>{b.load_type}</span></td>
                 <td style={{padding:"10px 12px"}}><span style={{fontSize:10,fontWeight:800,color:"#22D3EE",background:"#082430",border:"1px solid #22D3EE60",padding:"2px 7px",borderRadius:4,letterSpacing:".05em"}}>{b.material_type||"—"}</span></td>
                 <td style={{padding:"10px 12px"}}><span style={{fontSize:10,fontWeight:700,color:"#F0ABFC"}}>{fmtSurface(b.surface_condition)}</span></td>
                 <td style={{padding:"10px 12px",maxWidth:100}}><span style={{fontSize:10,color:"#5BA3FF",fontFamily:"monospace"}}>{b.part_nos||"—"}</span></td>
-                <td style={{padding:"10px 12px",maxWidth:90}}><span style={{fontSize:10,color:b.dipped_parts?"#4ADE80":"#2E4A6E",fontFamily:"monospace"}}>{b.dipped_parts||"All"}</span></td>
+                <td style={{padding:"10px 12px",maxWidth:90}}><span style={{fontSize:10,color:b.dipped_parts?"#4ADE80":"#5C7482",fontFamily:"monospace"}}>{b.dipped_parts||"All"}</span></td>
                 <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#22D3EE"}}>{b.total_weight}MT</span></td>
                 <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#A78BFA"}}>{b.coating_required}μm</span></td>
-                <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#E8A020"}}>{fmt12(b.immersion_start)}</span></td>
-                <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#E8A020"}}>{fmtDur(b.immersion_duration)}</span></td>
+                <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#3D7EA6"}}>{fmt12(b.immersion_start)}</span></td>
+                <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#3D7EA6"}}>{fmtDur(b.immersion_duration)}</span></td>
                 <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#22D3EE"}}>{fmtDur(b.reaction_duration)}</span></td>
                 <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#4ADE80"}}>{fmtDur(b.withdrawal_duration)}</span></td>
                 <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><strong style={{fontFamily:"monospace",fontSize:12,color:"#FB923C"}}>{fmtDur(calcSecs(b.immersion_start,b.withdrawal_end))}</strong></td>
                 <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{display:"inline-block",padding:"3px 8px",borderRadius:4,fontSize:10,fontWeight:700,background:sts.bg,color:sts.color}}>{sts.label}</span></td>
                 <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontSize:11,color:b.dipping_operator?"#A78BFA":"#3A4F70",fontWeight:b.dipping_operator?700:400}}>{b.dipping_operator||"—"}</span></td>
-                <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontSize:11,color:"#5A7599"}}>{b.dipped_by_name||"—"}</span></td>
+                <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}><span style={{fontSize:11,color:"#8DA0AD"}}>{b.dipped_by_name||"—"}</span></td>
                 {canEditPast && <td style={{padding:"10px 12px",whiteSpace:"nowrap"}}>
                   <button onClick={()=>setEditBeam(b)} title="Edit captured timings"
-                    style={{background:"transparent",border:"1px solid #1A2840",color:"#5BA3FF",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>✎ Edit</button>
+                    style={{background:"transparent",border:"1px solid #33434F",color:"#5BA3FF",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>✎ Edit</button>
                   {Array.isArray(b.timing_history)&&b.timing_history.length>0 && <button
                     title={`Undo last edit (${b.timing_history.length} snapshot${b.timing_history.length>1?"s":""} saved)`}
                     onClick={()=>{
@@ -3299,7 +3299,7 @@ function DippingTab({beams,setBeams,addAudit,user,readOnly=false,T,dippingConfig
                       addAudit(user.id,user.full_name,"EDIT_TIMINGS_UNDO","dipping",`Reverted timings on ${b.beam_no} (was edited by ${last.edited_by_name} at ${last.edited_at})`);
                       sm({ok:true,text:`↶ Reverted timings for ${b.beam_no}`}); setTimeout(()=>sm(null),4000);
                     }}
-                    style={{marginLeft:6,background:"transparent",border:"1px solid #1A2840",color:"#FB923C",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>↶ Undo</button>}
+                    style={{marginLeft:6,background:"transparent",border:"1px solid #33434F",color:"#FB923C",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>↶ Undo</button>}
                 </td>}
               </tr>;
             })}
@@ -3390,8 +3390,8 @@ function EditTimingsModal({beam,onClose,onSave}){
     for(let i=1;i<order.length;i++){ if(new Date(order[i]).getTime() < new Date(order[i-1]).getTime()) return setErr("Timestamps must be in chronological order"); }
     setStage("confirm");
   }
-  const inp:React.CSSProperties = {width:"100%",background:"#07101C",border:"1px solid #1A2840",color:"#DDE8F8",padding:"8px 10px",borderRadius:6,fontSize:12,fontFamily:"monospace"};
-  const lbl:React.CSSProperties = {fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:5};
+  const inp:React.CSSProperties = {width:"100%",background:"#16202B",border:"1px solid #33434F",color:"#C9D6DF",padding:"8px 10px",borderRadius:6,fontSize:12,fontFamily:"monospace"};
+  const lbl:React.CSSProperties = {fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:5};
   // build diff rows for confirmation
   const rows: Array<{label:string; before:any; after:any; changed:boolean}> = [
     {label:"Immersion Duration", before:fmtDur(beam.immersion_duration), after:fmtDur(built.patch.immersion_duration), changed:(beam.immersion_duration??null)!==(built.patch.immersion_duration??null)},
@@ -3402,13 +3402,13 @@ function EditTimingsModal({beam,onClose,onSave}){
   const changedRows = rows.filter(r=>r.changed);
   const diffSummary = changedRows.map(r=>`${r.label}: ${r.before} → ${r.after}`).join("; ");
   return <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.7)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center",padding:16}} onClick={onClose}>
-    <div onClick={e=>e.stopPropagation()} style={{background:"#0E1623",border:"1px solid #1A2840",borderRadius:12,padding:24,width:560,maxWidth:"100%",maxHeight:"90vh",overflowY:"auto"}}>
+    <div onClick={e=>e.stopPropagation()} style={{background:"#1E2A36",border:"1px solid #33434F",borderRadius:12,padding:24,width:560,maxWidth:"100%",maxHeight:"90vh",overflowY:"auto"}}>
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:14}}>
         <div>
-          <div style={{fontSize:14,fontWeight:800,color:"#DDE8F8"}}>{stage==="edit"?"✎ Edit Dipping Timings":"⚠ Confirm Timing Changes"}</div>
-          <div style={{fontSize:11,color:"#5A7599",marginTop:3}}>Beam <span style={{color:"#E8A020",fontFamily:"monospace",fontWeight:700}}>{beam.beam_no}</span> — {stage==="edit"?"durations recalculate automatically":"review recalculated durations before saving"}</div>
+          <div style={{fontSize:14,fontWeight:800,color:"#C9D6DF"}}>{stage==="edit"?"✎ Edit Dipping Timings":"⚠ Confirm Timing Changes"}</div>
+          <div style={{fontSize:11,color:"#8DA0AD",marginTop:3}}>Beam <span style={{color:"#3D7EA6",fontFamily:"monospace",fontWeight:700}}>{beam.beam_no}</span> — {stage==="edit"?"durations recalculate automatically":"review recalculated durations before saving"}</div>
         </div>
-        <button onClick={onClose} style={{background:"transparent",border:"none",color:"#5A7599",cursor:"pointer",fontSize:20}}>✕</button>
+        <button onClick={onClose} style={{background:"transparent",border:"none",color:"#8DA0AD",cursor:"pointer",fontSize:20}}>✕</button>
       </div>
       {stage==="edit" ? <>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
@@ -3432,28 +3432,28 @@ function EditTimingsModal({beam,onClose,onSave}){
         </div>
         {err && <div style={{marginTop:10,padding:"8px 12px",background:"#2A0A0A",border:"1px solid #5C1818",borderRadius:6,fontSize:11,color:"#FB7185"}}>⚠ {err}</div>}
         <div style={{display:"flex",gap:8,justifyContent:"flex-end",marginTop:18}}>
-          <button onClick={onClose} style={{padding:"9px 16px",background:"transparent",color:"#5A7599",border:"1px solid #1A2840",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>Cancel</button>
+          <button onClick={onClose} style={{padding:"9px 16px",background:"transparent",color:"#8DA0AD",border:"1px solid #33434F",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>Cancel</button>
           <button onClick={validateAndConfirm} style={{padding:"9px 16px",background:"linear-gradient(135deg,#5BA3FF,#2563EB)",color:"#fff",border:"none",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:800}}>Review Changes →</button>
         </div>
       </> : <>
         <div style={{padding:"10px 12px",background:"#1A1408",border:"1px solid #5C3D18",borderRadius:6,fontSize:11,color:"#FBBF24",marginBottom:12}}>
           ⚠ You are about to overwrite the captured timings. A snapshot will be saved so you can undo this change.
         </div>
-        <div style={{border:"1px solid #1A2840",borderRadius:8,overflow:"hidden"}}>
-          <div style={{display:"grid",gridTemplateColumns:"1.4fr 1fr 1fr",gap:0,background:"#0A1320",padding:"8px 12px",fontSize:10,fontWeight:700,color:"#5A7599",letterSpacing:".06em",textTransform:"uppercase"}}>
+        <div style={{border:"1px solid #33434F",borderRadius:8,overflow:"hidden"}}>
+          <div style={{display:"grid",gridTemplateColumns:"1.4fr 1fr 1fr",gap:0,background:"#0A1320",padding:"8px 12px",fontSize:10,fontWeight:700,color:"#8DA0AD",letterSpacing:".06em",textTransform:"uppercase"}}>
             <div>Field</div><div>Before</div><div>After</div>
           </div>
           {rows.map((r,i)=>(
-            <div key={i} style={{display:"grid",gridTemplateColumns:"1.4fr 1fr 1fr",gap:0,padding:"9px 12px",borderTop:"1px solid #0E1623",background:r.changed?"#1A1A0A":"transparent"}}>
-              <div style={{fontSize:11,color:"#DDE8F8",fontWeight:r.changed?700:400}}>{r.changed?"● ":""}{r.label}</div>
-              <div style={{fontSize:11,fontFamily:"monospace",color:"#5A7599"}}>{r.before}</div>
-              <div style={{fontSize:11,fontFamily:"monospace",color:r.changed?"#4ADE80":"#5A7599",fontWeight:r.changed?700:400}}>{r.after}</div>
+            <div key={i} style={{display:"grid",gridTemplateColumns:"1.4fr 1fr 1fr",gap:0,padding:"9px 12px",borderTop:"1px solid #1E2A36",background:r.changed?"#1A1A0A":"transparent"}}>
+              <div style={{fontSize:11,color:"#C9D6DF",fontWeight:r.changed?700:400}}>{r.changed?"● ":""}{r.label}</div>
+              <div style={{fontSize:11,fontFamily:"monospace",color:"#8DA0AD"}}>{r.before}</div>
+              <div style={{fontSize:11,fontFamily:"monospace",color:r.changed?"#4ADE80":"#8DA0AD",fontWeight:r.changed?700:400}}>{r.after}</div>
             </div>
           ))}
         </div>
-        {changedRows.length===0 && <div style={{marginTop:10,padding:"8px 12px",background:"#0A1320",borderRadius:6,fontSize:11,color:"#5A7599"}}>ℹ No values changed — save will still create an audit entry.</div>}
+        {changedRows.length===0 && <div style={{marginTop:10,padding:"8px 12px",background:"#0A1320",borderRadius:6,fontSize:11,color:"#8DA0AD"}}>ℹ No values changed — save will still create an audit entry.</div>}
         <div style={{display:"flex",gap:8,justifyContent:"flex-end",marginTop:18}}>
-          <button onClick={()=>setStage("edit")} style={{padding:"9px 16px",background:"transparent",color:"#5A7599",border:"1px solid #1A2840",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>← Back</button>
+          <button onClick={()=>setStage("edit")} style={{padding:"9px 16px",background:"transparent",color:"#8DA0AD",border:"1px solid #33434F",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>← Back</button>
           <button onClick={()=>onSave(built.patch,diffSummary)} style={{padding:"9px 16px",background:"linear-gradient(135deg,#16A34A,#15803D)",color:"#fff",border:"none",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:800}}>✓ Confirm & Save</button>
         </div>
       </>}
@@ -3493,16 +3493,16 @@ function BeamRegisterModal({onClose,onSave,isAdmin=false}:any){
     }, backdatePayload);
   }
 
-  const inp:React.CSSProperties = {width:"100%",background:"#0B1422",border:"1px solid #1A2840",color:"#DDE8F8",padding:"8px 10px",borderRadius:6,fontSize:12,fontFamily:"inherit"};
-  const lbl:React.CSSProperties = {fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:5};
+  const inp:React.CSSProperties = {width:"100%",background:"#0B1422",border:"1px solid #33434F",color:"#C9D6DF",padding:"8px 10px",borderRadius:6,fontSize:12,fontFamily:"inherit"};
+  const lbl:React.CSSProperties = {fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:5};
   return <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.7)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center",padding:16}} onClick={onClose}>
-    <div onClick={e=>e.stopPropagation()} style={{background:"#0E1623",border:"1px solid #1A2840",borderRadius:12,padding:24,width:560,maxWidth:"100%",maxHeight:"90vh",overflowY:"auto"}}>
+    <div onClick={e=>e.stopPropagation()} style={{background:"#1E2A36",border:"1px solid #33434F",borderRadius:12,padding:24,width:560,maxWidth:"100%",maxHeight:"90vh",overflowY:"auto"}}>
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:18}}>
         <div>
           <div style={{fontSize:15,fontWeight:800,color:"#5BA3FF",letterSpacing:".06em"}}>📦 BEAM REGISTER</div>
-          <div style={{fontSize:11,color:"#5A7599",marginTop:3}}>Quick register a beam from the dipping floor</div>
+          <div style={{fontSize:11,color:"#8DA0AD",marginTop:3}}>Quick register a beam from the dipping floor</div>
         </div>
-        <button onClick={onClose} style={{background:"none",border:"none",color:"#5A7599",fontSize:22,cursor:"pointer"}}>×</button>
+        <button onClick={onClose} style={{background:"none",border:"none",color:"#8DA0AD",fontSize:22,cursor:"pointer"}}>×</button>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
         <div><label style={lbl}>Beam No *</label><input style={inp} value={f.beam_no} onChange={e=>{setF({...f,beam_no:e.target.value});setErr("");}}/></div>
@@ -3522,7 +3522,7 @@ function BeamRegisterModal({onClose,onSave,isAdmin=false}:any){
         </div>
       </div>
 
-      {isAdmin && <div style={{marginTop:16,border:"1px solid #1A2840",borderRadius:8,padding:14,background:"#0A1220"}}>
+      {isAdmin && <div style={{marginTop:16,border:"1px solid #33434F",borderRadius:8,padding:14,background:"#0A1220"}}>
         <label style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer"}}>
           <input type="checkbox" checked={backdate} onChange={e=>{
             const on=e.target.checked;
@@ -3532,9 +3532,9 @@ function BeamRegisterModal({onClose,onSave,isAdmin=false}:any){
             }
             setBackdate(on);setErr("");
           }}/>
-          <span style={{fontSize:12,fontWeight:800,color:"#E8A020",letterSpacing:".04em"}}>BACKDATED ENTRY (ADMIN)</span>
+          <span style={{fontSize:12,fontWeight:800,color:"#3D7EA6",letterSpacing:".04em"}}>BACKDATED ENTRY (ADMIN)</span>
         </label>
-        <div style={{fontSize:10,color:"#5A7599",marginTop:4}}>Record a beam processed on a past date with its exact dipping timestamps — hh:mm:ss in plant time ({APP_TZ_LABEL}). Current plant time: <b style={{color:"#8FA8C8"}}>{fmtDateTimeTz(new Date().toISOString())}</b></div>
+        <div style={{fontSize:10,color:"#8DA0AD",marginTop:4}}>Record a beam processed on a past date with its exact dipping timestamps — hh:mm:ss in plant time ({APP_TZ_LABEL}). Current plant time: <b style={{color:"#8FA8C8"}}>{fmtDateTimeTz(new Date().toISOString())}</b></div>
         {backdate && <>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginTop:12}}>
             {[
@@ -3564,13 +3564,13 @@ function BeamRegisterModal({onClose,onSave,isAdmin=false}:any){
                 {["Normal","Rusted","Heavy Rusted"].map(s=><option key={s} value={s}>{s}</option>)}
               </select></div>
           </div>
-          <div style={{marginTop:12,padding:"9px 12px",borderRadius:6,background:"#07101C",border:"1px solid #1A2840",fontSize:11,color:"#8FA8C8",display:"flex",flexWrap:"wrap",gap:14}}>
+          <div style={{marginTop:12,padding:"9px 12px",borderRadius:6,background:"#16202B",border:"1px solid #33434F",fontSize:11,color:"#8FA8C8",display:"flex",flexWrap:"wrap",gap:14}}>
             {bdPreview ? <>
-              <span>Immersion: <b style={{color:"#DDE8F8"}}>{fmtDur(bdPreview.immersion_duration)}</b></span>
-              <span>Reaction: <b style={{color:"#DDE8F8"}}>{fmtDur(bdPreview.reaction_duration)}</b></span>
-              <span>Withdrawal: <b style={{color:"#DDE8F8"}}>{fmtDur(bdPreview.withdrawal_duration)}</b></span>
+              <span>Immersion: <b style={{color:"#C9D6DF"}}>{fmtDur(bdPreview.immersion_duration)}</b></span>
+              <span>Reaction: <b style={{color:"#C9D6DF"}}>{fmtDur(bdPreview.reaction_duration)}</b></span>
+              <span>Withdrawal: <b style={{color:"#C9D6DF"}}>{fmtDur(bdPreview.withdrawal_duration)}</b></span>
               <span>Total Cycle: <b style={{color:"#5BA3FF"}}>{fmtDur(backdatedCycleSecs(bd))}</b></span>
-              <span>Status: <b style={{color:"#E8A020"}}>{(bdResult as any).status.replace("_"," ")}</b></span>
+              <span>Status: <b style={{color:"#3D7EA6"}}>{(bdResult as any).status.replace("_"," ")}</b></span>
             </> : <span style={{color:"#FB923C"}}>⚠ {(bdResult as any)?.error||"Enter the dipping timestamps"}</span>}
           </div>
         </>}
@@ -3579,7 +3579,7 @@ function BeamRegisterModal({onClose,onSave,isAdmin=false}:any){
       {err && <div style={{color:"#F87171",fontSize:12,marginTop:14,padding:"8px 12px",background:"#220808",borderRadius:6}}>⚠ {err}</div>}
 
       <div style={{display:"flex",gap:10,marginTop:20,justifyContent:"flex-end"}}>
-        <button onClick={onClose} style={{padding:"10px 20px",background:"transparent",border:"1px solid #1A2840",color:"#5A7599",borderRadius:6,fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>CANCEL</button>
+        <button onClick={onClose} style={{padding:"10px 20px",background:"transparent",border:"1px solid #33434F",color:"#8DA0AD",borderRadius:6,fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>CANCEL</button>
         <button onClick={submit} style={{padding:"10px 22px",background:"linear-gradient(135deg,#5BA3FF,#1D6FE8)",border:"none",color:"#000",borderRadius:6,fontSize:12,fontWeight:800,cursor:"pointer",fontFamily:"inherit",letterSpacing:".04em"}}>＋ REGISTER BEAM</button>
       </div>
     </div>
@@ -3669,24 +3669,24 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
   const PT_POS=["Top-L","Top-C","Top-R","Mid","Bot-L","Bot-C","Bot-R"];
 
   return <div>
-    {readOnly&&<div style={{padding:"10px 16px",background:"#0A1A10",border:"1px solid #1A3A20",borderRadius:8,marginBottom:14,display:"flex",alignItems:"center",gap:10,fontSize:12,color:"#4ADE80"}}><span style={{fontSize:16}}>👁</span><strong>SUPERVISOR VIEW — READ ONLY</strong><span style={{color:"#2E4A6E",marginLeft:4}}>You can see all QC records. Contact QC Inspector to add results.</span></div>}
+    {readOnly&&<div style={{padding:"10px 16px",background:"#0A1A10",border:"1px solid #1A3A20",borderRadius:8,marginBottom:14,display:"flex",alignItems:"center",gap:10,fontSize:12,color:"#4ADE80"}}><span style={{fontSize:16}}>👁</span><strong>SUPERVISOR VIEW — READ ONLY</strong><span style={{color:"#5C7482",marginLeft:4}}>You can see all QC records. Contact QC Inspector to add results.</span></div>}
     {isAdmin && setQcRanges && (
       <div style={{padding:"12px 16px",background:"#1A1200",border:"1px solid #3A2800",borderRadius:8,marginBottom:14}}>
         <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
           <span style={{fontSize:14}}>⚙</span>
-          <strong style={{fontSize:12,color:"#E8A020",letterSpacing:".06em"}}>ADMIN — COATING RANGE EDITOR</strong>
-          <span style={{fontSize:10,color:"#5A7599"}}>Changes apply immediately to PASS / HIGH / FAIL logic</span>
+          <strong style={{fontSize:12,color:"#3D7EA6",letterSpacing:".06em"}}>ADMIN — COATING RANGE EDITOR</strong>
+          <span style={{fontSize:10,color:"#8DA0AD"}}>Changes apply immediately to PASS / HIGH / FAIL logic</span>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10}}>
           {Object.keys(qcRanges).map((k)=>{
             const r=qcRanges[k];
-            return <div key={k} style={{padding:"10px 12px",background:"#0A0F18",border:"1px solid #1A2840",borderRadius:6}}>
-              <div style={{fontSize:11,fontWeight:800,color:"#E8A020",marginBottom:6}}>{k} μm Spec</div>
+            return <div key={k} style={{padding:"10px 12px",background:"#0A0F18",border:"1px solid #33434F",borderRadius:6}}>
+              <div style={{fontSize:11,fontWeight:800,color:"#3D7EA6",marginBottom:6}}>{k} μm Spec</div>
               <div style={{display:"flex",gap:6,alignItems:"center"}}>
-                <label style={{fontSize:9,color:"#5A7599"}} htmlFor={`min-${k}`}>Min</label>
-                <input id={`min-${k}`} type="number" value={r.min} onChange={e=>setQcRanges({...qcRanges,[k]:{...r,min:parseFloat(e.target.value)||0}})} style={{width:64,padding:"4px 6px",background:"#070C14",border:"1px solid #1A2840",color:"#DDE8F8",borderRadius:4,fontFamily:"monospace",fontSize:12}} aria-label={`Minimum acceptable coating for ${k} micron spec`}/>
-                <label style={{fontSize:9,color:"#5A7599"}} htmlFor={`max-${k}`}>OK Max</label>
-                <input id={`max-${k}`} type="number" value={r.ok_max} onChange={e=>setQcRanges({...qcRanges,[k]:{...r,ok_max:parseFloat(e.target.value)||0}})} style={{width:64,padding:"4px 6px",background:"#070C14",border:"1px solid #1A2840",color:"#DDE8F8",borderRadius:4,fontFamily:"monospace",fontSize:12}} aria-label={`Upper OK threshold for ${k} micron spec`}/>
+                <label style={{fontSize:9,color:"#8DA0AD"}} htmlFor={`min-${k}`}>Min</label>
+                <input id={`min-${k}`} type="number" value={r.min} onChange={e=>setQcRanges({...qcRanges,[k]:{...r,min:parseFloat(e.target.value)||0}})} style={{width:64,padding:"4px 6px",background:"#0F1720",border:"1px solid #33434F",color:"#C9D6DF",borderRadius:4,fontFamily:"monospace",fontSize:12}} aria-label={`Minimum acceptable coating for ${k} micron spec`}/>
+                <label style={{fontSize:9,color:"#8DA0AD"}} htmlFor={`max-${k}`}>OK Max</label>
+                <input id={`max-${k}`} type="number" value={r.ok_max} onChange={e=>setQcRanges({...qcRanges,[k]:{...r,ok_max:parseFloat(e.target.value)||0}})} style={{width:64,padding:"4px 6px",background:"#0F1720",border:"1px solid #33434F",color:"#C9D6DF",borderRadius:4,fontFamily:"monospace",fontSize:12}} aria-label={`Upper OK threshold for ${k} micron spec`}/>
               </div>
               <div style={{fontSize:9,color:"#3A4F70",marginTop:4}}>&lt;{r.min}=FAIL · {r.min}–{r.ok_max}=OK · &gt;{r.ok_max}=HIGH</div>
             </div>;
@@ -3703,8 +3703,8 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
           display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,
           boxShadow:"0 0 20px rgba(34,197,94,.4)"}}>✅</div>
         <div>
-          <div style={{fontSize:15,fontWeight:800,color:"#DDE8F8",letterSpacing:".06em"}}>COATING ON JOB</div>
-          <div style={{fontSize:11,color:"#5A7599",marginTop:2}}>30-Point Elcometer — IS 2629 / ISO 1461 Coating Verification</div>
+          <div style={{fontSize:15,fontWeight:800,color:"#C9D6DF",letterSpacing:".06em"}}>COATING ON JOB</div>
+          <div style={{fontSize:11,color:"#8DA0AD",marginTop:2}}>30-Point Elcometer — IS 2629 / ISO 1461 Coating Verification</div>
         </div>
       </div>
       <div style={{display:"flex",gap:8}}>
@@ -3714,26 +3714,26 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
           [available.length,"PENDING","#0E1E3A","#5BA3FF"]].map(([v,l,bg,col])=>(
           <div key={l} style={{textAlign:"center",background:bg,border:`1px solid ${col}30`,borderRadius:8,padding:"8px 14px",minWidth:64}}>
             <div style={{fontSize:20,fontWeight:800,color:col,fontFamily:"monospace",lineHeight:1}}>{v}</div>
-            <div style={{fontSize:9,color:"#5A7599",marginTop:2,fontWeight:700}}>{l}</div>
+            <div style={{fontSize:9,color:"#8DA0AD",marginTop:2,fontWeight:700}}>{l}</div>
           </div>
         ))}
       </div>
     </div>
 
     {/* Inspection card */}
-    <div style={{display:readOnly?"none":"block"}}><div style={{background:"#0E1623",border:`2px solid ${beam?"#22C55E30":"#1A2840"}`,
+    <div style={{display:readOnly?"none":"block"}}><div style={{background:"#1E2A36",border:`2px solid ${beam?"#22C55E30":"#33434F"}`,
       borderRadius:12,marginBottom:18,overflow:"hidden"}}>
-      <div style={{background:"linear-gradient(90deg,#0A1A0E,#0E1623)",borderBottom:"1px solid #1A2840",
+      <div style={{background:"linear-gradient(90deg,#0A1A0E,#1E2A36)",borderBottom:"1px solid #33434F",
         padding:"14px 20px",display:"flex",alignItems:"center",gap:10}}>
-        <div style={{width:8,height:8,borderRadius:"50%",background:beam?"#22C55E":"#1A2840",
+        <div style={{width:8,height:8,borderRadius:"50%",background:beam?"#22C55E":"#33434F",
           boxShadow:beam?"0 0 8px #22C55E":"none"}}/>
-        <span style={{fontSize:13,fontWeight:700,color:"#DDE8F8"}}>30-POINT ELCOMETER INSPECTION</span>
+        <span style={{fontSize:13,fontWeight:700,color:"#C9D6DF"}}>30-POINT ELCOMETER INSPECTION</span>
       </div>
 
       <div style={{padding:20}}>
         <div style={{marginBottom:16}}>
-          <label style={{fontSize:11,color:"#5A7599",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase",display:"block",marginBottom:8}}>
-            Select Beam <span style={{color:"#E8A020"}}>*</span>
+          <label style={{fontSize:11,color:"#8DA0AD",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase",display:"block",marginBottom:8}}>
+            Select Beam <span style={{color:"#3D7EA6"}}>*</span>
             <span style={{fontSize:9,fontWeight:400,color:"#3A4F70",marginLeft:8}}>({available.length} awaiting QC)</span>
           </label>
           <DSel dark value={sel} onChange={e=>{
@@ -3763,32 +3763,32 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
           {/* Auto-fetched info grid */}
           <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:8,
             padding:14,background:"#060E10",border:"1px solid #0E2A20",borderRadius:10,marginBottom:14}}>
-            {[["Beam No",beam.beam_no,"#E8A020"],["Load Type",beam.load_type,"#FB923C"],
+            {[["Beam No",beam.beam_no,"#3D7EA6"],["Load Type",beam.load_type,"#FB923C"],
               ["Part No(s)",beam.part_nos,"#5BA3FF"],["Dipped Parts",beam.dipped_parts||"All","#4ADE80"],
               ["Coating Req.",beam.coating_required+" μm","#A78BFA"],
-              ["Thickness",beam.section||"—","#5A7599"],["Weight",beam.total_weight+" MT","#22D3EE"],
+              ["Thickness",beam.section||"—","#8DA0AD"],["Weight",beam.total_weight+" MT","#22D3EE"],
               ["Length",beam.length_mm?beam.length_mm+" mm":"—","#FDE047"],
               ["Dip Duration",fmtDur(calcSecs(beam.immersion_start,beam.withdrawal_end)),"#FB923C"],
-              ["Dipped At",fmt12(beam.dipped_at),"#5A7599"],["By",beam.dipped_by_name||"—","#5A7599"],
+              ["Dipped At",fmt12(beam.dipped_at),"#8DA0AD"],["By",beam.dipped_by_name||"—","#8DA0AD"],
               ["Entry Mode", beam.entry_mode==="manual"?"Manual":"Live", beam.entry_mode==="manual"?"#FB923C":"#4ADE80"]
             ].map(([k,v,col])=>(
-              <div key={k} style={{padding:"8px 10px",background:"#0A1520",borderRadius:6,border:"1px solid #1A2840"}}>
-                <div style={{fontSize:9,color:"#2E4A6E",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em",marginBottom:4}}>{k}</div>
+              <div key={k} style={{padding:"8px 10px",background:"#0A1520",borderRadius:6,border:"1px solid #33434F"}}>
+                <div style={{fontSize:9,color:"#5C7482",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em",marginBottom:4}}>{k}</div>
                 <div style={{fontSize:11,color:col,fontWeight:700,fontFamily:"monospace",wordBreak:"break-all"}}>{v||"—"}</div>
               </div>
             ))}
           </div>
 
           {/* QC spec */}
-          <div style={{padding:"10px 14px",background:"#07101C",border:"1px solid #0E2A40",
-            borderRadius:8,marginBottom:16,fontSize:11,color:"#DDE8F8",fontFamily:"monospace"}}>
+          <div style={{padding:"10px 14px",background:"#16202B",border:"1px solid #0E2A40",
+            borderRadius:8,marginBottom:16,fontSize:11,color:"#C9D6DF",fontFamily:"monospace"}}>
             <span style={{color:"#3A4F70",marginRight:10}}>SPEC {beam.coating_required}μm:</span>
             {QCR[beam.coating_required]}
           </div>
 
           {/* 30-point grid — FW / MW / LW × Outside / Inside × 5 readings */}
-          <div style={{fontSize:11,color:"#5A7599",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em",marginBottom:12}}>
-            30-Point Elcometer Readings (μm) <span style={{color:"#E8A020"}}>*</span>
+          <div style={{fontSize:11,color:"#8DA0AD",fontWeight:700,textTransform:"uppercase",letterSpacing:".06em",marginBottom:12}}>
+            30-Point Elcometer Readings (μm) <span style={{color:"#3D7EA6"}}>*</span>
             <span style={{fontSize:9,fontWeight:400,color:"#3A4F70",marginLeft:8}}>3 withdrawals × Outside & Inside × 5 readings</span>
           </div>
           {V2_GROUPS.map(g=>(
@@ -3810,9 +3810,9 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
                         const v=arr[i]||""; const n=Number(v); const filled=v!==""&&!isNaN(n)&&n>0;
                         const overCap = capOn && filled && n>capMax;
                         const ar=filled&&!overCap&&beam?getAutoRemark(beam.coating_required,n):null;
-                        const brd = overCap ? "#F87171" : (filled?(ar?.color||"#4ADE80"):"#1A2840");
-                        const bg  = overCap ? "#200808" : (filled?(ar?.status==="FAIL"?"#200808":ar?.text==="High Coating"?"#1A1400":"#0A2010"):"#07101C");
-                        const col = overCap ? "#F87171" : (filled?(ar?.color||"#4ADE80"):"#5A7599");
+                        const brd = overCap ? "#F87171" : (filled?(ar?.color||"#4ADE80"):"#33434F");
+                        const bg  = overCap ? "#200808" : (filled?(ar?.status==="FAIL"?"#200808":ar?.text==="High Coating"?"#1A1400":"#0A2010"):"#16202B");
+                        const col = overCap ? "#F87171" : (filled?(ar?.color||"#4ADE80"):"#8DA0AD");
                         return (
                           <div key={i}>
                             <div style={{fontSize:8,color:"#3A4F70",fontWeight:700,textAlign:"center",marginBottom:3}}>R{i+1}</div>
@@ -3841,8 +3841,8 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
               ["LW Inside Average", v2Subs.lwIn],
 
             ].map(([lbl,val])=>(
-              <div key={lbl as string} style={{padding:"7px 9px",background:"#0A1520",borderRadius:5,border:"1px solid #1A2840",textAlign:"center"}}>
-                <div style={{fontSize:8,color:"#5A7599",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em"}}>{lbl as string}</div>
+              <div key={lbl as string} style={{padding:"7px 9px",background:"#0A1520",borderRadius:5,border:"1px solid #33434F",textAlign:"center"}}>
+                <div style={{fontSize:8,color:"#8DA0AD",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em"}}>{lbl as string}</div>
                 <div style={{fontSize:14,fontWeight:900,fontFamily:"monospace",color:val!=null?"#4ADE80":"#3A4F70"}}>{val!=null?(val as number).toFixed(2):"—"}</div>
               </div>
             ))}
@@ -3852,7 +3852,7 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
           {/* Result summary */}
           {avgVal!=null&&<div style={{display:"flex",gap:16,padding:"16px 20px",
             background:autoR?.status==="PASS"?"#071A0A":"#1A0707",
-            border:`2px solid ${autoR?.color||"#1A2840"}50`,borderRadius:10,marginBottom:16,
+            border:`2px solid ${autoR?.color||"#33434F"}50`,borderRadius:10,marginBottom:16,
             alignItems:"center",flexWrap:"wrap"}}>
             <div style={{textAlign:"center"}}>
               <div style={{fontSize:10,color:T.muted,textTransform:"uppercase",fontWeight:700,marginBottom:4}}>Total Average (30-pt)</div>
@@ -3862,7 +3862,7 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
             {[[minV?.toFixed(2),"Min"],[maxV?.toFixed(2),"Max"],[rangeV,"Range"]].map(([v,l])=>(
               <div key={l} style={{textAlign:"center"}}>
                 <div style={{fontSize:10,color:T.muted,textTransform:"uppercase",fontWeight:700,marginBottom:4}}>{l}</div>
-                <div style={{fontSize:18,fontWeight:800,fontFamily:"monospace",color:"#DDE8F8"}}>{v}</div>
+                <div style={{fontSize:18,fontWeight:800,fontFamily:"monospace",color:"#C9D6DF"}}>{v}</div>
               </div>
             ))}
             {autoR&&<div style={{marginLeft:"auto",textAlign:"center",padding:"14px 24px",
@@ -3875,7 +3875,7 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
           </div>}
 
           <div style={{marginBottom:16}}>
-            <label style={{fontSize:11,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:8}}>Inspector Remark</label>
+            <label style={{fontSize:11,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:8}}>Inspector Remark</label>
             <DTa dark value={remark} onChange={e=>sr(e.target.value)} placeholder="Surface condition, defects, areas of concern..." style={{minHeight:48}}/>
           </div>
         </>}
@@ -3895,31 +3895,31 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
 
     </div>{/* end qc readOnly wrapper */}
     {/* QC Records */}
-    <div style={{background:"#0E1623",border:"1px solid #1A2840",borderRadius:12,overflow:"hidden"}}>
-      <div style={{background:"#070C14",borderBottom:"1px solid #1A2840",padding:"12px 18px"}}>
-        <div style={{fontSize:13,fontWeight:700,color:"#DDE8F8"}}>Coating on Job Records — Elcometer</div>
+    <div style={{background:"#1E2A36",border:"1px solid #33434F",borderRadius:12,overflow:"hidden"}}>
+      <div style={{background:"#0F1720",borderBottom:"1px solid #33434F",padding:"12px 18px"}}>
+        <div style={{fontSize:13,fontWeight:700,color:"#C9D6DF"}}>Coating on Job Records — Elcometer</div>
         <div style={{fontSize:10,color:"#3A4F70",marginTop:2}}>IS 2629 / ISO 1461 — Showing latest {Math.min(20,qcDone.length)} of {qcDone.length} — New records = 30-point (5×6) · Legacy = 7-point</div>
       </div>
       <div style={{overflowX:"auto"}}>
         <table style={{width:"100%",borderCollapse:"collapse"}}>
-          <thead><tr style={{background:"#070C14"}}>
+          <thead><tr style={{background:"#0F1720"}}>
             {["Beam No","Type","Material","Surface","Part No(s)","Req μm","Readings (P1–P7 · legacy) / 6 Sub-Averages (v2)","Avg","Min","Max","Cycle Time","Decision","Status","Best Match","AI Prediction vs Actual","By","At",...(canEditQC?["Edit"]:[])].map(h=>(
-              <th key={h} style={{padding:"9px 12px",textAlign:"left",color:"#3A4F70",fontWeight:700,fontSize:10,letterSpacing:".06em",textTransform:"uppercase",borderBottom:"1px solid #1A2840",whiteSpace:"nowrap"}}>{h}</th>
+              <th key={h} style={{padding:"9px 12px",textAlign:"left",color:"#3A4F70",fontWeight:700,fontSize:10,letterSpacing:".06em",textTransform:"uppercase",borderBottom:"1px solid #33434F",whiteSpace:"nowrap"}}>{h}</th>
             ))}
           </tr></thead>
           <tbody>
-            {qcDone.length===0&&<tr><td colSpan={canEditQC?18:17} style={{padding:32,textAlign:"center",color:"#2E4A6E",fontSize:12}}>No QC records yet</td></tr>}
+            {qcDone.length===0&&<tr><td colSpan={canEditQC?18:17} style={{padding:32,textAlign:"center",color:"#5C7482",fontSize:12}}>No QC records yet</td></tr>}
             {qcDone.slice(0,20).map(b=>{
               const v2 = isV2Coj(b);
               const subs = v2 ? v2SubAverages(b.elcometer_v2) : null;
               const mm = v2 ? v2MinMax(b.elcometer_v2) : null;
               const legacyE = Array.isArray(b.elcometer) ? b.elcometer : [];
               return (
-              <tr key={txn(b)} style={{borderBottom:"1px solid #0E1623",transition:"background .1s"}}
+              <tr key={txn(b)} style={{borderBottom:"1px solid #1E2A36",transition:"background .1s"}}
                 onMouseEnter={e=>e.currentTarget.style.background="#111C2E"}
                 onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-                <td style={{padding:"9px 12px"}}><span style={{fontFamily:"monospace",fontSize:13,fontWeight:800,color:"#E8A020"}}>{b.beam_no}</span></td>
-                <td style={{padding:"9px 12px"}}><span style={{fontSize:10,fontWeight:700,color:"#FB923C",background:"#1A2840",padding:"2px 6px",borderRadius:3}}>{b.load_type}</span></td>
+                <td style={{padding:"9px 12px"}}><span style={{fontFamily:"monospace",fontSize:13,fontWeight:800,color:"#3D7EA6"}}>{b.beam_no}</span></td>
+                <td style={{padding:"9px 12px"}}><span style={{fontSize:10,fontWeight:700,color:"#FB923C",background:"#33434F",padding:"2px 6px",borderRadius:3}}>{b.load_type}</span></td>
                 <td style={{padding:"9px 12px"}}><span style={{fontSize:10,fontWeight:800,color:"#22D3EE",background:"#082430",border:"1px solid #22D3EE60",padding:"2px 6px",borderRadius:3,letterSpacing:".05em"}}>{b.material_type||"—"}</span></td>
                 <td style={{padding:"9px 12px"}}><span style={{fontSize:10,fontWeight:700,color:"#F0ABFC"}}>{fmtSurface(b.surface_condition)}</span></td>
                 <td style={{padding:"9px 12px",maxWidth:90}}><span style={{fontSize:10,color:"#5BA3FF",fontFamily:"monospace"}}>{b.part_nos||"—"}</span></td>
@@ -3928,22 +3928,22 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
                   {v2 && subs ? (
                     <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
                       {[["FW·O",subs.fwOut],["FW·I",subs.fwIn],["MW·O",subs.mwOut],["MW·I",subs.mwIn],["LW·O",subs.lwOut],["LW·I",subs.lwIn]].map(([lbl,v])=>(
-                        <span key={lbl as string} style={{padding:"2px 5px",background:"#0A1520",border:"1px solid #1A2840",borderRadius:3,fontFamily:"monospace",fontSize:10,color:"#4ADE80"}}>
-                          <span style={{color:"#5A7599",marginRight:3}}>{lbl as string}</span>{v!=null?(v as number).toFixed(2):"—"}
+                        <span key={lbl as string} style={{padding:"2px 5px",background:"#0A1520",border:"1px solid #33434F",borderRadius:3,fontFamily:"monospace",fontSize:10,color:"#4ADE80"}}>
+                          <span style={{color:"#8DA0AD",marginRight:3}}>{lbl as string}</span>{v!=null?(v as number).toFixed(2):"—"}
                         </span>
                       ))}
-                      <span style={{padding:"2px 5px",background:"#0A1014",border:"1px solid #1A2840",borderRadius:3,fontFamily:"monospace",fontSize:9,color:"#5A7599"}}>30-pt</span>
+                      <span style={{padding:"2px 5px",background:"#0A1014",border:"1px solid #33434F",borderRadius:3,fontFamily:"monospace",fontSize:9,color:"#8DA0AD"}}>30-pt</span>
                     </div>
                   ) : (
                     <div style={{display:"flex",gap:4}}>
-                      {[0,1,2,3,4,5,6].map(i=><span key={i} style={{fontFamily:"monospace",fontSize:11,color:"#5A7599",minWidth:26,textAlign:"center"}}>{legacyE[i]??'—'}</span>)}
-                      <span style={{padding:"1px 4px",background:"#0A1014",border:"1px solid #1A2840",borderRadius:3,fontFamily:"monospace",fontSize:9,color:"#5A7599",marginLeft:4}}>7-pt</span>
+                      {[0,1,2,3,4,5,6].map(i=><span key={i} style={{fontFamily:"monospace",fontSize:11,color:"#8DA0AD",minWidth:26,textAlign:"center"}}>{legacyE[i]??'—'}</span>)}
+                      <span style={{padding:"1px 4px",background:"#0A1014",border:"1px solid #33434F",borderRadius:3,fontFamily:"monospace",fontSize:9,color:"#8DA0AD",marginLeft:4}}>7-pt</span>
                     </div>
                   )}
                 </td>
                 <td style={{padding:"9px 12px"}}><strong style={{fontFamily:"monospace",fontSize:13,color:b.qc_auto_remark==="Below Minimum"?"#F87171":b.qc_auto_remark==="High Coating"?"#FBBF24":"#4ADE80"}}>{b.avg_reading}</strong></td>
-                <td style={{padding:"9px 12px"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#5A7599"}}>{v2&&mm?.min!=null?mm.min.toFixed(2):(legacyE.filter(Boolean).length?Math.min(...legacyE.filter(Boolean)).toFixed(2):"—")}</span></td>
-                <td style={{padding:"9px 12px"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#5A7599"}}>{v2&&mm?.max!=null?mm.max.toFixed(2):(legacyE.filter(Boolean).length?Math.max(...legacyE.filter(Boolean)).toFixed(2):"—")}</span></td>
+                <td style={{padding:"9px 12px"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#8DA0AD"}}>{v2&&mm?.min!=null?mm.min.toFixed(2):(legacyE.filter(Boolean).length?Math.min(...legacyE.filter(Boolean)).toFixed(2):"—")}</span></td>
+                <td style={{padding:"9px 12px"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#8DA0AD"}}>{v2&&mm?.max!=null?mm.max.toFixed(2):(legacyE.filter(Boolean).length?Math.max(...legacyE.filter(Boolean)).toFixed(2):"—")}</span></td>
 
                 <td style={{padding:"9px 12px",whiteSpace:"nowrap"}}><span style={{fontFamily:"monospace",fontSize:11,color:"#FB923C",fontWeight:700}} title="Total cycle time from Dipping (Immersion start → Withdrawal end)">{fmtDur(cycleSecs(b))}</span></td>
                 <td style={{padding:"9px 12px",whiteSpace:"nowrap"}}>
@@ -3957,11 +3957,11 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
                     const bm = b.benchmark || computeBenchmark(b, beams, benchCfg);
                     if (!bm) return <span style={{fontSize:10,color:"#3A4F70"}}>—</span>;
                     if (bm.status === "Match Not Available") {
-                      return <span style={{padding:"3px 8px",borderRadius:4,fontSize:10,fontWeight:800,fontFamily:"monospace",background:"#E8A02020",color:"#E8A020",border:"1px solid #E8A02050"}}>No Match</span>;
+                      return <span style={{padding:"3px 8px",borderRadius:4,fontSize:10,fontWeight:800,fontFamily:"monospace",background:"#3D7EA620",color:"#3D7EA6",border:"1px solid #3D7EA650"}}>No Match</span>;
                     }
                     if (bm.ref_beam_no && bm.difference!=null) {
                       const d = Number(bm.difference);
-                      const c = d>0.05?"#E8A020":d<-0.05?"#4ADE80":"#5A7599";
+                      const c = d>0.05?"#3D7EA6":d<-0.05?"#4ADE80":"#8DA0AD";
                       const label = d>0.05?`+${d.toFixed(2)}μm`:d<-0.05?`${d.toFixed(2)}μm`:"≈";
                       return <span style={{padding:"3px 8px",borderRadius:4,fontSize:10,fontWeight:800,fontFamily:"monospace",background:c+"20",color:c,border:`1px solid ${c}50`}}>{label} · {bm.ref_beam_no}</span>;
                     }
@@ -3988,14 +3988,14 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
                         {rows.map((r:any) => {
                           const isBest = best != null && r.model === best;
                           return (
-                            <div key={r.model} style={{background:"#0A1520",border:`1px solid ${isBest?"#4ADE8060":"#1A2840"}`,borderRadius:5,padding:"5px 8px",fontFamily:"monospace",fontSize:10,lineHeight:1.7}}>
+                            <div key={r.model} style={{background:"#0A1520",border:`1px solid ${isBest?"#4ADE8060":"#33434F"}`,borderRadius:5,padding:"5px 8px",fontFamily:"monospace",fontSize:10,lineHeight:1.7}}>
                               <div style={{display:"flex",alignItems:"center",gap:6}}>
                                 <span style={{fontWeight:800,color:"#7DD3FC",letterSpacing:".04em"}}>{r.modelLabel}</span>
                                 {isBest && <span style={{fontSize:8,fontWeight:800,color:"#4ADE80",background:"#0A2218",border:"1px solid #4ADE8050",borderRadius:3,padding:"1px 5px",letterSpacing:".06em"}}>BEST MODEL</span>}
                               </div>
-                              <div style={{color:"#5A7599"}}>Actual time <span style={{color:"#FB923C",fontWeight:700}}>{fmtDur(r.actualSec)}</span>{r.predictedSec!=null&&<> · predicted <span style={{color:"#8FA8CF"}}>{fmtDur(r.predictedSec)}</span></>}</div>
-                              <div style={{color:"#5A7599"}}>Expected <span style={{color:"#A78BFA",fontWeight:700}}>{r.expectedCoating!=null?`${r.expectedCoating}μm`:"—"}</span> · Actual <span style={{color:"#DDE8F8",fontWeight:700}}>{r.actualCoating!=null?`${r.actualCoating}μm`:"—"}</span> · Error <span style={{color:r.coatingVariation!=null&&Math.abs(r.coatingVariation)<=3?"#4ADE80":"#E8A020",fontWeight:700}}>{r.coatingVariation!=null?`${r.coatingVariation>0?"+":""}${r.coatingVariation}μm`:"—"}</span></div>
-                              <div style={{color:"#5A7599"}}>Accuracy <span style={{color:(r.overallAccuracy??0)>=85?"#4ADE80":(r.overallAccuracy??0)>=60?"#FBBF24":"#F87171",fontWeight:800}}>{r.overallAccuracy!=null?`${r.overallAccuracy}%`:"—"}</span>{r.coatingAccuracy!=null&&<span style={{color:"#3A4F70"}}> (coating {r.coatingAccuracy}%)</span>}</div>
+                              <div style={{color:"#8DA0AD"}}>Actual time <span style={{color:"#FB923C",fontWeight:700}}>{fmtDur(r.actualSec)}</span>{r.predictedSec!=null&&<> · predicted <span style={{color:"#8FA8CF"}}>{fmtDur(r.predictedSec)}</span></>}</div>
+                              <div style={{color:"#8DA0AD"}}>Expected <span style={{color:"#A78BFA",fontWeight:700}}>{r.expectedCoating!=null?`${r.expectedCoating}μm`:"—"}</span> · Actual <span style={{color:"#C9D6DF",fontWeight:700}}>{r.actualCoating!=null?`${r.actualCoating}μm`:"—"}</span> · Error <span style={{color:r.coatingVariation!=null&&Math.abs(r.coatingVariation)<=3?"#4ADE80":"#3D7EA6",fontWeight:700}}>{r.coatingVariation!=null?`${r.coatingVariation>0?"+":""}${r.coatingVariation}μm`:"—"}</span></div>
+                              <div style={{color:"#8DA0AD"}}>Accuracy <span style={{color:(r.overallAccuracy??0)>=85?"#4ADE80":(r.overallAccuracy??0)>=60?"#FBBF24":"#F87171",fontWeight:800}}>{r.overallAccuracy!=null?`${r.overallAccuracy}%`:"—"}</span>{r.coatingAccuracy!=null&&<span style={{color:"#3A4F70"}}> (coating {r.coatingAccuracy}%)</span>}</div>
                             </div>
                           );
                         })}
@@ -4003,11 +4003,11 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
                     );
                   })()}
                 </td>
-                <td style={{padding:"9px 12px",fontSize:11,color:"#5A7599",whiteSpace:"nowrap"}}>{b.qc_completed_by_name}</td>
-                <td style={{padding:"9px 12px",fontSize:11,color:"#5A7599",whiteSpace:"nowrap"}}>{fmt12(b.qc_completed_at)}</td>
+                <td style={{padding:"9px 12px",fontSize:11,color:"#8DA0AD",whiteSpace:"nowrap"}}>{b.qc_completed_by_name}</td>
+                <td style={{padding:"9px 12px",fontSize:11,color:"#8DA0AD",whiteSpace:"nowrap"}}>{fmt12(b.qc_completed_at)}</td>
                 {canEditQC && <td style={{padding:"9px 12px",whiteSpace:"nowrap"}}>
                   <button onClick={()=>setEditQCBeam(b)} title="Edit Coating on Job readings"
-                    style={{background:"transparent",border:"1px solid #1A2840",color:"#A78BFA",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>✎ Edit</button>
+                    style={{background:"transparent",border:"1px solid #33434F",color:"#A78BFA",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>✎ Edit</button>
                   {Array.isArray(b.qc_history)&&b.qc_history.length>0 && <button
                     title={`Undo last QC edit (${b.qc_history.length} snapshot${b.qc_history.length>1?"s":""} saved)`}
                     onClick={()=>{
@@ -4017,7 +4017,7 @@ function QCTab({beams,setBeams,addAudit,user,readOnly=false,T,qcRanges,setQcRang
                       addAudit(user.id,user.full_name,"EDIT_QC_UNDO","quality",`Reverted Coating on Job on ${b.beam_no} (was edited by ${last.edited_by_name} at ${last.edited_at})`);
                       sm({ok:true,text:`↶ Reverted Coating on Job for ${b.beam_no}`}); setTimeout(()=>sm(null),4000);
                     }}
-                    style={{marginLeft:6,background:"transparent",border:"1px solid #1A2840",color:"#FB923C",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>↶ Undo</button>}
+                    style={{marginLeft:6,background:"transparent",border:"1px solid #33434F",color:"#FB923C",cursor:"pointer",fontSize:10,fontWeight:700,padding:"4px 8px",borderRadius:5}}>↶ Undo</button>}
                 </td>}
               </tr>
               );
@@ -4138,36 +4138,36 @@ function EditQCModal({beam,qcRanges,fieldConfig,onClose,onSave}:any){
     setV2s(p=>{const arr=[...(p[gk]||["","","","",""])];arr[i]=val;return {...p,[gk]:arr};});
   }
 
-  const inp:React.CSSProperties = {width:"100%",background:"#07101C",border:"1px solid #1A2840",color:"#DDE8F8",padding:"10px 6px",borderRadius:6,fontSize:14,fontFamily:"monospace",fontWeight:800,textAlign:"center"};
-  const lbl:React.CSSProperties = {fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:5};
+  const inp:React.CSSProperties = {width:"100%",background:"#16202B",border:"1px solid #33434F",color:"#C9D6DF",padding:"10px 6px",borderRadius:6,fontSize:14,fontFamily:"monospace",fontWeight:800,textAlign:"center"};
+  const lbl:React.CSSProperties = {fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:5};
 
   const v2Subs = isV2Beam ? v2SubAverages(stringsToV2(v2s)) : null;
 
   return <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,.7)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center",padding:16}} onClick={onClose}>
-    <div onClick={e=>e.stopPropagation()} style={{background:"#0E1623",border:"1px solid #1A2840",borderRadius:12,padding:24,width:isV2Beam?860:680,maxWidth:"100%",maxHeight:"90vh",overflowY:"auto"}}>
+    <div onClick={e=>e.stopPropagation()} style={{background:"#1E2A36",border:"1px solid #33434F",borderRadius:12,padding:24,width:isV2Beam?860:680,maxWidth:"100%",maxHeight:"90vh",overflowY:"auto"}}>
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:14}}>
         <div>
-          <div style={{fontSize:14,fontWeight:800,color:"#DDE8F8"}}>{stage==="edit"?`✎ Edit Coating on Job${isV2Beam?" (30-Point)":""}`:"⚠ Confirm Coating Changes"}</div>
-          <div style={{fontSize:11,color:"#5A7599",marginTop:3}}>Beam <span style={{color:"#E8A020",fontFamily:"monospace",fontWeight:700}}>{beam.beam_no}</span> — Req {beam.coating_required}μm — {stage==="edit"?"avg & decision recalculate automatically":"review before saving"}</div>
+          <div style={{fontSize:14,fontWeight:800,color:"#C9D6DF"}}>{stage==="edit"?`✎ Edit Coating on Job${isV2Beam?" (30-Point)":""}`:"⚠ Confirm Coating Changes"}</div>
+          <div style={{fontSize:11,color:"#8DA0AD",marginTop:3}}>Beam <span style={{color:"#3D7EA6",fontFamily:"monospace",fontWeight:700}}>{beam.beam_no}</span> — Req {beam.coating_required}μm — {stage==="edit"?"avg & decision recalculate automatically":"review before saving"}</div>
         </div>
-        <button onClick={onClose} style={{background:"transparent",border:"none",color:"#5A7599",cursor:"pointer",fontSize:20}}>✕</button>
+        <button onClick={onClose} style={{background:"transparent",border:"none",color:"#8DA0AD",cursor:"pointer",fontSize:20}}>✕</button>
       </div>
       {stage==="edit" ? <>
         {isV2Beam ? (
           <div style={{marginBottom:14}}>
             {V2_GROUPS.map(g=>(
-              <div key={g.key} style={{marginBottom:10,padding:"8px 10px",background:"#07101C",border:"1px solid #1A2840",borderRadius:8}}>
+              <div key={g.key} style={{marginBottom:10,padding:"8px 10px",background:"#16202B",border:"1px solid #33434F",borderRadius:8}}>
                 <div style={{fontSize:11,fontWeight:800,color:"#8AA3C0",marginBottom:6,letterSpacing:".05em"}}>{g.label}</div>
                 {V2_SIDES.map(s=>{
                   const gk = `${g.key}_${s.key}`;
                   const arr = v2s[gk] || ["","","","",""];
                   return (
                     <div key={s.key} style={{display:"grid",gridTemplateColumns:"90px repeat(5,1fr) 70px",gap:6,alignItems:"center",marginBottom:6}}>
-                      <div style={{fontSize:10,color:"#5A7599",fontWeight:700,textTransform:"uppercase"}}>{s.key==="out"?(g.key==="lw"?"Upper":"Upper"):(g.key==="lw"?"Lower":"Inside")}</div>
+                      <div style={{fontSize:10,color:"#8DA0AD",fontWeight:700,textTransform:"uppercase"}}>{s.key==="out"?(g.key==="lw"?"Upper":"Upper"):(g.key==="lw"?"Lower":"Inside")}</div>
                       {arr.map((v,i)=>{
                         const n=Number(v); const overCap = capOn && v!=="" && !isNaN(n) && n>capMax;
                         return <input key={i} type="number" step="0.1" min="0" max={capOn?capMax:undefined} value={v}
-                          style={{...inp,padding:"8px 2px",fontSize:12, border:`1px solid ${overCap?"#F87171":"#1A2840"}`, color:overCap?"#F87171":"#DDE8F8"}}
+                          style={{...inp,padding:"8px 2px",fontSize:12, border:`1px solid ${overCap?"#F87171":"#33434F"}`, color:overCap?"#F87171":"#C9D6DF"}}
                           onChange={e=>updV2(gk,i,e.target.value)} placeholder="0.0"/>;
                       })}
                       {(() => {
@@ -4183,8 +4183,8 @@ function EditQCModal({beam,qcRanges,fieldConfig,onClose,onSave}:any){
             {v2Subs && (
               <div style={{display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:6,marginTop:6}}>
                 {[["FW Upper",v2Subs.fwOut],["FW Inside",v2Subs.fwIn],["MW Upper",v2Subs.mwOut],["MW Inside",v2Subs.mwIn],["LW Upper",v2Subs.lwOut],["LW Lower",v2Subs.lwIn]].map(([k,v])=>(
-                  <div key={k as string} style={{padding:"5px 6px",background:"#0A1520",borderRadius:4,border:"1px solid #1A2840",textAlign:"center"}}>
-                    <div style={{fontSize:8,color:"#5A7599",fontWeight:700}}>{k as string}</div>
+                  <div key={k as string} style={{padding:"5px 6px",background:"#0A1520",borderRadius:4,border:"1px solid #33434F",textAlign:"center"}}>
+                    <div style={{fontSize:8,color:"#8DA0AD",fontWeight:700}}>{k as string}</div>
                     <div style={{fontSize:11,color:v!=null?"#4ADE80":"#3A4F70",fontWeight:800,fontFamily:"monospace"}}>{v!=null?(v as number).toFixed(2):"—"}</div>
                   </div>
                 ))}
@@ -4198,7 +4198,7 @@ function EditQCModal({beam,qcRanges,fieldConfig,onClose,onSave}:any){
               return <div key={i}>
                 <label style={{...lbl,textAlign:"center"}}>P{i+1}</label>
                 <input type="number" step="0.1" min="0" max={capOn?capMax:undefined} value={v}
-                  style={{...inp, border:`1px solid ${overCap?"#F87171":"#1A2840"}`, color:overCap?"#F87171":"#DDE8F8"}}
+                  style={{...inp, border:`1px solid ${overCap?"#F87171":"#33434F"}`, color:overCap?"#F87171":"#C9D6DF"}}
                   onChange={e=>setPts(p=>{const n=[...p];n[i]=e.target.value;return n;})}/>
                 {overCap && <div style={{textAlign:"center",marginTop:3,fontSize:9,color:"#F87171",fontWeight:700}}>Max {capMax}μm</div>}
               </div>;
@@ -4208,16 +4208,16 @@ function EditQCModal({beam,qcRanges,fieldConfig,onClose,onSave}:any){
         <div style={{marginBottom:14}}>
           <label style={lbl}>Inspector Remark</label>
           <textarea value={remark} onChange={e=>setRemark(e.target.value)}
-            style={{width:"100%",background:"#07101C",border:"1px solid #1A2840",color:"#DDE8F8",padding:"8px 10px",borderRadius:6,fontSize:12,minHeight:60,fontFamily:"inherit"}}/>
+            style={{width:"100%",background:"#16202B",border:"1px solid #33434F",color:"#C9D6DF",padding:"8px 10px",borderRadius:6,fontSize:12,minHeight:60,fontFamily:"inherit"}}/>
         </div>
         {avgVal!=null && autoR && <div style={{display:"flex",gap:14,padding:"12px 16px",background:autoR.status==="PASS"?"#071A0A":"#1A0707",border:`1px solid ${autoR.color}50`,borderRadius:8,marginBottom:10,alignItems:"center"}}>
-          <div><div style={{fontSize:9,color:"#5A7599"}}>NEW AVG</div><div style={{fontSize:22,fontWeight:900,fontFamily:"monospace",color:autoR.color}}>{avgVal.toFixed(2)}μm</div></div>
-          <div><div style={{fontSize:9,color:"#5A7599"}}>NEW STATUS</div><div style={{fontSize:16,fontWeight:800,color:autoR.color}}>{autoR.status} — {autoR.text}</div></div>
-          <div style={{marginLeft:"auto",fontSize:10,color:"#5A7599"}}>Was: {beam.avg_reading}μm · {beam.qc_status} · {beam.qc_auto_remark}</div>
+          <div><div style={{fontSize:9,color:"#8DA0AD"}}>NEW AVG</div><div style={{fontSize:22,fontWeight:900,fontFamily:"monospace",color:autoR.color}}>{avgVal.toFixed(2)}μm</div></div>
+          <div><div style={{fontSize:9,color:"#8DA0AD"}}>NEW STATUS</div><div style={{fontSize:16,fontWeight:800,color:autoR.color}}>{autoR.status} — {autoR.text}</div></div>
+          <div style={{marginLeft:"auto",fontSize:10,color:"#8DA0AD"}}>Was: {beam.avg_reading}μm · {beam.qc_status} · {beam.qc_auto_remark}</div>
         </div>}
         {err && <div style={{marginTop:6,padding:"8px 12px",background:"#2A0A0A",border:"1px solid #5C1818",borderRadius:6,fontSize:11,color:"#FB7185"}}>⚠ {err}</div>}
         <div style={{display:"flex",gap:8,justifyContent:"flex-end",marginTop:14}}>
-          <button onClick={onClose} style={{padding:"9px 16px",background:"transparent",color:"#5A7599",border:"1px solid #1A2840",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>Cancel</button>
+          <button onClick={onClose} style={{padding:"9px 16px",background:"transparent",color:"#8DA0AD",border:"1px solid #33434F",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>Cancel</button>
           <button onClick={validateAndConfirm} style={{padding:"9px 16px",background:"linear-gradient(135deg,#A78BFA,#7C3AED)",color:"#fff",border:"none",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:800}}>Review Changes →</button>
         </div>
       </> : <>
@@ -4225,12 +4225,12 @@ function EditQCModal({beam,qcRanges,fieldConfig,onClose,onSave}:any){
           ⚠ You are about to overwrite the Coating on Job result. A snapshot will be saved so you can undo this change.
         </div>
         {changes.length===0
-          ? <div style={{padding:"10px 12px",background:"#0A1320",borderRadius:6,fontSize:11,color:"#5A7599"}}>ℹ No values changed — save will still create an audit entry.</div>
-          : <ul style={{margin:0,padding:"10px 16px 10px 28px",background:"#0A1320",borderRadius:6,fontSize:11,color:"#DDE8F8",lineHeight:1.7}}>
+          ? <div style={{padding:"10px 12px",background:"#0A1320",borderRadius:6,fontSize:11,color:"#8DA0AD"}}>ℹ No values changed — save will still create an audit entry.</div>
+          : <ul style={{margin:0,padding:"10px 16px 10px 28px",background:"#0A1320",borderRadius:6,fontSize:11,color:"#C9D6DF",lineHeight:1.7}}>
               {changes.map((c,i)=><li key={i}>{c}</li>)}
             </ul>}
         <div style={{display:"flex",gap:8,justifyContent:"flex-end",marginTop:18}}>
-          <button onClick={()=>setStage("edit")} style={{padding:"9px 16px",background:"transparent",color:"#5A7599",border:"1px solid #1A2840",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>← Back</button>
+          <button onClick={()=>setStage("edit")} style={{padding:"9px 16px",background:"transparent",color:"#8DA0AD",border:"1px solid #33434F",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:700}}>← Back</button>
           <button onClick={()=>patch && onSave(patch,diffSummary)} style={{padding:"9px 16px",background:"linear-gradient(135deg,#16A34A,#15803D)",color:"#fff",border:"none",borderRadius:6,cursor:"pointer",fontSize:12,fontWeight:800}}>✓ Confirm & Save</button>
         </div>
       </>}
@@ -5788,7 +5788,7 @@ function AuditTab({auditLog,fieldConfig,user:me,T,deleteAuditEntries=(_:string[]
           mn(fAudit.length-i,T.dim),
           <span style={{fontFamily:"monospace",fontSize:11,color:T.muted}}>{fmtDT(a.ts||a.timestamp)}</span>,
           <strong style={{color:T.text,fontSize:12}}>{a.userName}</strong>,
-          <span style={{padding:"2px 8px",borderRadius:4,fontSize:10,fontWeight:700,background:"#1A2840",color:T.amber,letterSpacing:".05em"}}>{a.action}</span>,
+          <span style={{padding:"2px 8px",borderRadius:4,fontSize:10,fontWeight:700,background:"#33434F",color:T.amber,letterSpacing:".05em"}}>{a.action}</span>,
           <span style={{color:T.muted,fontSize:11}}>{a.module}</span>,
           <span style={{fontSize:11,color:T.text}}>{a.details}</span>,
         ];
@@ -5888,7 +5888,7 @@ function MlrTrainingAdmin({store,me,addAudit,aiModel,setAiModel,aiDashboardEnabl
   const template="Load Type,Material Type,Thickness,Weight,Length,Specific Coating,Surface Condition,Bath Temperature,Total Dipping Time,Actual Average Coating\nSingle,MS,10,1.2,6000,87,Normal,450,300,96\n";
   const cards:[string,any][]=[["mlr",stored],["lgbm",storedLgbm],["xgb",storedXgb],["cat",storedCat],["zc",storedZc]];
   return (
-    <div style={{padding:"14px 16px",background:"#0A1422",border:"1px solid #1A2840",borderRadius:10,marginBottom:16}}>
+    <div style={{padding:"14px 16px",background:"#0A1422",border:"1px solid #33434F",borderRadius:10,marginBottom:16}}>
       <div style={{fontSize:12,fontWeight:900,color:"#FB923C",letterSpacing:".06em",marginBottom:8}}>AI MODEL CONFIGURATION & TRAINING — TOTAL DIPPING TIME PREDICTION</div>
       <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginBottom:10}}>
         <span style={{fontSize:11,color:"#8AA3C0",fontWeight:700}}>Active prediction model(s):</span>
@@ -5896,7 +5896,7 @@ function MlrTrainingAdmin({store,me,addAudit,aiModel,setAiModel,aiDashboardEnabl
           const on=selected.includes(v);
           return <button key={v} type="button" onClick={()=>toggleModel(v)}
             style={{padding:"5px 10px",borderRadius:5,fontSize:11,fontWeight:800,cursor:"pointer",fontFamily:"inherit",
-              border:`1px solid ${on?"#FB923C":"#1A2840"}`,background:on?"#2A1408":"#07101C",color:on?"#FB923C":"#8AA3C0"}}>
+              border:`1px solid ${on?"#FB923C":"#33434F"}`,background:on?"#2A1408":"#16202B",color:on?"#FB923C":"#8AA3C0"}}>
             {on?"☑":"☐"} {AI_MODEL_LABEL[v]}
           </button>;
         })}
@@ -5943,7 +5943,7 @@ function MlrTrainingAdmin({store,me,addAudit,aiModel,setAiModel,aiDashboardEnabl
       )}
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:8,marginBottom:10}}>
         {cards.map(([id,s])=>(
-          <div key={id} style={{padding:"8px 10px",background:"#07101C",border:`1px solid ${s?"#1A2840":"#2A1010"}`,borderRadius:8}}>
+          <div key={id} style={{padding:"8px 10px",background:"#16202B",border:`1px solid ${s?"#33434F":"#2A1010"}`,borderRadius:8}}>
             <div style={{fontSize:11,fontWeight:900,color:s?"#FDE68A":"#F87171",marginBottom:4}}>{AI_MODEL_LABEL[id]} — {s?"TRAINED":"NOT TRAINED"}</div>
             {s
               ? <div style={{fontSize:10,color:"#8AA3C0",fontFamily:"monospace",lineHeight:1.7}}>
@@ -6022,7 +6022,7 @@ function ZinccoreLearningPanel({store,me,beams=[],addAudit,busy,setBusy,setMsg}:
   }
 
   return (
-    <div style={{padding:"10px 12px",background:"#07101C",border:"1px solid #1A2840",borderRadius:8,marginBottom:10}}>
+    <div style={{padding:"10px 12px",background:"#16202B",border:"1px solid #33434F",borderRadius:8,marginBottom:10}}>
       <div style={{fontSize:11,fontWeight:900,color:"#5BA3FF",letterSpacing:".05em",marginBottom:6}}>ZINCCORE LEARNING — DEEP LEARNING FEEDBACK LOOP</div>
       {!model
         ? <div style={{fontSize:11,color:"#8AA3C0"}}>Train zinccore from a CSV above to enable continuous learning.</div>
@@ -6388,10 +6388,10 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
         <Btn onClick={addUser}>+ Create User</Btn>
       </Card>
       {/* Chain explanation */}
-      <div style={{padding:"12px 16px",background:"#07101C",border:"1px solid #1A3458",borderRadius:8,marginBottom:14}}>
+      <div style={{padding:"12px 16px",background:"#16202B",border:"1px solid #1A3458",borderRadius:8,marginBottom:14}}>
         <div style={{fontSize:11,fontWeight:700,color:T.amber,marginBottom:8}}>⛓ PRODUCTION CHAIN — How Roles Work Together</div>
         <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap",fontSize:11,color:T.muted}}>
-          {[["⚙ Admin","Creates all users, full access","#E8A020"],["→",null,T.dim],["👷 Supervisor","Monitors all data read-only","#22D3EE"],["→",null,T.dim],["📦 Loading","Registers beams","#5BA3FF"],["→",null,T.dim],["🛢 Dipping","Records timestamps","#FB923C"],["→",null,T.dim],["🔬 QC Inspector","7-pt inspection","#A78BFA"]].map(([l,s,col],i)=>(
+          {[["⚙ Admin","Creates all users, full access","#3D7EA6"],["→",null,T.dim],["👷 Supervisor","Monitors all data read-only","#22D3EE"],["→",null,T.dim],["📦 Loading","Registers beams","#5BA3FF"],["→",null,T.dim],["🛢 Dipping","Records timestamps","#FB923C"],["→",null,T.dim],["🔬 QC Inspector","7-pt inspection","#A78BFA"]].map(([l,s,col],i)=>(
             s?<div key={i} style={{padding:"6px 10px",background:col+"15",border:`1px solid ${col}30`,borderRadius:6}}>
               <div style={{color:col,fontWeight:700}}>{l}</div>
               <div style={{fontSize:9,color:T.dim,marginTop:2}}>{s}</div>
@@ -6464,17 +6464,17 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
                   display:"flex",alignItems:"center",justifyContent:"space-between",
                   padding:"10px 12px",borderRadius:8,
                   background:currentOn&&baseAllowed?"#0A1A0A":"#0A0A0A",
-                  border:`1px solid ${currentOn&&baseAllowed?"#1A3A1A":baseAllowed?"#2A1A1A":"#1A2840"}`,
+                  border:`1px solid ${currentOn&&baseAllowed?"#1A3A1A":baseAllowed?"#2A1A1A":"#33434F"}`,
                   opacity:baseAllowed?1:0.35}}>
                   <div>
-                    <div style={{fontSize:12,fontWeight:700,color:currentOn&&baseAllowed?"#DDE8F8":"#3A4F70"}}>{t.label}</div>
-                    {!baseAllowed&&<div style={{fontSize:9,color:"#2E4A6E",marginTop:2}}>Not in base role</div>}
+                    <div style={{fontSize:12,fontWeight:700,color:currentOn&&baseAllowed?"#C9D6DF":"#3A4F70"}}>{t.label}</div>
+                    {!baseAllowed&&<div style={{fontSize:9,color:"#5C7482",marginTop:2}}>Not in base role</div>}
                   </div>
                   <button onClick={()=>baseAllowed&&toggleModule(u.id,t.id,currentOn)}
                     disabled={!baseAllowed}
                     style={{
                       width:42,height:24,borderRadius:12,border:"none",cursor:baseAllowed?"pointer":"default",
-                      background:currentOn&&baseAllowed?"#16A34A":"#1A2840",
+                      background:currentOn&&baseAllowed?"#16A34A":"#33434F",
                       position:"relative",transition:"background .2s",flexShrink:0}}>
                     <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",
                       position:"absolute",top:3,
@@ -6577,7 +6577,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             setShow65(next);
             addAudit(me.id,me.full_name,"FEATURE_TOGGLE","admin",`65 µm coating ${next?"ENABLED":"DISABLED"} globally`);
           }} style={{width:52,height:28,borderRadius:14,border:"none",cursor:"pointer",
-            background:(feature65um?.enabled!==false)?"#16A34A":"#1A2840",position:"relative",flex:"0 0 auto"}}>
+            background:(feature65um?.enabled!==false)?"#16A34A":"#33434F",position:"relative",flex:"0 0 auto"}}>
             <div style={{width:22,height:22,borderRadius:"50%",background:"#fff",
               position:"absolute",top:3,left:(feature65um?.enabled!==false)?27:3,transition:"left .2s"}}/>
           </button>
@@ -6598,7 +6598,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
               <div style={{fontSize:12,fontWeight:700,color:T.text}}>Route Card Field</div>
               <button onClick={()=>{setFieldConfig(p=>({...p,routeCardEnabled:!p.routeCardEnabled}));addAudit(me.id,me.full_name,"FIELD_TOGGLE","admin",`Route Card field ${!fieldConfig.routeCardEnabled?"enabled":"disabled"}`);}}
                 style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",
-                background:fieldConfig.routeCardEnabled?"#16A34A":"#1A2840",position:"relative"}}>
+                background:fieldConfig.routeCardEnabled?"#16A34A":"#33434F",position:"relative"}}>
                 <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",
                   position:"absolute",top:3,left:fieldConfig.routeCardEnabled?21:3,transition:"left .2s"}}/>
               </button>
@@ -6615,7 +6615,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
               <div style={{fontSize:12,fontWeight:700,color:T.text}}>Quantity Field</div>
               <button onClick={()=>{setFieldConfig(p=>({...p,qtyEnabled:!p.qtyEnabled}));addAudit(me.id,me.full_name,"FIELD_TOGGLE","admin",`Quantity field ${!fieldConfig.qtyEnabled?"enabled":"disabled"}`);}}
                 style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",
-                background:fieldConfig.qtyEnabled?"#16A34A":"#1A2840",position:"relative"}}>
+                background:fieldConfig.qtyEnabled?"#16A34A":"#33434F",position:"relative"}}>
                 <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",
                   position:"absolute",top:3,left:fieldConfig.qtyEnabled?21:3,transition:"left .2s"}}/>
               </button>
@@ -6649,7 +6649,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
                 addAudit(me.id,me.full_name,"FIELD_TOGGLE","admin",`Duplicate beam check ${next?"enabled":"disabled"}`);
               }}
                 style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",
-                background:(fieldConfig.restrictDuplicateBeam!==false)?"#16A34A":"#1A2840",position:"relative"}}>
+                background:(fieldConfig.restrictDuplicateBeam!==false)?"#16A34A":"#33434F",position:"relative"}}>
                 <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",
                   position:"absolute",top:3,left:(fieldConfig.restrictDuplicateBeam!==false)?21:3,transition:"left .2s"}}/>
               </button>
@@ -6703,7 +6703,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
                 setFieldConfig(p=>({...p,auditRetentionDays:v}));
                 addAudit(me.id,me.full_name,"FIELD_UPDATE","admin",`Audit retention set to ${v===0?"Never (no purge)":v+" day(s)"}`);
               }}
-              style={{width:"100%",background:"#07101C",border:`1px solid ${T.border}`,color:T.text,padding:"8px 10px",borderRadius:6,fontSize:13,fontFamily:"monospace",fontWeight:700}}>
+              style={{width:"100%",background:"#16202B",border:`1px solid ${T.border}`,color:T.text,padding:"8px 10px",borderRadius:6,fontSize:13,fontFamily:"monospace",fontWeight:700}}>
               {[30,60,90,180,365].map(d=><option key={d} value={d}>{d} days</option>)}
               <option value={0}>Never (do not purge)</option>
             </select>
@@ -6722,7 +6722,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
       </Card>
 
 
-      <div style={{padding:"10px 14px",background:"#07101C",border:"1px solid #1A3458",borderRadius:8,fontSize:11,color:T.muted}}>
+      <div style={{padding:"10px 14px",background:"#16202B",border:"1px solid #1A3458",borderRadius:8,fontSize:11,color:T.muted}}>
         ℹ All field-config changes are audited and apply globally to every Loading operator.
       </div>
     </div>}
@@ -6755,7 +6755,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             return <div key={k} style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"10px 12px",background:T.bg,border:`1px solid ${T.border}`,borderRadius:8}}>
               <div style={{fontSize:12,fontWeight:700,color:T.text}}>{lbl}{mandatory && <span style={{marginLeft:6,fontSize:9,color:T.amber}}>MANDATORY</span>}</div>
               <button onClick={()=>{if(!mandatory){setDippingConfig(p=>({...p,[k]:!p[k]}));addAudit(me.id,me.full_name,"AI_TOGGLE","admin",`${lbl}: ${!on?"ON":"OFF"}`);}}} disabled={!!mandatory} title={mandatory?"Mandatory exact match — always enabled":(on?"Disable":"Enable")}
-                style={{width:42,height:24,borderRadius:12,border:"none",cursor:mandatory?"not-allowed":"pointer",background:(mandatory||on)?"#16A34A":"#1A2840",position:"relative",opacity:mandatory?0.85:1}}>
+                style={{width:42,height:24,borderRadius:12,border:"none",cursor:mandatory?"not-allowed":"pointer",background:(mandatory||on)?"#16A34A":"#33434F",position:"relative",opacity:mandatory?0.85:1}}>
                 <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",position:"absolute",top:3,left:(mandatory||on)?21:3,transition:"left .2s"}}/>
               </button>
             </div>;
@@ -6796,7 +6796,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             <div style={{fontSize:10,color:T.dim,marginTop:2}}>When ON, operators can edit captured Dipping timestamps via ✎ Edit Timings. Admins always have access.</div>
           </div>
           <button onClick={()=>{const on=!!dippingConfig.allowPostEdit; setDippingConfig(p=>({...p,allowPostEdit:!on})); addAudit(me.id,me.full_name,"AI_TOGGLE","admin",`allowPostEdit: ${!on?"ON":"OFF"}`);}}
-            style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:dippingConfig.allowPostEdit?"#16A34A":"#1A2840",position:"relative",flexShrink:0}}>
+            style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:dippingConfig.allowPostEdit?"#16A34A":"#33434F",position:"relative",flexShrink:0}}>
             <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",position:"absolute",top:3,left:dippingConfig.allowPostEdit?21:3,transition:"left .2s"}}/>
           </button>
         </div>
@@ -6806,7 +6806,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             <div style={{fontSize:10,color:T.dim,marginTop:2}}>When ON, QC inspectors can edit saved 7-point Elcometer readings via ✎ Edit. Admins always have access.</div>
           </div>
           <button onClick={()=>{const on=!!dippingConfig.allowQCEdit; setDippingConfig(p=>({...p,allowQCEdit:!on})); addAudit(me.id,me.full_name,"AI_TOGGLE","admin",`allowQCEdit: ${!on?"ON":"OFF"}`);}}
-            style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:dippingConfig.allowQCEdit?"#16A34A":"#1A2840",position:"relative",flexShrink:0}}>
+            style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:dippingConfig.allowQCEdit?"#16A34A":"#33434F",position:"relative",flexShrink:0}}>
             <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",position:"absolute",top:3,left:dippingConfig.allowQCEdit?21:3,transition:"left .2s"}}/>
           </button>
         </div>
@@ -6816,7 +6816,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             <div style={{fontSize:10,color:T.dim,marginTop:2}}>When ON, the Dipping screen and Dipping Register report show per-stage time variance (Immersion / Reaction / Withdrawal / Total) vs the Closest Match reference beam.</div>
           </div>
           <button onClick={()=>{const on=dippingConfig.varianceAnalysisEnabled!==false; setDippingConfig(p=>({...p,varianceAnalysisEnabled:!on})); addAudit(me.id,me.full_name,"AI_TOGGLE","admin",`Variance Analysis: ${!on?"ON":"OFF"}`);}}
-            style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:dippingConfig.varianceAnalysisEnabled!==false?"#16A34A":"#1A2840",position:"relative",flexShrink:0}}>
+            style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:dippingConfig.varianceAnalysisEnabled!==false?"#16A34A":"#33434F",position:"relative",flexShrink:0}}>
             <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",position:"absolute",top:3,left:dippingConfig.varianceAnalysisEnabled!==false?21:3,transition:"left .2s"}}/>
           </button>
         </div>
@@ -6855,7 +6855,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
                 <div style={{fontSize:10,color:T.dim,marginTop:2}}>A historical PASS beam is selected only when <strong style={{color:T.amber}}>ALL enabled criteria pass</strong>. From survivors, the one closest to its own specific-micron value wins.</div>
               </div>
               <button onClick={toggleMaster}
-                style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:masterOn?"#16A34A":"#1A2840",position:"relative",flexShrink:0}}>
+                style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:masterOn?"#16A34A":"#33434F",position:"relative",flexShrink:0}}>
                 <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",position:"absolute",top:3,left:masterOn?21:3,transition:"left .2s"}}/>
               </button>
             </div>
@@ -6899,7 +6899,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             <button onClick={()=>{
               setFieldConfig(p=>({...p, sixSigmaEnabled: !on}));
               addAudit(me.id,me.full_name,"FIELD_TOGGLE","admin",`Six Sigma panel: ${!on?"ENABLED":"DISABLED"}`);
-            }} style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:on?"#16A34A":"#1A2840",position:"relative",flexShrink:0}}>
+            }} style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:on?"#16A34A":"#33434F",position:"relative",flexShrink:0}}>
               <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",position:"absolute",top:3,left:on?21:3,transition:"left .2s"}}/>
             </button>
           </div>;
@@ -6916,7 +6916,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
               <button onClick={()=>{
                 setFieldConfig(p=>({...p, cojReadingMaxEnabled: !on}));
                 addAudit(me.id,me.full_name,"FIELD_TOGGLE","admin",`CoJ Reading Cap: ${!on?"ENABLED":"DISABLED"}`);
-              }} style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:on?"#16A34A":"#1A2840",position:"relative",flexShrink:0}}>
+              }} style={{width:42,height:24,borderRadius:12,border:"none",cursor:"pointer",background:on?"#16A34A":"#33434F",position:"relative",flexShrink:0}}>
                 <div style={{width:18,height:18,borderRadius:"50%",background:"#fff",position:"absolute",top:3,left:on?21:3,transition:"left .2s"}}/>
               </button>
             </div>
@@ -6929,7 +6929,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
                   setFieldConfig(p=>({...p, cojReadingMax: next}));
                 }}
                 onBlur={()=>addAudit(me.id,me.full_name,"FIELD_TOGGLE","admin",`CoJ Reading Cap max: ${cap} μm`)}
-                style={{width:90,padding:"6px 8px",background:"#070C14",border:"1px solid #1A2840",color:"#DDE8F8",borderRadius:6,fontFamily:"monospace",fontSize:13,fontWeight:800,textAlign:"center"}}/>
+                style={{width:90,padding:"6px 8px",background:"#0F1720",border:"1px solid #33434F",color:"#C9D6DF",borderRadius:6,fontFamily:"monospace",fontSize:13,fontWeight:800,textAlign:"center"}}/>
               <span style={{fontSize:11,color:T.dim,fontWeight:700}}>μm</span>
             </div>
           </div>;
@@ -6965,7 +6965,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
         </div>
       </Card>
 
-      <div style={{padding:"10px 14px",background:"#07101C",border:"1px solid #1A3458",borderRadius:8,fontSize:11,color:T.muted}}>
+      <div style={{padding:"10px 14px",background:"#16202B",border:"1px solid #1A3458",borderRadius:8,fontSize:11,color:T.muted}}>
         ℹ Changes apply instantly. Engine matches past PASS beams using ± tolerance windows on the current beam's Thickness, Weight, Temperature, Length, Qty and Load Type.
       </div>
 
@@ -7017,7 +7017,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
           </Card>
         ))}
       </div>
-      <div style={{padding:"12px 16px",background:"#07101C",borderRadius:8,border:"1px solid #1A3458",fontSize:12,color:T.muted}}>
+      <div style={{padding:"12px 16px",background:"#16202B",borderRadius:8,border:"1px solid #1A3458",fontSize:12,color:T.muted}}>
         ℹ <strong style={{color:T.text}}>Power Automate Integration:</strong> Recipient lists sync automatically to your Power Automate flow.
         Reports are sent as PDF + Excel attachments on the schedule shown.
         Add admin recipients above for each report category.
@@ -7150,7 +7150,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
               </select>
             );
             return <div key={key}>
-              <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>{label}</label>
+              <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>{label}</label>
               {kind==="select"
                 ? <select value={editBeam[key]??""} onChange={e=>setEditBeam((p:any)=>({...p,[key]:e.target.value}))}
                     style={{width:"100%",background:T.bg,border:`1px solid ${T.border}`,color:T.text,padding:"6px 10px",borderRadius:6,fontSize:12}}>
@@ -7177,7 +7177,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             </div>;
           })}
           <div>
-            <label style={{fontSize:10,color:"#5A7599",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Total Cycle Time (derived)</label>
+            <label style={{fontSize:10,color:"#8DA0AD",fontWeight:700,letterSpacing:".06em",textTransform:"uppercase",display:"block",marginBottom:4}}>Total Cycle Time (derived)</label>
             <input readOnly value={fmtDur(
               (Number(editBeam.immersion_duration)||0)+(Number(editBeam.reaction_duration)||0)+(Number(editBeam.withdrawal_duration)||0)
             )} style={{width:"100%",background:"#0A1526",border:`1px solid ${T.border}`,color:T.muted,padding:"6px 10px",borderRadius:6,fontSize:12,fontFamily:"monospace"}}/>
@@ -7327,7 +7327,7 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
           mn(fAudit.length-i,T.dim),
           <span style={{fontFamily:"monospace",fontSize:11,color:T.muted}}>{fmtDT(a.ts||a.timestamp)}</span>,
           <strong style={{color:T.text,fontSize:12}}>{a.userName}</strong>,
-          <span style={{padding:"2px 8px",borderRadius:4,fontSize:10,fontWeight:700,background:"#1A2840",color:T.amber,letterSpacing:".05em"}}>{a.action}</span>,
+          <span style={{padding:"2px 8px",borderRadius:4,fontSize:10,fontWeight:700,background:"#33434F",color:T.amber,letterSpacing:".05em"}}>{a.action}</span>,
           <span style={{color:T.muted,fontSize:11}}>{a.module}</span>,
           <span style={{fontSize:11,color:T.text}}>{a.details}</span>,
           <button onClick={()=>{ if(confirm("Delete this audit entry?")) deleteAuditEntries([a.id]); }} style={{padding:"4px 10px",borderRadius:5,background:"#2A0808",color:"#F87171",border:"1px solid #F8717160",fontSize:10,fontWeight:700,cursor:"pointer"}}>🗑</button>,
@@ -7342,8 +7342,8 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
       <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:12}}>
         {[
           ["industrial","Industrial (New)","Heavy-industry graphite with hazard-amber accents — current production look","#0B0E12","#F59E0B"],
-          ["dark-gold","Classic Dark Gold","Older default — navy with gold accents","#070C14","#E8A020"],
-          ["light","Light","Bright daylight scheme","#EFF2F7","#E8A020"],
+          ["dark-gold","Classic Dark Gold","Older default — navy with gold accents","#0F1720","#3D7EA6"],
+          ["light","Light","Bright daylight scheme","#EFF2F7","#3D7EA6"],
           ["ocean-blue","Ocean Blue","Deep navy with cyan accents","#061018","#22D3EE"],
           ["slate","Slate","Cool neutral slate for long sessions","#0C0F14","#94A3B8"],
         ].map(([id,name,desc,bg,accent])=>{
@@ -7352,8 +7352,8 @@ function AdminTab({users,setUsers,auditLog,addAudit,user:me,beams,setBeams=(_:an
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
               <div style={{width:32,height:32,borderRadius:8,background:accent,boxShadow:`0 0 12px ${accent}80`}}/>
               <div>
-                <div style={{fontSize:13,fontWeight:800,color:bg==="#EFF2F7"?"#0F1E38":"#DDE8F8"}}>{name}</div>
-                <div style={{fontSize:10,color:bg==="#EFF2F7"?"#6B7EA8":"#5A7599"}}>{desc}</div>
+                <div style={{fontSize:13,fontWeight:800,color:bg==="#EFF2F7"?"#0F1E38":"#C9D6DF"}}>{name}</div>
+                <div style={{fontSize:10,color:bg==="#EFF2F7"?"#6B7EA8":"#8DA0AD"}}>{desc}</div>
               </div>
               {active&&<span style={{marginLeft:"auto",fontSize:10,fontWeight:700,color:accent}}>● ACTIVE</span>}
             </div>
@@ -7844,7 +7844,7 @@ function AppInner({ sessionId }: { sessionId: string }){
 
   return <div style={{minHeight:"100vh",background:T.bg,color:T.text,fontFamily:"system-ui,-apple-system,sans-serif"}}>
     {/* Notification */}
-    {notif&&<div style={{position:"fixed",top:16,right:16,zIndex:9999,background:"#0E1623",
+    {notif&&<div style={{position:"fixed",top:16,right:16,zIndex:9999,background:"#1E2A36",
       border:`2px solid ${notif.color}`,borderRadius:10,padding:"12px 18px",minWidth:280,
       boxShadow:`0 0 24px ${notif.color}40`}}>
       <div style={{fontSize:10,color:T.muted,fontWeight:700,textTransform:"uppercase",marginBottom:4}}>Status Updated</div>
@@ -7903,7 +7903,7 @@ function AppInner({ sessionId }: { sessionId: string }){
     </div>
 
     {/* Nav */}
-    <div style={{background:"#07101C",borderBottom:`1px solid ${T.border}`,
+    <div style={{background:"#16202B",borderBottom:`1px solid ${T.border}`,
       padding:"0 20px",display:"flex",gap:2,overflowX:"auto"}}>
       {TABS.map(t=>(
         <button key={t.id} onClick={()=>st(t.id)} style={{
@@ -7970,7 +7970,7 @@ function AppInner({ sessionId }: { sessionId: string }){
         feature65um={feature65um} setFeature65um={setFeature65um}
         T={T}/>}
     </div>
-    <style>{`*{box-sizing:border-box}::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1A2840;border-radius:3px}select option{background:#0E1623;color:#DDE8F8}`}</style>
+    <style>{`*{box-sizing:border-box}::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#33434F;border-radius:3px}select option{background:#1E2A36;color:#C9D6DF}`}</style>
   </div>;
 }
 

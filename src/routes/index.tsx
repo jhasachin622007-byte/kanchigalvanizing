@@ -42,11 +42,11 @@ class HdpAppErrorBoundary extends Component<{ children: ReactNode }, { error: Er
     if (!this.state.error) return this.props.children;
 
     return (
-      <main style={{ minHeight: "100vh", background: "#04080F", color: "#DDE8F8", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, fontFamily: "system-ui,-apple-system,sans-serif", textAlign: "center" }}>
+      <main style={{ minHeight: "100vh", background: "#0F1720", color: "#C9D6DF", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, fontFamily: "system-ui,-apple-system,sans-serif", textAlign: "center" }}>
         <div style={{ maxWidth: 420 }}>
           <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>App failed to start</div>
-          <div style={{ color: "#5A7599", fontSize: 13, lineHeight: 1.6, marginBottom: 18 }}>Please reload the app. If this keeps happening, the startup error has been logged for diagnosis.</div>
-          <button onClick={() => window.location.reload()} style={{ padding: "10px 18px", borderRadius: 6, border: "none", background: "#E8A020", color: "#04080F", fontWeight: 800, cursor: "pointer" }}>
+          <div style={{ color: "#8DA0AD", fontSize: 13, lineHeight: 1.6, marginBottom: 18 }}>Please reload the app. If this keeps happening, the startup error has been logged for diagnosis.</div>
+          <button onClick={() => window.location.reload()} style={{ padding: "10px 18px", borderRadius: 6, border: "none", background: "#3D7EA6", color: "#0F1720", fontWeight: 800, cursor: "pointer" }}>
             Reload app
           </button>
         </div>
