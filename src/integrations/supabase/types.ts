@@ -14,21 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
+      active_sessions: {
+        Row: {
+          device_info: string | null
+          session_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          device_info?: string | null
+          session_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          device_info?: string | null
+          session_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      app_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          updated_by: string | null
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          updated_by?: string | null
+          value?: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          updated_by?: string | null
+          value?: Json
+        }
+        Relationships: []
+      }
       audit_log: {
         Row: {
           created_at: string
           data: Json
           id: string
+          user_id: string | null
         }
         Insert: {
           created_at?: string
           data: Json
           id?: string
+          user_id?: string | null
         }
         Update: {
           created_at?: string
           data?: Json
           id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -37,6 +82,7 @@ export type Database = {
           beam_no: string
           data: Json
           status: string
+          transaction_id: string
           updated_at: string
           updated_by: string | null
         }
@@ -44,6 +90,7 @@ export type Database = {
           beam_no: string
           data: Json
           status: string
+          transaction_id: string
           updated_at?: string
           updated_by?: string | null
         }
@@ -51,6 +98,7 @@ export type Database = {
           beam_no?: string
           data?: Json
           status?: string
+          transaction_id?: string
           updated_at?: string
           updated_by?: string | null
         }
