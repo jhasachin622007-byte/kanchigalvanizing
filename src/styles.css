@@ -148,3 +148,27 @@
   0%, 100% { opacity: 1; }
   50%      { opacity: 0.35; }
 }
+
+@theme inline {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+/* Steel-blue focus glow on interactive fields */
+@layer base {
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--steel-accent) !important;
+    box-shadow: 0 0 0 1px var(--steel-accent), 0 0 18px -2px oklch(0.57 0.09 245 / 45%);
+  }
+}
