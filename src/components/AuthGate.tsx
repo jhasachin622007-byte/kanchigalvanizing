@@ -215,53 +215,85 @@ function LoginScreen({ evictedMsg, clearEvicted }: { evictedMsg: string | null; 
   }
 
   const inputStyle: React.CSSProperties = {
-    width: "100%", padding: "10px 12px", background: "#0B1422", border: "1px solid #1A2840",
-    borderRadius: 6, color: "#DDE8F8", fontSize: 13, outline: "none", fontFamily: "inherit",
+    width: "100%", padding: "10px 14px", background: "#0F1720", border: "1px solid rgba(61,126,166,.3)",
+    borderRadius: 2, color: "#C9D6DF", fontSize: 13, outline: "none", fontFamily: "inherit",
+  };
+  const labelStyle: React.CSSProperties = {
+    fontSize: 11, color: "rgba(201,214,223,.7)", fontWeight: 600, letterSpacing: ".08em",
+    textTransform: "uppercase", display: "block", marginBottom: 6,
   };
 
   if (gate) return <DeviceGateScreen info={gate} onBack={() => { setGate(null); setPassword(""); }} />;
 
   return (
+    <div style={{ minHeight: "100vh", background: "#0F1720", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Figtree, system-ui, sans-serif", padding: 24 }}>
+      <div style={{ width: 420, maxWidth: "100%", background: "#1E2A36", borderLeft: "4px solid #3D7EA6", boxShadow: "0 25px 50px -12px rgba(0,0,0,.6)", position: "relative", overflow: "hidden" }}>
+        <div style={{ padding: 32 }}>
+          <header style={{ marginBottom: 28 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+              <span style={{ fontSize: 10, letterSpacing: ".18em", color: "#3D7EA6", fontWeight: 700, textTransform: "uppercase" }}>Terminal v3.0</span>
+              <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <span style={{ width: 8, height: 8, borderRadius: 99, background: "#3D7EA6", animation: "pulse 2s ease-in-out infinite" }} />
+                <span style={{ fontSize: 10, color: "rgba(201,214,223,.6)", textTransform: "uppercase", letterSpacing: ".02em" }}>System ready</span>
+              </span>
+            </div>
+            <h1 style={{ fontFamily: "Outfit, system-ui, sans-serif", fontSize: 30, lineHeight: 1.15, fontWeight: 700, color: "#C9D6DF", margin: 0 }}>
+              Galvanizing<br />Production Access
+            </h1>
+          </header>
 
-    <div style={{ minHeight: "100vh", background: "#04080F", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "system-ui,sans-serif", padding: 16 }}>
-      <div style={{ width: 420, maxWidth: "100%" }}>
-        <div style={{ textAlign: "center", marginBottom: 28 }}>
-          <div style={{ width: 64, height: 64, borderRadius: 16, background: "linear-gradient(135deg,#E8A020,#B57A0F)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: 30, boxShadow: "0 0 32px rgba(232,160,32,.5)" }}>⚙</div>
-          <div style={{ fontSize: 20, fontWeight: 800, color: "#DDE8F8", letterSpacing: ".1em" }}>HDP GALVANIZING</div>
-          <div style={{ fontSize: 10, color: "#2E4A6E", marginTop: 4, letterSpacing: ".15em" }}>PRODUCTION AUTOMATION SYSTEM v3.0</div>
-        </div>
-
-        {evictedMsg && (
-          <div style={{ marginBottom: 14, padding: "12px 14px", background: "#2A1A08", border: "1px solid #E8A020", borderRadius: 8, color: "#FFD27A", fontSize: 13, lineHeight: 1.5 }}>
-            ⚠ {evictedMsg}
-          </div>
-        )}
-
-        <form onSubmit={go} style={{ background: "#0E1623", border: "1px solid #1A2840", borderRadius: 12, padding: "28px 28px 22px" }}>
-          <div style={{ display:"flex", gap:6, marginBottom:14 }}>
-            {(["login","forgot"] as const).map(m => (
-              <button key={m} type="button" onClick={()=>{setMode(m);setErr("");setInfo("");}} style={{ flex:1, padding:"6px 0", fontSize:11, fontWeight:700, borderRadius:6, cursor:"pointer", background: mode===m?"#1A2840":"transparent", color: mode===m?"#E8A020":"#5A7599", border:"1px solid #1A2840", fontFamily:"inherit" }}>
-                {m==="login"?"Sign in":"Forgot password"}
-              </button>
-            ))}
-          </div>
-          <div style={{ marginBottom: 14 }}>
-            <label htmlFor="auth-identifier" style={{ fontSize: 10, color: "#5A7599", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", display: "block", marginBottom: 6 }}>Email or Username</label>
-            <input id="auth-identifier" name="identifier" type="text" required value={identifier} onChange={(e) => { setIdentifier(e.target.value); setErr(""); }} style={inputStyle} autoComplete="username" />
-          </div>
-          {mode!=="forgot" && (
-            <div style={{ marginBottom: 6 }}>
-              <label htmlFor="auth-password" style={{ fontSize: 10, color: "#5A7599", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", display: "block", marginBottom: 6 }}>Password</label>
-              <input id="auth-password" name="password" type="password" required minLength={6} value={password} onChange={(e) => { setPassword(e.target.value); setErr(""); }} style={inputStyle} autoComplete={mode === "login" ? "current-password" : "new-password"} />
+          {evictedMsg && (
+            <div style={{ marginBottom: 16, padding: "12px 14px", background: "#0F1720", borderLeft: "3px solid #3D7EA6", color: "#C9D6DF", fontSize: 12, lineHeight: 1.5 }}>
+              ⚠ {evictedMsg}
             </div>
           )}
-          {err && <div style={{ color: "#F87171", fontSize: 12, marginTop: 10, padding: "8px 12px", background: "#220808", borderRadius: 6 }}>⚠ {err}</div>}
-          {info && <div style={{ color: "#4ADE80", fontSize: 12, marginTop: 10, padding: "8px 12px", background: "#0A2218", borderRadius: 6 }}>{info}</div>}
-          <button type="submit" disabled={busy} style={{ width: "100%", marginTop: 14, padding: "11px 0", fontSize: 14, letterSpacing: ".04em", background: "linear-gradient(135deg,#E8A020,#B57A0F)", color: "#04080F", border: "none", borderRadius: 6, fontWeight: 700, cursor: busy ? "wait" : "pointer", fontFamily: "inherit" }}>
-            {busy ? "…" : mode==="login" ? "SIGN IN →" : "SEND RESET LINK →"}
-          </button>
-        </form>
+
+          <form onSubmit={go} style={{ display: "grid", gap: 20 }}>
+            <div>
+              <label htmlFor="auth-identifier" style={labelStyle}>Operator ID / Email</label>
+              <input id="auth-identifier" name="identifier" type="text" required placeholder="Enter credentials…" value={identifier} onChange={(e) => { setIdentifier(e.target.value); setErr(""); }} style={inputStyle} autoComplete="username" />
+            </div>
+
+            {mode !== "forgot" && (
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <label htmlFor="auth-password" style={labelStyle}>Secure Password</label>
+                  <button type="button" onClick={() => { setMode("forgot"); setErr(""); setInfo(""); }} style={{ background: "none", border: "none", color: "#3D7EA6", fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".02em", cursor: "pointer", fontFamily: "inherit", padding: 0, marginBottom: 6 }}>
+                    Forgot access?
+                  </button>
+                </div>
+                <input id="auth-password" name="password" type="password" required minLength={6} placeholder="••••••••" value={password} onChange={(e) => { setPassword(e.target.value); setErr(""); }} style={inputStyle} autoComplete="current-password" />
+              </div>
+            )}
+
+            {mode === "forgot" && (
+              <button type="button" onClick={() => { setMode("login"); setErr(""); setInfo(""); }} style={{ background: "none", border: "none", color: "#3D7EA6", fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".02em", cursor: "pointer", fontFamily: "inherit", padding: 0, textAlign: "left" }}>
+                ← Back to sign in
+              </button>
+            )}
+
+            {err && <div style={{ color: "#F87171", fontSize: 12, padding: "8px 12px", background: "#0F1720", borderLeft: "3px solid #F87171" }}>⚠ {err}</div>}
+            {info && <div style={{ color: "#7FD1A8", fontSize: 12, padding: "8px 12px", background: "#0F1720", borderLeft: "3px solid #7FD1A8" }}>{info}</div>}
+
+            <button type="submit" disabled={busy} style={{ width: "100%", padding: "13px 0", fontSize: 13, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", background: "#3D7EA6", color: "#0F1720", border: "none", borderRadius: 0, cursor: busy ? "wait" : "pointer", fontFamily: "Outfit, system-ui, sans-serif" }}>
+              {busy ? "…" : mode === "login" ? "Authenticate →" : "Send reset link →"}
+            </button>
+          </form>
+
+          <div style={{ marginTop: 28, paddingTop: 22, borderTop: "1px solid rgba(201,214,223,.1)", display: "flex", gap: 12, alignItems: "flex-start" }}>
+            <div style={{ background: "rgba(61,126,166,.1)", color: "#3D7EA6", padding: 6, fontSize: 12, lineHeight: 1 }}>🔒</div>
+            <p style={{ fontSize: 11, lineHeight: 1.6, color: "rgba(201,214,223,.5)", margin: 0 }}>
+              <strong style={{ color: "rgba(201,214,223,.8)", display: "block", marginBottom: 2 }}>Device security protocol:</strong>
+              Unrecognised devices need administrator approval before production access is granted.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ height: 4, width: "100%", background: "rgba(61,126,166,.2)" }}>
+          <div style={{ height: "100%", width: "33%", background: "#3D7EA6" }} />
+        </div>
       </div>
     </div>
   );
 }
+
