@@ -28,8 +28,8 @@ import { MultiSelectFilter, inSel } from "@/components/MultiSelectFilter";
 
 const COATINGS_ALL = [65, 87, 130] as const;
 const TIP = {
-  contentStyle: { background: "#0E1623", border: "1px solid #1A2840", color: "#DDE8F8", fontSize: 12, borderRadius: 6 },
-  labelStyle: { color: "#E8A020" },
+  contentStyle: { background: "#1E2A36", border: "1px solid #33434F", color: "#C9D6DF", fontSize: 12, borderRadius: 6 },
+  labelStyle: { color: "#3D7EA6" },
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -58,8 +58,8 @@ const ChartTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   const fmt = (x: any) => (x == null || Number.isNaN(x) ? "—" : Number(x).toFixed(2));
   return (
-    <div style={{ background: "#0E1623", border: "1px solid #1A2840", borderRadius: 6, padding: 8, color: "#DDE8F8", fontSize: 12 }}>
-      {label != null && <div style={{ color: "#E8A020", fontWeight: 700, marginBottom: 2 }}>{label}</div>}
+    <div style={{ background: "#1E2A36", border: "1px solid #33434F", borderRadius: 6, padding: 8, color: "#C9D6DF", fontSize: 12 }}>
+      {label != null && <div style={{ color: "#3D7EA6", fontWeight: 700, marginBottom: 2 }}>{label}</div>}
       {payload.map((p: any, i: number) => (
         <div key={i} style={{ marginTop: 2 }}>{p.name || p.dataKey}: <b>{fmt(p.value)}</b></div>
       ))}
@@ -96,7 +96,7 @@ const Section = ({ id, title, sub, right, children, T }: any) => {
   );
 };
 
-const KCard = ({ label, value, sub, color = "#E8A020", T }: any) => (
+const KCard = ({ label, value, sub, color = "#3D7EA6", T }: any) => (
   <div style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 10, padding: "12px 14px", minWidth: 140 }}>
     <div style={{ fontSize: 10, color: T.muted, fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase" }}>{label}</div>
     <div style={{ fontSize: 22, fontWeight: 900, color, fontFamily: "monospace", marginTop: 4, lineHeight: 1 }}>{value}</div>
@@ -940,17 +940,17 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
     <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
       {/* Header */}
-      <div style={{ background: "linear-gradient(135deg,#0A1628,#0D1E38)", border: "1px solid #1A2840",
+      <div style={{ background: "linear-gradient(135deg,#0A1628,#0D1E38)", border: "1px solid #33434F",
         borderRadius: 12, padding: "16px 20px", display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-        <div style={{ width: 48, height: 48, borderRadius: 12, background: "linear-gradient(135deg,#E8A020,#B57A0F)",
+        <div style={{ width: 48, height: 48, borderRadius: 12, background: "linear-gradient(135deg,#3D7EA6,#2E6285)",
           display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24,
-          boxShadow: "0 0 18px rgba(232,160,32,.5)" }}>📈</div>
+          boxShadow: "0 0 18px rgba(61,126,166,.5)" }}>📈</div>
         <div style={{ flex: 1, minWidth: 220 }}>
-          <div style={{ fontSize: 16, fontWeight: 900, color: "#DDE8F8", letterSpacing: ".06em" }}>SIX SIGMA GALVANIZING DASHBOARD</div>
-          <div style={{ fontSize: 11, color: "#5A7599", marginTop: 2 }}>SPC · Cpk · Process Intelligence · AI Recommendations</div>
+          <div style={{ fontSize: 16, fontWeight: 900, color: "#C9D6DF", letterSpacing: ".06em" }}>SIX SIGMA GALVANIZING DASHBOARD</div>
+          <div style={{ fontSize: 11, color: "#8DA0AD", marginTop: 2 }}>SPC · Cpk · Process Intelligence · AI Recommendations</div>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <KCard label="Today MT" value={todayMT} color="#E8A020" T={T} />
+          <KCard label="Today MT" value={todayMT} color="#3D7EA6" T={T} />
           <KCard label="Pending / Running / Done" value={`${pending} / ${running} / ${done}`} color="#5BA3FF" T={T} />
           <KCard label="Out-of-control" value={outOfControlCount} color={outOfControlCount ? "#F87171" : "#4ADE80"} T={T} />
         </div>
@@ -991,7 +991,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
       <Section id="s1" title="1. Production Overview" sub="Live production KPIs and trends" T={T}>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(150px,1fr))", gap: 10, marginBottom: 14 }}>
-          <KCard label="Today (MT)" value={todayMT} color="#E8A020" T={T} />
+          <KCard label="Today (MT)" value={todayMT} color="#3D7EA6" T={T} />
           <KCard label="Shift A (06–14)" value={shiftToday.A.toFixed(2)} color="#5BA3FF" T={T} />
           <KCard label="Shift B (14–22)" value={shiftToday.B.toFixed(2)} color="#A78BFA" T={T} />
           <KCard label="Shift C (22–06)" value={shiftToday.C.toFixed(2)} color="#22D3EE" T={T} />
@@ -1008,7 +1008,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
           {show65 && <KCard label="65 µm Production" value={`${coatingSpecMT[65].toFixed(2)} MT`} color="#5BA3FF" T={T} />}
           <KCard label="87 µm Production" value={`${coatingSpecMT[87].toFixed(2)} MT`} color="#A78BFA" T={T} />
           <KCard label="130 µm Production" value={`${coatingSpecMT[130].toFixed(2)} MT`} color="#22D3EE" T={T} />
-          <KCard label="Total (filtered)" value={`${coatingSpecMT.total.toFixed(2)} MT`} color="#E8A020" T={T} />
+          <KCard label="Total (filtered)" value={`${coatingSpecMT.total.toFixed(2)} MT`} color="#3D7EA6" T={T} />
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 12 }}>
           <div style={{ height: 220 }}>
@@ -1018,7 +1018,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
               <XAxis dataKey="date" tick={{ fontSize: 10, fill: T.muted }} />
               <YAxis tick={{ fontSize: 10, fill: T.muted }}  tickFormatter={fmtAxis} />
               <Tooltip content={<ChartTooltip />} />
-              <Line type="monotone" dataKey="mt" stroke="#E8A020" strokeWidth={2} dot={false} name="MT" />
+              <Line type="monotone" dataKey="mt" stroke="#3D7EA6" strokeWidth={2} dot={false} name="MT" />
               <Line type="monotone" dataKey="avg" stroke="#5BA3FF" strokeWidth={2} dot={false} name="Avg µm" />
             </LineChart></ResponsiveContainer>
           </div>
@@ -1040,7 +1040,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
               <YAxis tick={{ fontSize: 10, fill: T.muted }}  tickFormatter={fmtAxis} />
               <Tooltip content={<ChartTooltip />} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="mt" fill="#E8A020" name="MT" />
+              <Bar dataKey="mt" fill="#3D7EA6" name="MT" />
               <Bar dataKey="beams" fill="#5BA3FF" name="Beams" />
             </BarChart></ResponsiveContainer>
           </div>
@@ -1062,7 +1062,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
             return (
               <div key={s.micron} style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 10, padding: 12 }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                  <div style={{ fontSize: 14, fontWeight: 900, color: "#E8A020" }}>{s.micron} µm spec</div>
+                  <div style={{ fontSize: 14, fontWeight: 900, color: "#3D7EA6" }}>{s.micron} µm spec</div>
                   <Light cpkVal={s.cpk} />
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 6, marginBottom: 10 }}>
@@ -1085,7 +1085,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                     <YAxis tick={{ fontSize: 9, fill: T.muted }}  tickFormatter={fmtAxis} />
                     <Tooltip content={<ChartTooltip />} />
                     <Bar dataKey="count" fill="#5BA3FF" />
-                    <Line type="monotone" dataKey="norm" stroke="#E8A020" strokeWidth={2} dot={false} />
+                    <Line type="monotone" dataKey="norm" stroke="#3D7EA6" strokeWidth={2} dot={false} />
                     <ReferenceLine x={s.lsl} stroke="#F87171" strokeDasharray="3 3" />
                     <ReferenceLine x={s.usl} stroke="#F87171" strokeDasharray="3 3" />
                   </BarChart></ResponsiveContainer>
@@ -1147,7 +1147,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
           {spcCoatingBySpec.map((g) => (
             <div key={g.micron} style={{ background: T.bg, border: `1px solid ${T.border}`, borderRadius: 10, padding: 12 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6, flexWrap: "wrap", gap: 8 }}>
-                <div style={{ fontSize: 13, fontWeight: 900, color: "#E8A020" }}>{g.micron} µm spec · n={g.n}</div>
+                <div style={{ fontSize: 13, fontWeight: 900, color: "#3D7EA6" }}>{g.micron} µm spec · n={g.n}</div>
                 {g.spc ? (
                   <span style={{ fontSize: 11, fontWeight: 700, color: g.spc.stable ? "#4ADE80" : "#F87171" }}>
                     {g.spc.stable ? "🟢 STABLE" : `🔴 UNSTABLE — ${g.spc.violations} WE-rule violations`}
@@ -1200,10 +1200,10 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                         <ReferenceLine y={g.spc.lcl} stroke="#F87171" />
                         <ReferenceLine y={g.lsl} stroke="#FBBF24" strokeDasharray="2 4" />
                         <ReferenceLine y={g.usl} stroke="#FBBF24" strokeDasharray="2 4" />
-                        <Line type="monotone" dataKey="v" stroke="#E8A020" strokeWidth={2}
+                        <Line type="monotone" dataKey="v" stroke="#3D7EA6" strokeWidth={2}
                           dot={(props: any) => {
                             const { cx, cy, payload } = props;
-                            return <circle cx={cx} cy={cy} r={payload.oc ? 5 : 2.5} fill={payload.oc ? "#F87171" : "#E8A020"} stroke={payload.oc ? "#fff" : "none"} strokeWidth={payload.oc ? 1 : 0} />;
+                            return <circle cx={cx} cy={cy} r={payload.oc ? 5 : 2.5} fill={payload.oc ? "#F87171" : "#3D7EA6"} stroke={payload.oc ? "#fff" : "none"} strokeWidth={payload.oc ? 1 : 0} />;
                           }} />
                       </LineChart></ResponsiveContainer>
                     </div>
@@ -1258,10 +1258,10 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                         <ReferenceLine y={data.lcl} stroke="#F87171" />
                         {spec && <ReferenceLine y={spec.lsl} stroke="#FBBF24" strokeDasharray="2 4" />}
                         {spec && <ReferenceLine y={spec.usl} stroke="#FBBF24" strokeDasharray="2 4" />}
-                        <Line type="monotone" dataKey="v" stroke="#E8A020" strokeWidth={2}
+                        <Line type="monotone" dataKey="v" stroke="#3D7EA6" strokeWidth={2}
                           dot={(props: any) => {
                             const { cx, cy, payload } = props;
-                            return <circle cx={cx} cy={cy} r={payload.oc ? 5 : 2.5} fill={payload.oc ? "#F87171" : "#E8A020"} stroke={payload.oc ? "#fff" : "none"} strokeWidth={payload.oc ? 1 : 0} />;
+                            return <circle cx={cx} cy={cy} r={payload.oc ? 5 : 2.5} fill={payload.oc ? "#F87171" : "#3D7EA6"} stroke={payload.oc ? "#fff" : "none"} strokeWidth={payload.oc ? 1 : 0} />;
                           }} />
                       </LineChart></ResponsiveContainer>
                     </div>
@@ -1312,7 +1312,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 10, marginBottom: 12 }}>
                 <KCard label="Total Deviations" value={total} color="#F87171" T={T} />
                 <KCard label="Distinct Categories" value={rows.length} color="#5BA3FF" T={T} />
-                <KCard label="Vital Few (≤80%)" value={vital.length} color="#E8A020" T={T} />
+                <KCard label="Vital Few (≤80%)" value={vital.length} color="#3D7EA6" T={T} />
                 <KCard label="Trivial Many" value={trivial.length} color="#A78BFA" T={T} />
               </div>
               <div style={{ height: 280, marginBottom: 12 }}>
@@ -1324,13 +1324,13 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                     <YAxis yAxisId="r" orientation="right" domain={[0, 100]} tick={{ fontSize: 10, fill: T.muted }}
                       label={{ value: "Cumulative %", angle: 90, position: "insideRight", fill: T.muted, fontSize: 10 }}  tickFormatter={fmtAxis} />
                     <Tooltip content={<ChartTooltip />} />
-                    <ReferenceLine yAxisId="r" y={80} stroke="#E8A020" strokeDasharray="4 4" label={{ value: "80%", fill: "#E8A020", fontSize: 10, position: "right" }} />
+                    <ReferenceLine yAxisId="r" y={80} stroke="#3D7EA6" strokeDasharray="4 4" label={{ value: "80%", fill: "#3D7EA6", fontSize: 10, position: "right" }} />
                     <Bar yAxisId="l" dataKey="count" name="Deviations">
                       {rows.map((r, i) => (
-                        <Cell key={i} fill={r.cumPct <= 80.001 ? "#F87171" : "#5A7599"} />
+                        <Cell key={i} fill={r.cumPct <= 80.001 ? "#F87171" : "#8DA0AD"} />
                       ))}
                     </Bar>
-                    <Line yAxisId="r" type="monotone" dataKey="cumPct" name="Cumulative %" stroke="#E8A020" strokeWidth={2} dot={{ r: 3, fill: "#E8A020" }} />
+                    <Line yAxisId="r" type="monotone" dataKey="cumPct" name="Cumulative %" stroke="#3D7EA6" strokeWidth={2} dot={{ r: 3, fill: "#3D7EA6" }} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -1359,7 +1359,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                           <td style={{ padding: 6, textAlign: "right", fontFamily: "monospace", color: T.text }}>{r.cumPct}%</td>
                           <td style={{ padding: 6 }}>
                             <span style={{ fontSize: 10, fontWeight: 800, padding: "2px 6px", borderRadius: 4,
-                              background: v ? "#F8717122" : "#5A759922", color: v ? "#F87171" : "#8AA3C0" }}>
+                              background: v ? "#F8717122" : "#8DA0AD22", color: v ? "#F87171" : "#8AA3C0" }}>
                               {v ? "VITAL FEW" : "TRIVIAL MANY"}
                             </span>
                           </td>
@@ -1394,7 +1394,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                   <tbody>
                     {spcViolationRows.map((r: any, i: number) => (
                       <tr key={i} style={{ borderTop: `1px solid ${T.border}` }}>
-                        <td style={{ padding: 6, color: "#E8A020", fontFamily: "monospace", fontWeight: 700 }}>{r.beam_no}</td>
+                        <td style={{ padding: 6, color: "#3D7EA6", fontFamily: "monospace", fontWeight: 700 }}>{r.beam_no}</td>
                         <td style={{ padding: 6, color: T.dim, fontSize: 10 }}>{r.when}</td>
                         <td style={{ padding: 6, color: T.text }}>{r.parameter}</td>
                         <td style={{ padding: 6, color: "#F87171", fontWeight: 700 }}>R{r.rule} · {r.ruleLabel}</td>
@@ -1412,7 +1412,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                 </table>
               </div>
               <div style={{ marginTop: 10, fontSize: 11, color: T.dim, lineHeight: 1.6 }}>
-                <strong style={{ color: "#E8A020" }}>Interpretation:</strong> ~80% of SPC deviations typically stem from
+                <strong style={{ color: "#3D7EA6" }}>Interpretation:</strong> ~80% of SPC deviations typically stem from
                 ~20% of parameter/rule combinations. Prioritise corrective action on the
                 <span style={{ color: "#F87171", fontWeight: 700 }}> VITAL FEW </span> categories above.
               </div>
@@ -1474,7 +1474,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                     <YAxis type="number" dataKey="y" domain={[yLo, yHi]} allowDataOverflow tick={{ fontSize: 10, fill: T.muted }} label={{ value: sel.yLabel, angle: -90, fill: T.muted, fontSize: 11, dx: -4 }}  tickFormatter={fmtAxis} />
                     <Tooltip content={<ChartTooltip />} cursor={{ strokeDasharray: "3 3" }} />
                     <Scatter data={sel.pts} fill="#5BA3FF" />
-                    <Scatter data={fit} line={{ stroke: "#E8A020", strokeWidth: 2 }} lineType="fitting" shape={() => null as any} />
+                    <Scatter data={fit} line={{ stroke: "#3D7EA6", strokeWidth: 2 }} lineType="fitting" shape={() => null as any} />
                   </ScatterChart></ResponsiveContainer>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -1483,7 +1483,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                   <KCard label="Slope" value={sel.b.toFixed(2)} sub={`per unit ${sel.xLabel}`} color="#5BA3FF" T={T} />
                   <KCard label="Intercept (a)" value={sel.a.toFixed(2)} color="#22D3EE" T={T} />
                   <KCard label={`Predicted ŷ at x̄=${sel.xMean.toFixed(2)}`} value={`${sel.predicted.toFixed(2)} µm`} color="#4ADE80" T={T} />
-                  <KCard label={`x* for target ${sel.target.toFixed(0)} µm`} value={sel.xTarget != null && Number.isFinite(sel.xTarget) ? sel.xTarget.toFixed(2) : "—"} color="#E8A020" T={T} />
+                  <KCard label={`x* for target ${sel.target.toFixed(0)} µm`} value={sel.xTarget != null && Number.isFinite(sel.xTarget) ? sel.xTarget.toFixed(2) : "—"} color="#3D7EA6" T={T} />
                   {predictorKey === "dip" && corr.best && (
                     <div style={{ fontSize: 10, color: T.dim, marginTop: 4, padding: 8, background: T.bg, border: `1px solid ${T.border}`, borderRadius: 6 }}>
                       Optimal dip window: <b style={{ color: "#4ADE80" }}>{corr.best.range} min</b> · {Math.round(corr.best.rate * 100)}% pass · n={corr.best.n} · avg temp {corr.best.avgT.toFixed(2)}°C
@@ -1526,7 +1526,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
               <XAxis dataKey="shift" tick={{ fontSize: 10, fill: T.muted }} />
               <YAxis tick={{ fontSize: 10, fill: T.muted }}  tickFormatter={fmtAxis} />
               <Tooltip content={<ChartTooltip />} /><Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="mt" fill="#E8A020" name="MT" />
+              <Bar dataKey="mt" fill="#3D7EA6" name="MT" />
               <Bar dataKey="avgCoat" fill="#5BA3FF" name="Avg µm" />
             </BarChart></ResponsiveContainer>
           </div>
@@ -1559,14 +1559,14 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
       <Section id="s-supervisor" title="Shift Supervisor Performance — ANOVA & Tukey HSD (α = 0.05)"
         sub="Grouped by Shift Supervisor. Recomputes automatically as filters change." T={T}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(140px,1fr))", gap: 10, marginBottom: 12 }}>
-          <KCard label="Total Beams" value={supervisorKPI.beams} color="#E8A020" T={T} />
+          <KCard label="Total Beams" value={supervisorKPI.beams} color="#3D7EA6" T={T} />
           <KCard label="Total MT" value={supervisorKPI.mt.toFixed(2)} color="#5BA3FF" T={T} />
           <KCard label="Avg Coating (µm)" value={num(supervisorKPI.avg)} color="#4ADE80" T={T} />
           <KCard label="Std Dev" value={num(supervisorKPI.sd)} color="#A78BFA" T={T} />
           <KCard label="Cp" value={num(supervisorKPI.cp)} color="#22D3EE" T={T} />
           <KCard label="Cpk" value={num(supervisorKPI.cpk)} color="#22D3EE" T={T} />
           <KCard label="Sigma Level" value={num(supervisorKPI.sigma)} color="#FB923C" T={T} />
-          <KCard label="Supervisors (k)" value={anovaSupervisor?.k ?? 0} color="#E8A020" T={T} />
+          <KCard label="Supervisors (k)" value={anovaSupervisor?.k ?? 0} color="#3D7EA6" T={T} />
           <KCard label="F Statistic" value={anovaSupervisor ? num(anovaSupervisor.F) : "—"} color="#FBBF24" T={T} />
           <KCard label="p-value" value={anovaSupervisor ? pFmt(anovaSupervisor.pValue) : "—"}
             color={anovaSupervisor?.significant ? "#4ADE80" : "#71809C"} T={T} />
@@ -1597,7 +1597,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
                 <XAxis dataKey="supervisor" tick={{ fontSize: 10, fill: T.muted }} interval={0} angle={-15} textAnchor="end" height={60} />
                 <YAxis tick={{ fontSize: 10, fill: T.muted }} tickFormatter={fmtAxis} />
                 <Tooltip content={<ChartTooltip />} />
-                <ReferenceLine y={+supervisorKPI.avg.toFixed(2)} stroke="#E8A020" strokeDasharray="4 4" label={{ value: "Grand mean", fill: "#E8A020", fontSize: 10 }} />
+                <ReferenceLine y={+supervisorKPI.avg.toFixed(2)} stroke="#3D7EA6" strokeDasharray="4 4" label={{ value: "Grand mean", fill: "#3D7EA6", fontSize: 10 }} />
                 <Bar dataKey="avg" fill="#5BA3FF" name="Avg µm" />
                 <Bar dataKey="n" fill="#4ADE80" name="N" />
               </BarChart></ResponsiveContainer>
@@ -1663,7 +1663,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
           rows={operatorPerf.map((r) => [r.operator, r.beams, r.avgCoat, r.std, r.avgDip, r.cp ?? "—", r.cpk ?? "—", r.sigma ?? "—", `${r.yieldPct}%`])} />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 8, marginTop: 12 }}>
           <KCard label="Best by Sigma" value={[...operatorPerf].sort((a, b) => (b.sigma || 0) - (a.sigma || 0))[0]?.operator || "—"} color="#4ADE80" T={T} />
-          <KCard label="Best by Production" value={[...operatorPerf].sort((a, b) => b.beams - a.beams)[0]?.operator || "—"} color="#E8A020" T={T} />
+          <KCard label="Best by Production" value={[...operatorPerf].sort((a, b) => b.beams - a.beams)[0]?.operator || "—"} color="#3D7EA6" T={T} />
           <KCard label="Lowest Variation" value={[...operatorPerf].filter((r) => r.beams >= 3).sort((a, b) => a.std - b.std)[0]?.operator || "—"} color="#5BA3FF" T={T} />
           <KCard label="Highest Yield" value={[...operatorPerf].filter((r) => r.beams >= 3).sort((a, b) => b.yieldPct - a.yieldPct)[0]?.operator || "—"} color="#A78BFA" T={T} />
         </div>
@@ -1677,7 +1677,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 8, marginTop: 12 }}>
           <KCard label="Best Performing" value={[...loadTypePerf].sort((a, b) => b.yield - a.yield)[0]?.type || "—"} color="#4ADE80" T={T} />
           <KCard label="Highest Yield" value={`${[...loadTypePerf].sort((a, b) => b.yield - a.yield)[0]?.yield || 0}%`} color="#5BA3FF" T={T} />
-          <KCard label="Lowest Dip Time" value={[...loadTypePerf].filter((r) => r.qty >= 2).sort((a, b) => a.avgDip - b.avgDip)[0]?.type || "—"} color="#E8A020" T={T} />
+          <KCard label="Lowest Dip Time" value={[...loadTypePerf].filter((r) => r.qty >= 2).sort((a, b) => a.avgDip - b.avgDip)[0]?.type || "—"} color="#3D7EA6" T={T} />
           <KCard label="Highest Sigma" value={[...loadTypePerf].filter((r) => r.sigma != null).sort((a, b) => (b.sigma || 0) - (a.sigma || 0))[0]?.type || "—"} color="#A78BFA" T={T} />
           {/* Load ↔ Coating r removed per spec. */}
         </div>
@@ -1730,8 +1730,8 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
       {/* 8. Best Process Parameters */}
       <Section id="s8" title="8. Best Process Parameters" sub="Hybrid: historical statistical optimum + on-demand AI insights" T={T}
         right={<button onClick={runAi} disabled={aiBusy}
-          style={{ padding: "6px 14px", background: aiBusy ? T.bg : "#E8A020", color: aiBusy ? T.muted : "#0A1422",
-            border: `1px solid #E8A020`, borderRadius: 6, fontWeight: 800, fontSize: 11, cursor: aiBusy ? "wait" : "pointer" }}>
+          style={{ padding: "6px 14px", background: aiBusy ? T.bg : "#3D7EA6", color: aiBusy ? T.muted : "#0A1422",
+            border: `1px solid #3D7EA6`, borderRadius: 6, fontWeight: 800, fontSize: 11, cursor: aiBusy ? "wait" : "pointer" }}>
           {aiBusy ? "Thinking…" : "🤖 Ask AI for Insights"}
         </button>}>
         <Tbl T={T}
@@ -1761,7 +1761,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
       {/* 9. Management Summary */}
       <Section id="s9" title="9. Management Summary" sub="Daily snapshot" T={T}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 10 }}>
-          <KCard label="Production Achievement" value={`${capacityPct}%`} color="#E8A020" T={T} />
+          <KCard label="Production Achievement" value={`${capacityPct}%`} color="#3D7EA6" T={T} />
           <KCard label="Avg Coating" value={`${num(mean(completed.map((b: any) => Number(b.avg_reading))), 1)} µm`} color="#5BA3FF" T={T} />
           <KCard label="Avg Dip Time" value={fmtSec(avgDipAll)} color="#FB923C" T={T} />
           <KCard label="Sigma Level (Cpk·3+1.5)" value={overallCpk != null ? (overallCpk * 3 + 1.5).toFixed(2) : "—"} color="#4ADE80" T={T} />
@@ -1772,7 +1772,7 @@ export function SixSigmaDashboard({ beams: allBeams, users = [], T, qcRanges }: 
           <KCard label="Out-of-Control Events" value={outOfControlCount} color={outOfControlCount ? "#F87171" : "#4ADE80"} T={T} />
         </div>
         <div style={{ marginTop: 12, fontSize: 11, color: T.dim }}>
-          Tip: click <strong style={{ color: "#E8A020" }}>Ask AI for Insights</strong> above to get an AI-written narrative
+          Tip: click <strong style={{ color: "#3D7EA6" }}>Ask AI for Insights</strong> above to get an AI-written narrative
           summary and top improvement opportunities based on the current filtered data.
         </div>
       </Section>

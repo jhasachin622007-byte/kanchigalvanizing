@@ -324,7 +324,7 @@ export async function sendDeviceApprovalEmail(info: {
 <table cellpadding="6" style="border-collapse:collapse;font-size:14px">
 ${rows.map(([k, v]) => `<tr><td style="border:1px solid #ddd;background:#fafafa"><b>${esc(k)}</b></td><td style="border:1px solid #ddd">${esc(v)}</td></tr>`).join("")}
 </table>
-<p style="margin:16px 0 0"><a href="${APP_URL}/?admin=security" style="background:#E8A020;color:#04080F;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:700">Review Device Registration</a></p>
+<p style="margin:16px 0 0"><a href="${APP_URL}/?admin=security" style="background:#3D7EA6;color:#0F1720;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:700">Review Device Registration</a></p>
 <p style="font-size:12px;color:#666;margin-top:14px">You must sign in as an administrator to approve or reject this device. This email cannot approve access by itself.</p>
 </div>`;
 
@@ -401,7 +401,7 @@ export async function sendDeviceAutoApprovedEmail(info: {
 <table cellpadding="6" style="border-collapse:collapse;font-size:14px">
 ${rows.map(([k, v]) => `<tr><td style="border:1px solid #ddd;background:#fafafa"><b>${esc(k)}</b></td><td style="border:1px solid #ddd">${esc(v)}</td></tr>`).join("")}
 </table>
-<p style="margin:16px 0 0"><a href="${APP_URL}/?admin=security" style="background:#E8A020;color:#04080F;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:700">Open Security Console</a></p>
+<p style="margin:16px 0 0"><a href="${APP_URL}/?admin=security" style="background:#3D7EA6;color:#0F1720;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:700">Open Security Console</a></p>
 <p style="font-size:12px;color:#666;margin-top:14px">If this was not you, revoke the device immediately from the Security console.</p>
 </div>`;
 

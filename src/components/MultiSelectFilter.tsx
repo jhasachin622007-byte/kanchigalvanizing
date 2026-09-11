@@ -114,10 +114,10 @@ export function MultiSelectFilter({
                   style={{
                     display: "flex", alignItems: "center", gap: 8, padding: "5px 6px", fontSize: 12,
                     color: T.text, cursor: "pointer", borderRadius: 4,
-                    background: checked ? "#E8A02015" : "transparent",
+                    background: checked ? "#3D7EA615" : "transparent",
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = checked ? "#E8A02025" : T.bg; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = checked ? "#E8A02015" : "transparent"; }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = checked ? "#3D7EA625" : T.bg; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = checked ? "#3D7EA615" : "transparent"; }}
                 >
                   <input type="checkbox" checked={checked} onChange={() => toggle(o.value)} />
                   <span style={{ flex: 1 }}>{o.label}</span>
