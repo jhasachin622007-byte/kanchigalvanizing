@@ -7,10 +7,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +35,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,21 +72,46 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      {
+        httpEquiv: "Content-Security-Policy",
+        content: [
+          "default-src 'self'",
+          // Inline scripts required by TanStack Start hydration; eval needed by Vite dev + some libs
+          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.lovable.app https://*.lovable.dev",
+          // Tailwind/shadcn inject inline styles
+          "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+          "font-src 'self' data: https://fonts.gstatic.com",
+          "img-src 'self' data: blob: https:",
+          // App/server calls: Supabase, connector gateway, Google APIs, Lovable AI
+          "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://connector-gateway.lovable.dev https://*.googleapis.com https://ai.gateway.lovable.dev",
+          "frame-ancestors 'self' https://*.lovable.app https://*.lovable.dev",
+          "frame-src 'self' https://*.lovable.app https://*.lovable.dev",
+          "object-src 'none'",
+          "base-uri 'self'",
+          "form-action 'self'",
+        ].join("; "),
+      },
+      { name: "referrer", content: "strict-origin-when-cross-origin" },
+      
+      { httpEquiv: "X-Content-Type-Options", content: "nosniff" },
+      { title: "HDP Galvanizing — Production System" },
+      { name: "description", content: "Production automation and QC system for HDP galvanizing plants covering loading, dipping, and quality control." },
+      { name: "author", content: "HDP Galvanizing" },
+      { property: "og:title", content: "HDP Galvanizing — Production System" },
+      { property: "og:description", content: "Production automation and QC system for HDP galvanizing plants covering loading, dipping, and quality control." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "HDP Galvanizing — Production System" },
+      { name: "twitter:description", content: "Production automation and QC system for HDP galvanizing plants covering loading, dipping, and quality control." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c7da89a1-40e6-4470-a8b7-3d08386d9d02/id-preview-ba67a997--866a6f70-dc81-44ed-8281-b413c2c1ad5e.lovable.app-1779883575188.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c7da89a1-40e6-4470-a8b7-3d08386d9d02/id-preview-ba67a997--866a6f70-dc81-44ed-8281-b413c2c1ad5e.lovable.app-1779883575188.png" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
@@ -100,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }: { children: ReactNode }) {
+function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -116,11 +136,31 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const missingEnv =
+    typeof window !== "undefined" && !import.meta.env.VITE_SUPABASE_URL;
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      {missingEnv ? (
+        <div
+          role="alert"
+          style={{
+            background: "#b91c1c",
+            color: "white",
+            padding: "10px 16px",
+            fontSize: 14,
+            fontFamily: "system-ui, sans-serif",
+            textAlign: "center",
+          }}
+        >
+          Backend keys not loaded. Restart the preview to reload environment
+          variables. (Lovable Cloud manages the Supabase keys — they won't
+          appear in the Secrets panel.)
+        </div>
+      ) : null}
+      <main>
+        <Outlet />
+      </main>
     </QueryClientProvider>
   );
 }
