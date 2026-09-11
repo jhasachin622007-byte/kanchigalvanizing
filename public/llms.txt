@@ -1,0 +1,7 @@
+# HDP Galvanizing
+
+> Production automation and QC system for Hot Dip Galvanizing plants covering loading, dipping, quality control, and reporting.
+
+## Pages
+
+- [Home](/): Production dashboard for loading, dipping, QC, hourly and shift-wise reporting.
